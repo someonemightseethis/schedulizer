@@ -57,7 +57,7 @@ function NavbarLinks(){
                     Dashboard
                 </a>
             </li>
-            <li className="">
+            {/* <li className="">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="#6366F1"
@@ -78,9 +78,9 @@ function NavbarLinks(){
                     className="text-sm text-black hover:underline hover:underline-offset-4"
                     href="#"
                 >
-                    About Us
+                    Your Profile
                 </a>
-            </li>
+            </li> */}
         </ul>
     </div>);
 }
