@@ -1,5 +1,4 @@
 import AppointmentCard from "./AppointmentCard";
-import AppointmentCard2 from "./AppointmentCard2";
 import Navbar from "./Navbar";
 import BackToTopButton from "./BacktoTopButton";
 import Ratings from "./Ratings";
@@ -90,16 +89,10 @@ function BusinessInfo() {
 						<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 							<AppointmentCard />
 							<AppointmentCard />
-							<AppointmentCard2 />
-							<AppointmentCard2 />
 							<AppointmentCard />
 							<AppointmentCard />
-							<AppointmentCard2 />
-							<AppointmentCard2 />
 							<AppointmentCard />
 							<AppointmentCard />
-							<AppointmentCard2 />
-							<AppointmentCard2 />
 						</div>
 					</div>
 				</div>

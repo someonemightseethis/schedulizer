@@ -5,4 +5,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: '/fyp-schedulizer/',
   plugins: [react()],
+  resolve: {
+    alias: {
+      "react-use": "@types/react-use",
+    },
+  },
 })

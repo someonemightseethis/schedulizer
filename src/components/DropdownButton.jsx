@@ -1,29 +1,54 @@
-import { useEffect, useState } from "react";
-import { Dropdown, Ripple, initTE } from "tw-elements";
+import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import DropdownList from "./DropdownList";
 
-initTE({ Dropdown, Ripple });
-
 function DropdownButton(props) {
 	const [selectedOption, setSelectedOption] = useState(null);
+	const [dropdowListOpen, setDropdowListOpen] = useState(false);
 	const [dropdownListLength, setDropdownListLength] = useState(null);
+	const dropdownRef = useRef(null);
 
 	useEffect(() => {
 		setDropdownListLength(parseInt(props.dropdownlistLength, 10));
-	}, [props.dropdownlistLength]); // Update dropdownListLength on prop change
+	}, [props.dropdownlistLength]);
 
 	const handleOptionSelect = (optionId) => {
 		setSelectedOption(optionId);
+		setDropdowListOpen(false);
 	};
 
 	const dropdownliname = (index) => props[`dropdownliname${index}`];
 
 	const buttonColorClass =
 		selectedOption !== null ? "text-black" : "text-gray-400";
+	const buttonBorderColorClass = dropdowListOpen
+		? "focus:border-indigo-500"
+		: "focus:border-black";
+
+	useEffect(() => {
+		const handleClickOutside = (event) => {
+			if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+				setDropdowListOpen(false);
+			}
+		};
+
+		// Add event listener when the dropdown is open
+		if (dropdowListOpen) {
+			document.addEventListener("click", handleClickOutside);
+		}
+
+		// Remove event listener when the component is unmounted
+		return () => {
+			document.removeEventListener("click", handleClickOutside);
+		};
+	}, [dropdowListOpen]);
+
+	const handleButtonClick = () => {
+		setDropdowListOpen((prevOpen) => !prevOpen);
+	};
 
 	return (
-		<div className="relative" data-te-dropdown-ref>
+		<div className="relative" data-te-dropdown-ref ref={dropdownRef}>
 			<label
 				htmlFor={props.dropdownlabelhtmlfor}
 				className="mb-4 px-1 text-sm text-start font-medium text-grey-900"
@@ -31,13 +56,14 @@ function DropdownButton(props) {
 				{props.dropdownlabelname}
 			</label>
 			<button
-				className={`flex items-center justify-between text-end w-full px-3 py-2 mt-2 mb-4 text-sm border-2 border-black rounded-lg focus:border-indigo-500 focus:outline-none ${buttonColorClass}`}
+				className={`flex items-center justify-between text-end w-full px-3 py-2 mt-2 mb-4 text-sm border-2 border-black rounded-lg ${buttonBorderColorClass} ${buttonColorClass}`}
 				type="button"
 				id="dropdownMenuButton1"
 				data-te-dropdown-toggle-ref
 				aria-expanded="false"
 				data-te-ripple-init
 				data-te-ripple-color="light"
+				onClick={handleButtonClick}
 			>
 				{selectedOption !== null
 					? dropdownliname(selectedOption + 1)
@@ -59,6 +85,7 @@ function DropdownButton(props) {
 			</button>
 			{dropdownListLength && (
 				<DropdownList
+					dropdowListOpen={dropdowListOpen}
 					listLength={dropdownListLength}
 					handleOptionSelect={handleOptionSelect}
 					dropdownliname={dropdownliname}

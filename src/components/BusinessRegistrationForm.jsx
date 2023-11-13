@@ -113,16 +113,6 @@ function BusinessRegistrationForm() {
 								</div>
 
 								<div>
-									<InputField
-										inputfieldid="businesscategory"
-										inputfieldtype="text"
-										inputfieldplaceholder="e.g. IT, Marketing, etc."
-										inputfieldhtmlfor="businesscategory"
-										inputfieldlabelname="Field of Work"
-									/>
-								</div>
-
-								<div>
 									<DropdownButton
 										dropdownbuttonname="public, private"
 										dropdownlabelname="Business Type"
@@ -136,7 +126,38 @@ function BusinessRegistrationForm() {
 										dropdownliname5="Private Business 5"
 									/>
 								</div>
+
+								<div>
+									<InputField
+										inputfieldid="businesscategory"
+										inputfieldtype="text"
+										inputfieldplaceholder="e.g. IT, Marketing, etc."
+										inputfieldhtmlfor="businesscategory"
+										inputfieldlabelname="Field of Work"
+									/>
+								</div>
+
+								<div>
+									<InputField
+										inputfieldid="businessaddress"
+										inputfieldtype="text"
+										inputfieldplaceholder="John & Sons"
+										inputfieldhtmlfor="businessaddress"
+										inputfieldlabelname="Address"
+									/>
+								</div>
+
+								<div>
+									<InputField
+										inputfieldid="businessaddresslink"
+										inputfieldtype="url"
+										inputfieldplaceholder="John & Sons"
+										inputfieldhtmlfor="businessaddresslink"
+										inputfieldlabelname="Link to Google Maps"
+									/>
+								</div>
 							</div>
+
 							<div className="pb-2 px-24">
 								<Button buttonname="add business" />
 							</div>
