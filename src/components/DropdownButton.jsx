@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Dropdown, Ripple, initTE } from "tw-elements";
 import PropTypes from "prop-types";
 import DropdownList from "./DropdownList";
@@ -7,6 +7,11 @@ initTE({ Dropdown, Ripple });
 
 function DropdownButton(props) {
 	const [selectedOption, setSelectedOption] = useState(null);
+	const [dropdownListLength, setDropdownListLength] = useState(null);
+
+	useEffect(() => {
+		setDropdownListLength(parseInt(props.dropdownlistLength, 10));
+	}, [props.dropdownlistLength]); // Update dropdownListLength on prop change
 
 	const handleOptionSelect = (optionId) => {
 		setSelectedOption(optionId);
@@ -52,11 +57,13 @@ function DropdownButton(props) {
 					</svg>
 				</span>
 			</button>
-			<DropdownList
-				listLength={props.dropdownlistLength}
-				handleOptionSelect={handleOptionSelect}
-				dropdownliname={dropdownliname}
-			/>
+			{dropdownListLength && (
+				<DropdownList
+					listLength={dropdownListLength}
+					handleOptionSelect={handleOptionSelect}
+					dropdownliname={dropdownliname}
+				/>
+			)}
 		</div>
 	);
 }

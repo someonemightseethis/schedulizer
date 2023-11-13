@@ -64,7 +64,7 @@ function BusinessRegistrationForm() {
 										inputfieldid="businessname"
 										inputfieldtype="text"
 										inputfieldplaceholder="John & Sons"
-										inputfieldhtmlfor=""
+										inputfieldhtmlfor="businessname"
 										inputfieldlabelname="Registered Name"
 									/>
 								</div>
@@ -74,7 +74,7 @@ function BusinessRegistrationForm() {
 										inputfieldid="businesscity"
 										inputfieldtype="text"
 										inputfieldplaceholder="Islamabad"
-										inputfieldhtmlfor=""
+										inputfieldhtmlfor="businesscity"
 										inputfieldlabelname="City"
 									/>
 								</div>
@@ -82,9 +82,9 @@ function BusinessRegistrationForm() {
 								<div>
 									<InputField
 										inputfieldid="businesscontactnumber"
-										inputfieldtype="text"
+										inputfieldtype="tel"
 										inputfieldplaceholder="XXXX-XXXXXXX"
-										inputfieldhtmlfor=""
+										inputfieldhtmlfor="businesscontactnumber"
 										inputfieldlabelname="Contact Number"
 									/>
 								</div>
@@ -94,7 +94,7 @@ function BusinessRegistrationForm() {
 										inputfieldid="businessemail"
 										inputfieldtype="email"
 										inputfieldplaceholder="johnsnow@example.com"
-										inputfieldhtmlfor=""
+										inputfieldhtmlfor="businessemail"
 										inputfieldlabelname="Work Email"
 									/>
 								</div>
@@ -117,7 +117,7 @@ function BusinessRegistrationForm() {
 										inputfieldid="businesscategory"
 										inputfieldtype="text"
 										inputfieldplaceholder="e.g. IT, Marketing, etc."
-										inputfieldhtmlfor=""
+										inputfieldhtmlfor="businesscategory"
 										inputfieldlabelname="Field of Work"
 									/>
 								</div>

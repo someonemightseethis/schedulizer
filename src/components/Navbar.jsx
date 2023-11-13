@@ -11,10 +11,10 @@ function Navbar() {
 						<span className="text-black text-3xl font-bold">Schedulizer</span>
 					</a>
 				</div>
-				<NavbarLinks />
 				<Searchbar />
+				<NavbarLinks />
 				<Button buttonname="add your business" />
-				<div className="flex justify-between space-x-8">
+				<div className="flex justify-between space-x-10">
 					<a className="flex items-center" href="#">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -41,8 +41,6 @@ function Navbar() {
 							<span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
 						</span>
 					</a>
-				</div>
-				<div>
 					<a className="flex items-center group" href="#">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
