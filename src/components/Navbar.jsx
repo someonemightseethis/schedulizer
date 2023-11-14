@@ -4,8 +4,8 @@ import Searchbar from "./Searchbar";
 
 function Navbar() {
 	return (
-		<div className="fixed px-6 left-0 w-full bg-white z-10 border-b-2 border-black">
-			<nav className="px-4 py-3 flex justify-between items-center bg-white">
+		<div className="fixed px-6 left-0 w-full bg-[#F9F5F8] z-10 border-b-2 border-black">
+			<nav className="px-4 py-3 flex justify-between items-cente space-x-2 lg:space-x-4 sm:space-x-2">
 				<div className="flex-shrink-0 flex items-center">
 					<a href="/">
 						<span className="text-black text-3xl font-bold">Schedulizer</span>
@@ -13,7 +13,8 @@ function Navbar() {
 				</div>
 				<Searchbar />
 				<NavbarLinks />
-				<Button buttonname="add your business" />
+				<div className="lg:block xl:block xs:hidden"><Button buttonname="add your business" /></div>
+				
 				<div className="flex justify-between space-x-10">
 					<a className="flex items-center" href="#">
 						<svg
@@ -41,7 +42,7 @@ function Navbar() {
 							<span className="relative inline-flex rounded-full h-3 w-3 bg-indigo-500"></span>
 						</span>
 					</a>
-					<a className="flex items-center group" href="#">
+					<a className="xl:flex lg:flex md:flex items-center group sm:hidden xs:hidden" href="#">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							height="1.25em"

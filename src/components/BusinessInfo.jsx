@@ -6,7 +6,7 @@ import Button from "./Button";
 
 function BusinessInfo() {
 	return (
-		<div className="">
+		<div className="bg-[#F9F5F8]">
 			<Navbar />
 			<div className="h-screen overflow-y-scroll p-12">
 				<div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-8 px-6">

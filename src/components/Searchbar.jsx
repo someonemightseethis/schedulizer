@@ -1,6 +1,6 @@
 function Searchbar() {
 	return (
-		<div className="max-w-lg w-full h-[35px] flex items-center lg:max-w-xs border-2 border-black rounded-md">
+		<div className="max-w-lg w-full h-[35px] flex items-center lg:max-w-xs border-2 border-black rounded-md xs:hidden sm:hidden lg:block xl:block">
 			<form method="get" action="#" className="relative z-50 h-7">
 				<label htmlFor="search" className="sr-only">
 					Search
@@ -8,7 +8,7 @@ function Searchbar() {
 				<button
 					type="submit"
 					id="searchsubmit"
-					className="absolute inset-y-0 -left-1 pl-3 flex items-center hover:scale-110 transition duration-300 ease-in-out"
+					className="absolute inset-y-[15px] -left-1 pl-3 flex items-center hover:scale-110 transition duration-300 ease-in-out"
 				>
 					<svg
 						className="h-5 w-5 text-black"
@@ -26,7 +26,7 @@ function Searchbar() {
 					type="text"
 					name="s"
 					id="s"
-					className="block w-[310px] pl-8 py-[2px] border border-transparent rounded-md leading-2 text-black placeholder-gray-400 focus:outline-none text-sm sm:text-sm transition duration-150 ease-in-out"
+					className="block w-[310px] pl-8 py-[4px] border border-transparent rounded-md leading-2 text-black placeholder-gray-400 focus:outline-none text-sm sm:text-sm transition duration-150 ease-in-out"
 					placeholder="Search"
 				/>
 				

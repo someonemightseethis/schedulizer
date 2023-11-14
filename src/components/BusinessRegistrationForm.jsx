@@ -5,11 +5,11 @@ import Navbar from "./Navbar";
 
 function BusinessRegistrationForm() {
 	return (
-		<div>
+		<div className="bg-[#F9F5F8]">
 			<Navbar />
-			<div className="flex justify-center items-center py-36">
+			<div className="flex justify-center items-center py-48">
 				<div className="flex justify-center py-12">
-					<div className="w-[590px]">
+					<div className="xl:w-[700px] lg:w-[600px] md:w-full">
 						<h3 className="pb-6 text-center text-4xl font-extrabold text-dark-grey-900">
 							Let us know more <br />
 							about your business.
@@ -103,12 +103,12 @@ function BusinessRegistrationForm() {
 									<DropdownButton
 										dropdownbuttonname="select range"
 										dropdownlabelname="No. of Employees"
-										dropdownlistLength={3}
+										dropdownlistLength={4}
 										dropdownlabelhtmlfor="employeesno"
-										dropdownliname0="1 - 5"
-										dropdownliname1="5 - 10"
-										dropdownliname2="10 - 15"
-										dropdownliname3="15 - 20"
+										dropdownliname1="1 - 5"
+										dropdownliname2="5 - 10"
+										dropdownliname3="10 - 15"
+										dropdownliname4="15 - 20"
 									/>
 								</div>
 
@@ -116,14 +116,10 @@ function BusinessRegistrationForm() {
 									<DropdownButton
 										dropdownbuttonname="public, private"
 										dropdownlabelname="Business Type"
-										dropdownlistLength={5}
+										dropdownlistLength={2}
 										dropdownlabelhtmlfor="businesstype"
 										dropdownliname1="Public Business"
-										dropdownliname0="Public Business 0"
 										dropdownliname2="Private Business"
-										dropdownliname3="Private Business 3"
-										dropdownliname4="Public Business 4"
-										dropdownliname5="Private Business 5"
 									/>
 								</div>
 
@@ -158,8 +154,8 @@ function BusinessRegistrationForm() {
 								</div>
 							</div>
 
-							<div className="pb-2 px-24">
-								<Button buttonname="add business" />
+							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
+								<Button buttonname="submit" />
 							</div>
 						</form>
 					</div>

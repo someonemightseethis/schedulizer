@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 function InputField(props) {
 	return (
 		<div>
-			<label htmlFor={props.inputfieldhtmlfor} className="mb-4 px-1 text-sm text-start font-medium text-grey-900">
+			<label
+				htmlFor={props.inputfieldhtmlfor}
+				className="mb-4 px-1 text-sm text-start font-medium text-grey-900"
+			>
 				{props.inputfieldlabelname}
 			</label>
 			<input
@@ -19,10 +22,10 @@ function InputField(props) {
 
 InputField.propTypes = {
 	inputfieldhtmlfor: PropTypes.string.isRequired,
-   inputfieldlabelname: PropTypes.string.isRequired,
-    inputfieldid: PropTypes.string.isRequired,
-    inputfieldtype: PropTypes.string.isRequired,
-    inputfieldplaceholder: PropTypes.string.isRequired,
+	inputfieldlabelname: PropTypes.string.isRequired,
+	inputfieldid: PropTypes.string.isRequired,
+	inputfieldtype: PropTypes.string.isRequired,
+	inputfieldplaceholder: PropTypes.string.isRequired,
 	inputfieldpattern: PropTypes.string,
 };
 

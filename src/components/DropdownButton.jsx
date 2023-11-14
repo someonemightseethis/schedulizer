@@ -6,15 +6,25 @@ function DropdownButton(props) {
 	const [selectedOption, setSelectedOption] = useState(null);
 	const [dropdowListOpen, setDropdowListOpen] = useState(false);
 	const [dropdownListLength, setDropdownListLength] = useState(null);
+	const [selectedValue, setSelectedValue] = useState(null); // New state
 	const dropdownRef = useRef(null);
 
 	useEffect(() => {
 		setDropdownListLength(parseInt(props.dropdownlistLength, 10));
 	}, [props.dropdownlistLength]);
 
+	useEffect(() => {
+		console.log(
+			"Selected Value(" + props.dropdownlabelname + "):",
+			selectedValue
+		);
+	}, [selectedValue, props.dropdownlabelname]);
+
 	const handleOptionSelect = (optionId) => {
 		setSelectedOption(optionId);
 		setDropdowListOpen(false);
+
+		setSelectedValue(props[`dropdownliname${optionId + 1}`]);
 	};
 
 	const dropdownliname = (index) => props[`dropdownliname${index}`];
@@ -56,7 +66,7 @@ function DropdownButton(props) {
 				{props.dropdownlabelname}
 			</label>
 			<button
-				className={`flex items-center justify-between text-end w-full px-3 py-2 mt-2 mb-4 text-sm border-2 border-black rounded-lg ${buttonBorderColorClass} ${buttonColorClass}`}
+				className={`flex items-center bg-white justify-between text-end w-full px-3 py-2 mt-2 mb-4 text-sm border-2 border-black rounded-lg ${buttonBorderColorClass} ${buttonColorClass}`}
 				type="button"
 				id="dropdownMenuButton1"
 				data-te-dropdown-toggle-ref
@@ -72,7 +82,7 @@ function DropdownButton(props) {
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
-						fill="currentColor"
+						fill="black"
 						className="h-5 w-5"
 					>
 						<path

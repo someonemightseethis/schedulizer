@@ -4,11 +4,11 @@ import Navbar from "./Navbar";
 
 function Registration() {
 	return (
-		<div>
+		<div className="bg-[#F9F5F8]">
 			<Navbar />
-			<div className="flex justify-center items-center py-36">
+			<div className="flex justify-center items-center py-48">
 				<div className="flex justify-center py-12">
-					<div className="w-[590px]">
+					<div className="xl:w-[700px] lg:w-[600px] md:w-full">
 						<h3 className="pb-6 text-center text-4xl font-extrabold text-dark-grey-900">
 							Sign Up
 						</h3>
@@ -59,65 +59,65 @@ function Registration() {
 							<div className="grid grid-cols-1 gap-x-8 gap-y-4 mt-8 md:grid-cols-2">
 								<div>
 									<InputField
-										id=""
-										type="text"
-										placeholder="John"
-										htmlfor=""
-										labelname="First Name"
+										inputfieldid=""
+										inputfieldtype="text"
+										inputfieldplaceholder="John"
+										inputfieldhtmlfor=""
+										inputfieldlabelname="First Name"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										id=""
-										type="text"
-										placeholder="Snow"
-										htmlfor=""
-										labelname="Last name"
+										inputfieldid=""
+										inputfieldtype="text"
+										inputfieldplaceholder="Snow"
+										inputfieldhtmlfor=""
+										inputfieldlabelname="Last name"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										id=""
-										type="text"
-										placeholder="XXXX-XXXXXXX"
-										htmlfor=""
-										labelname="Phone number"
+										inputfieldid=""
+										inputfieldtype="text"
+										inputfieldplaceholder="XXXX-XXXXXXX"
+										inputfieldhtmlfor=""
+										inputfieldlabelname="Phone number"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										id=""
-										type="email"
-										placeholder="johnsnow@example.com"
+										inputfieldid=""
+										inputfieldtype="email"
+										inputfieldplaceholder="johnsnow@example.com"
 										htmlfor=""
-										labelname="Email address"
+										inputfieldlabelname="Email address"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										id=""
-										type="password"
-										placeholder="Enter your password"
-										htmlfor=""
-										labelname="Password"
+										inputfieldid=""
+										inputfieldtype="password"
+										inputfieldplaceholder="Enter your password"
+										inputfieldhtmlfor=""
+										inputfieldlabelname="Password"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										id=""
-										type="password"
-										placeholder="Confirm password"
-										htmlfor=""
-										labelname="Confirm password"
+										inputfieldid=""
+										inputfieldtype="password"
+										inputfieldplaceholder="Confirm password"
+										inputfieldhtmlfor=""
+										inputfieldlabelname="Confirm password"
 									/>
 								</div>
 							</div>
-							<div className="pb-2 px-24">
+							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
 								<Button buttonname="Sign Up" />
 							</div>
 						</form>
@@ -132,15 +132,15 @@ function Registration() {
 							<p className="mx-4 text-grey-600">or</p>
 							<hr className="h-0 border-b border-solid border-grey-500 grow" />
 						</div>
-						<div className="px-24">
-						<a className="flex items-center justify-center w-full py-2 mb-6 text-sm font-medium transition duration-300 rounded-lg text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300 border-2 border-black">
-							<img
-								className="h-5 mr-2"
-								src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
-								alt=""
-							/>
-							Continue with Google
-						</a>
+						<div className="xl:px-36 md:px-32 xs:px-16">
+							<a className="flex items-center justify-center w-full py-2 xs:px-4 mb-6 text-sm font-medium transition duration-300 rounded-lg text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300 border-2 border-black">
+								<img
+									className="h-5 mr-2"
+									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
+									alt=""
+								/>
+								Continue with Google
+							</a>
 						</div>
 					</div>
 				</div>

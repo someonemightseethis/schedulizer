@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 function Dashboard() {
 	return (
-		<div className="">
+		<div className="bg-[#F9F5F8]">
 			<Navbar />
 			<div className="md:pt-[62px]">
 				{/* Add padding top to create space for fixed navbar */}
