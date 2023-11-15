@@ -78,7 +78,7 @@ function AppointmentCard() {
 					</li>
 				</ul>
 				<div className="py-4 px-20">
-					<Button buttonname="book appointment" />
+					<Button buttonname="book appointment" buttonlink="/fyp-schedulizer/dashboard" />
 				</div>
 			</div>
 		</div>

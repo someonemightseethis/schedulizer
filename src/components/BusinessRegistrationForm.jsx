@@ -5,7 +5,7 @@ import Navbar from "./Navbar";
 
 function BusinessRegistrationForm() {
 	return (
-		<div className="bg-[#F9F5F8]">
+		<div className="">
 			<Navbar />
 			<div className="flex justify-center items-center pt-48">
 				<div className="flex justify-center py-12">
@@ -155,7 +155,7 @@ function BusinessRegistrationForm() {
 							</div>
 
 							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
-								<Button buttonname="submit" />
+								<Button buttonname="submit" buttonlink="/fyp-schedulizer" />
 							</div>
 						</form>
 					</div>

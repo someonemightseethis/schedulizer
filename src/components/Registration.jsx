@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import Button from "./Button";
 import InputField from "./InputField";
 import Navbar from "./Navbar";
 
 function Registration() {
 	return (
-		<div className="bg-[#F9F5F8]">
+		<div className="">
 			<Navbar />
 			<div className="flex justify-center items-center pt-48">
 				<div className="flex justify-center py-12">
@@ -123,9 +124,12 @@ function Registration() {
 						</form>
 						<p className="text-sm text-center leading-relaxed text-grey-900">
 							Already have an account?{" "}
-							<a href="javascript:void(0)" className="font-bold text-grey-700">
+							<Link
+								to="/fyp-schedulizer/login"
+								className="font-bold text-grey-700"
+							>
 								Sign In
-							</a>
+							</Link>
 						</p>
 						<div className="flex items-center mb-3 pt-6">
 							<hr className="h-0 border-b border-solid border-grey-500 grow" />

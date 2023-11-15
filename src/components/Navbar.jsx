@@ -1,17 +1,14 @@
+import { Link } from "react-router-dom";
 import Button from "./Button";
 import NavbarLinks from "./NavbarLinks";
 import Searchbar from "./Searchbar";
 
 function Navbar() {
 	return (
-		<div className="fixed px-6 left-0 w-full bg-[#F9F5F8] z-10 border-b-2 border-black opacity-[0.98]">
-			<nav className="px-4 py-3 flex justify-between items-center space-x-2 lg:space-x-4">
+		<div className="fixed px-6 left-0 w-full bg-white z-10 border-b-2 border-black opacity-[0.98]">
+			<nav className="px-4 py-2 flex justify-between items-center space-x-2 lg:space-x-4">
 				<div className="flex-shrink-0 flex items-center">
-					<img
-						src="./images/logo.png"
-						alt="logo"
-						className="w-10 h-10 mx-4"
-					/>
+					<img src="./images/logo.png" alt="logo" className="w-12 h-12 mr-4" />
 					<a href="/">
 						<span className="text-black text-3xl font-bold">Schedulizer</span>
 					</a>
@@ -19,7 +16,10 @@ function Navbar() {
 				<Searchbar />
 				<NavbarLinks />
 				<div className="lg:block xl:block xs:hidden">
-					<Button buttonname="add your business" />
+					<Button
+						buttonname="add your business"
+						buttonlink="/fyp-schedulizer/businessregistration"
+					/>
 				</div>
 
 				<div className="flex justify-between space-x-16">
@@ -51,9 +51,10 @@ function Navbar() {
 							</span>
 						</a>
 					</div>
-					<a
-						className="xl:flex lg:flex md:flex items-center group sm:hidden xs:hidden"
-						href="#"
+					<Link
+						to="/fyp-schedulizer/login"
+						className="xl:flex lg:flex md:flex items-center group sm:hidden
+						xs:hidden"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +67,7 @@ function Navbar() {
 						<p className="px-4 text-sm text-black group-hover:underline group-hover:underline-offset-4">
 							username
 						</p>
-					</a>
+					</Link>
 				</div>
 			</nav>
 		</div>

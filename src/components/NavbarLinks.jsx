@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function NavbarLinks(){
     return(<div className="">
         <ul className="lg:mx-auto lg:items-center lg:w-auto lg:space-x-6 sm:hidden xs:hidden md:hidden lg:hidden xl:flex">
@@ -50,12 +52,12 @@ function NavbarLinks(){
                 </svg>
             </li>
             <li>
-                <a
+                <Link
                     className="text-sm text-black hover:underline hover:underline-offset-4"
-                    href="#"
+                    to="/fyp-schedulizer/dashboard"
                 >
                     Dashboard
-                </a>
+                </Link>
             </li>
         </ul>
     </div>);

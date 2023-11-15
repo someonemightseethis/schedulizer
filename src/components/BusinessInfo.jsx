@@ -7,7 +7,7 @@ import FeedbackModal from "./FeedbackModal";
 
 function BusinessInfo() {
 	return (
-		<div className="bg-[#F9F5F8]">
+		<div className="">
 			<Navbar />
 			<div className="h-screen overflow-y-scroll p-12">
 				<div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-8 px-6">

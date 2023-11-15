@@ -55,7 +55,7 @@ function BusinessCard() {
 									mi, quis molestie erat ipsum vel risus.
 								</p>
 							</div>
-							<Button buttonname="know more / book an appointment" />
+							<Button buttonname="know more / book an appointment" buttonlink="/fyp-schedulizer/businessinfo" />
 						</div>
 					</div>
 				</div>
