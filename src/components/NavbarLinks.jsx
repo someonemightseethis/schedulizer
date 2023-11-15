@@ -1,5 +1,5 @@
 function NavbarLinks(){
-    return(<div className="pt-1">
+    return(<div className="">
         <ul className="lg:mx-auto lg:items-center lg:w-auto lg:space-x-6 sm:hidden xs:hidden md:hidden lg:hidden xl:flex">
             <li>
                 <a

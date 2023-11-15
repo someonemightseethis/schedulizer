@@ -6,7 +6,7 @@ function Registration() {
 	return (
 		<div className="bg-[#F9F5F8]">
 			<Navbar />
-			<div className="flex justify-center items-center py-48">
+			<div className="flex justify-center items-center pt-48">
 				<div className="flex justify-center py-12">
 					<div className="xl:w-[700px] lg:w-[600px] md:w-full">
 						<h3 className="pb-6 text-center text-4xl font-extrabold text-dark-grey-900">

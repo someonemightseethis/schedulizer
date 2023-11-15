@@ -10,7 +10,7 @@ function Dashboard() {
 			<div className="md:pt-[62px]">
 				{/* Add padding top to create space for fixed navbar */}
 				<Filters />
-				<div className="grid grid-cols-3 py-24">
+				<div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 py-24 xs:pt-36 space-y-4">
 					<BusinessCard />
 					<BusinessCard />
 					<BusinessCard />

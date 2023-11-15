@@ -6,7 +6,7 @@ function Login() {
 	return (
 		<div className="bg-[#F9F5F8]">
 			<Navbar />
-			<div className="flex justify-center items-center py-48">
+			<div className="flex justify-center items-center pt-48">
 				<div className="flex flex-col justify-center p-12">
 					<h3 className="pb-6 text-4xl text-center font-extrabold text-dark-grey-900">
 						Sign In

@@ -1,20 +1,35 @@
 import { Rating, initTE } from "tw-elements";
+import { useEffect, useRef } from "react";
 
 function Ratings() {
-	initTE({ Rating });
+	const ratingContainerRef = useRef(null);
 
-	const icons = document.querySelectorAll("[data-te-rating-icon-ref]");
+	useEffect(() => {
+		initTE({ Rating });
 
-	icons.forEach((el) => {
-		el.addEventListener("onSelect.te.rating", (e) => {
-			console.log(e.value);
-		});
-	});
+		const handleRatingChange = (e) => {
+			console.log("Event:", e);
+			console.log("Value:", e.detail.value);
+		};
+
+		const ratingContainer = ratingContainerRef.current;
+
+		if (ratingContainer) {
+			ratingContainer.addEventListener("change.te.rating", handleRatingChange);
+
+			return () => {
+				ratingContainer.removeEventListener(
+					"change.te.rating",
+					handleRatingChange
+				);
+			};
+		}
+	}, []); // Ensure the effect runs only once after initial render
 
 	return (
 		<div className="flex justify-center py-4">
 			<ul
-				id="selected-value-example"
+				ref={ratingContainerRef}
 				className="my-1 flex list-none gap-1 p-0"
 				data-te-rating-init
 			>

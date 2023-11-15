@@ -2,7 +2,8 @@ import AppointmentCard from "./AppointmentCard";
 import Navbar from "./Navbar";
 import BackToTopButton from "./BacktoTopButton";
 import Ratings from "./Ratings";
-import Button from "./Button";
+// import Button from "./Button";
+import FeedbackModal from "./FeedbackModal";
 
 function BusinessInfo() {
 	return (
@@ -75,7 +76,8 @@ function BusinessInfo() {
 								</p>
 							</div>
 							<div className="px-12 py-2">
-								<Button buttonname="submit a feedback" />
+								{/* <Button buttonname="submit a feedback" /> */}
+								<FeedbackModal />
 							</div>
 							<div className="flex justify-center items-center text-center flex-col">
 								<h4 className="text-lg font-bold text-black">
@@ -86,7 +88,7 @@ function BusinessInfo() {
 						</div>
 					</div>
 					<div className="lg:col-span-2 pb-6 pt-[6px] mt-16">
-						<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+						<div className="grid xl:grid-cols-2 lg:grid-cols-1 gap-8">
 							<AppointmentCard />
 							<AppointmentCard />
 							<AppointmentCard />

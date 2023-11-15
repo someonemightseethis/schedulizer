@@ -26,7 +26,7 @@ function Searchbar() {
 					type="text"
 					name="s"
 					id="s"
-					className="block w-[310px] pl-8 py-[4px] border border-transparent rounded-md leading-2 text-black placeholder-gray-400 focus:outline-none text-sm sm:text-sm transition duration-150 ease-in-out"
+					className="block w-[316px] pl-8 py-[4px] border border-transparent rounded-md leading-2 text-black placeholder-gray-400 focus:outline-none text-sm sm:text-sm transition duration-150 ease-in-out"
 					placeholder="Search"
 				/>
 				

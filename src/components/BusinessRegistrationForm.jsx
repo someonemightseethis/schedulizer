@@ -7,7 +7,7 @@ function BusinessRegistrationForm() {
 	return (
 		<div className="bg-[#F9F5F8]">
 			<Navbar />
-			<div className="flex justify-center items-center py-48">
+			<div className="flex justify-center items-center pt-48">
 				<div className="flex justify-center py-12">
 					<div className="xl:w-[700px] lg:w-[600px] md:w-full">
 						<h3 className="pb-6 text-center text-4xl font-extrabold text-dark-grey-900">
@@ -137,7 +137,7 @@ function BusinessRegistrationForm() {
 									<InputField
 										inputfieldid="businessaddress"
 										inputfieldtype="text"
-										inputfieldplaceholder="John & Sons"
+										inputfieldplaceholder="Appt. 123, Street 123, Sector 123, Islamabad"
 										inputfieldhtmlfor="businessaddress"
 										inputfieldlabelname="Address"
 									/>
@@ -147,7 +147,7 @@ function BusinessRegistrationForm() {
 									<InputField
 										inputfieldid="businessaddresslink"
 										inputfieldtype="url"
-										inputfieldplaceholder="John & Sons"
+										inputfieldplaceholder="https://www.google.com/maps/..."
 										inputfieldhtmlfor="businessaddresslink"
 										inputfieldlabelname="Link to Google Maps"
 									/>
