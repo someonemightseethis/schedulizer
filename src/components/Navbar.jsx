@@ -8,7 +8,7 @@ function Navbar() {
 			<nav className="px-4 py-3 flex justify-between items-center space-x-2 lg:space-x-4">
 				<div className="flex-shrink-0 flex items-center">
 					<img
-						src="/images/logo.png"
+						src="./images/logo.png"
 						alt="logo"
 						className="w-10 h-10 mx-4"
 					/>
