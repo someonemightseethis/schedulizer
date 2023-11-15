@@ -13,7 +13,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<Routes>
-				<Route path="/fyp-schedulizer/" element={<Dashboard />} />
+				<Route path="/fyp-schedulizer" element={<Dashboard />} />
         <Route path="/fyp-schedulizer/dashboard" element={<Dashboard />} />
 				<Route path="/fyp-schedulizer/login" element={<Login />} />
 				<Route path="/fyp-schedulizer/registration" element={<Registration />} />

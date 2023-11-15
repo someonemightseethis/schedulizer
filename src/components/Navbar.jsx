@@ -9,9 +9,9 @@ function Navbar() {
 			<nav className="px-4 py-2 flex justify-between items-center space-x-2 lg:space-x-4">
 				<div className="flex-shrink-0 flex items-center">
 					<img src="./images/logo.png" alt="logo" className="w-12 h-12 mr-4" />
-					<a href="/">
+					<Link href="/fyp-schedulizer">
 						<span className="text-black text-3xl font-bold">Schedulizer</span>
-					</a>
+					</Link>
 				</div>
 				<Searchbar />
 				<NavbarLinks />
