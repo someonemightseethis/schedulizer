@@ -39,26 +39,6 @@ const teamData = [
     },
     profileImageSrc: "./images/logo.png",
   },
-  {
-    name: "Abdullah Gull",
-    designation: "Documentation, Graphic Designer",
-    socialLinks: {
-      linkedin: "https://www.linkedin.com/in/janesmith",
-      dribbble: "https://dribbble.com/janesmith",
-      twitter: "https://twitter.com/janesmith",
-    },
-    profileImageSrc: "./images/logo.png",
-  },
-  {
-    name: "Ibad Karimi",
-    designation: "Flutter Developer",
-    socialLinks: {
-      linkedin: "https://www.linkedin.com/in/janesmith",
-      dribbble: "https://dribbble.com/janesmith",
-      twitter: "https://twitter.com/janesmith",
-    },
-    profileImageSrc: "./images/logo.png",
-  },
 ];
 
 export default teamData;

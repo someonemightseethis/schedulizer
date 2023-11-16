@@ -1,3 +1,4 @@
+import Button from "./Button";
 import Navbar from "./Navbar";
 import Team from "./Team";
 
@@ -6,14 +7,21 @@ function Home() {
 		<div>
 			<Navbar />
 			<div className="pt-48">
-				<div className="mb-40 flex flex-col px-36">
+				<div className="mb-40 flex flex-col px-48">
 					<h2 className="text-6xl font-semibold text-right">
 						Exclusive Agency For <br />
 					</h2>
-					<span className="text-8xl text-center text-blue-500 leading-relaxed">
+					<span className="text-8xl text-center text-indigo-500 leading-relaxed">
 						Appointment Scheduling <br />
 					</span>
 					<h2 className="text-5xl text-right font-semibold">Solutions</h2>
+					<div className="flex justify-center items-center space-x-8 pt-12">
+						<Button buttonname="Get Started" />
+						<p className="text-indigo-600 italic font-thin">
+							by looking at the services provided on our platform and find the
+							right match for your needs
+						</p>
+					</div>
 				</div>
 
 				<div className="bg-cover bg-fixed bg-center justify-center items-center bg-[url('https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?auto=format&fit=crop&w=880&q=80')] py-6">
@@ -34,8 +42,8 @@ function Home() {
 					</div>
 				</div>
 
-                    <Team />
-                    
+				<Team />
+
 				<div className="py-20 px-36">
 					<h1 className="text-6xl text-center mb-12 font-semibold">
 						Tempor sit labore nostrud
