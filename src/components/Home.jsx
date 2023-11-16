@@ -1,3 +1,4 @@
+import BackToTopButton from "./BacktoTopButton";
 import Button from "./Button";
 import Navbar from "./Navbar";
 import Team from "./Team";
@@ -16,7 +17,7 @@ function Home() {
 					</span>
 					<h2 className="text-5xl text-right font-semibold">Solutions</h2>
 					<div className="flex justify-center items-center space-x-8 pt-12">
-						<Button buttonname="Get Started" />
+						<Button buttonname="Get Started" buttonlink="/fyp-schedulizer/services" />
 						<p className="text-indigo-600 italic font-thin">
 							by looking at the services provided on our platform and find the
 							right match for your needs
@@ -105,6 +106,7 @@ function Home() {
 						</p>
 					</div>
 				</div>
+                <BackToTopButton />
 			</div>
 		</div>
 	);
