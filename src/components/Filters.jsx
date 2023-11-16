@@ -1,6 +1,6 @@
 function Filters() {
 	return (
-		<div className="fixed w-full flex z-10 xl:my-1 md:my-0 sm:my-[62px] xs:my-[62px] left-0 space-x-4 sm:space-x-2 md:space-x-1 justify-between px-20 py-4 text-sm border-b-2 border-black bg-white opacity-95">
+		<div className="fixed w-full flex z-10 xl:my-1 md:my-1 sm:my-[68px] xs:my-[66px] left-0 space-x-4 sm:space-x-2 md:space-x-1 justify-between px-20 py-4 text-sm border-b-2 border-black bg-white opacity-95">
 			<a href="#" className="text-[#6366F1] hover:underline">
 				Filter 1
 			</a>

@@ -9,7 +9,7 @@ function Navbar() {
 			<nav className="px-4 py-2 flex justify-between items-center space-x-2 lg:space-x-4">
 				<div className="flex-shrink-0 flex items-center">
 					<img src="./images/logo.png" alt="logo" className="w-12 h-12 mr-4" />
-					<Link to="/fyp-schedulizer">
+					<Link to="/fyp-schedulizer/">
 						<span className="text-black text-3xl font-bold">Schedulizer</span>
 					</Link>
 				</div>
@@ -23,7 +23,7 @@ function Navbar() {
 				</div>
 
 				<div className="flex justify-between space-x-16">
-					<div className="flex items-center space-x-6">
+					<div className="flex items-center space-x-8">
 						<a className="flex items-center" href="#">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"

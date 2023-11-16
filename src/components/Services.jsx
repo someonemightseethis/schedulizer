@@ -3,7 +3,7 @@ import BusinessCard from "./BusinessCard";
 import Filters from "./Filters";
 import Navbar from "./Navbar";
 
-function Dashboard() {
+function Services() {
 	return (
 		<div className="">
 			<Navbar />
@@ -30,4 +30,4 @@ function Dashboard() {
 	);
 }
 
-export default Dashboard;
+export default Services;

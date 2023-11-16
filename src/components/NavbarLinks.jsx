@@ -4,12 +4,12 @@ function NavbarLinks(){
     return(<div className="">
         <ul className="lg:mx-auto lg:items-center lg:w-auto lg:space-x-6 sm:hidden xs:hidden md:hidden lg:hidden xl:flex">
             <li>
-                <a
+                <Link
                     className="text-sm text-black hover:underline hover:underline-offset-4"
-                    href="#"
+                    to="/fyp-schedulizer/"
                 >
                     Home
-                </a>
+                </Link>
             </li>
             <li className="">
                 <svg
@@ -28,12 +28,12 @@ function NavbarLinks(){
                 </svg>
             </li>
             <li>
-                <a
+                <Link
                     className="text-sm text-black hover:underline hover:underline-offset-4"
-                    href="#"
+                    to="/fyp-schedulizer/services"
                 >
                     Services
-                </a>
+                </Link>
             </li>
             <li className="">
                 <svg
