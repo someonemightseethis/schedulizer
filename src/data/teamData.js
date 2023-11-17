@@ -21,7 +21,7 @@ const teamData = [
   },
   {
     name: "Hamza Majeed",
-    designation: "Flutter Developer",
+    designation: "Flutter Developer, SEO, Back-end Developer",
     socialLinks: {
       linkedin: "https://www.linkedin.com/in/janesmith",
       dribbble: "https://dribbble.com/janesmith",

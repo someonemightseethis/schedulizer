@@ -3,10 +3,9 @@ import teamData from "../data/teamData"; // Import your team data
 
 function Team() {
   return (
-    <div className="container mx-auto md:px-6 py-20 border-b-2 border-black">
+    <div className="py-12">
       <section className="text-center">
-        <h2 className="mb-12 text-6xl font-semibold">Meet the team</h2>
-        <div className="grid grid-cols-2 justify-center px-36 gap-y-12">
+        <div className="grid xl:lg:grid-cols-2 md:grid-cols-1 justify-center px-2 gap-32">
           {teamData.map((member, index) => (
             <MemberCard key={index} member={member} />
           ))}
