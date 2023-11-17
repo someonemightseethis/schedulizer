@@ -155,7 +155,7 @@ function BusinessRegistrationForm() {
 							</div>
 
 							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
-								<Button buttonname="submit" buttonlink="/fyp-schedulizer" />
+								<Button buttonname="submit" buttonlink="/schedulizer/businessinfo" />
 							</div>
 						</form>
 					</div>

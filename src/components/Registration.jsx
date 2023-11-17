@@ -119,13 +119,13 @@ function Registration() {
 								</div>
 							</div>
 							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
-								<Button buttonname="Sign Up" />
+								<Button buttonname="Sign Up" buttonlink="/schedulizer/login" />
 							</div>
 						</form>
 						<p className="text-sm text-center leading-relaxed text-grey-900">
 							Already have an account?{" "}
 							<Link
-								to="/fyp-schedulizer/login"
+								to="/schedulizer/login"
 								className="font-bold text-grey-700"
 							>
 								Sign In

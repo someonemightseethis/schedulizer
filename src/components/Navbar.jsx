@@ -52,7 +52,7 @@ function Navbar() {
 						</a>
 					</div>
 					<Link
-						to="schedulizer/login"
+						to="/schedulizer/login"
 						className="xl:flex lg:flex md:flex items-center group sm:hidden
 						xs:hidden"
 					>

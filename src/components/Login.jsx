@@ -28,12 +28,12 @@ function Login() {
 							inputfieldlabelname="Password"
 						/>
 						<div className="py-4 xl:px-12 px-16">
-							<Button buttonname="Sign In" />
+							<Button buttonname="Sign In" buttonlink="/schedulizer/services" />
 						</div>
 						<div className="py-4 flex flex-col justify-center items-center">
 							<p className="text-sm leading-relaxed text-grey-900">
 								Not registered yet?{" "}
-								<Link to="/fyp-schedulizer/registration" className="font-bold text-grey-700">
+								<Link to="/schedulizer/registration" className="font-bold text-grey-700">
 									Create an Account
 								</Link>
 							</p>
