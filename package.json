@@ -1,5 +1,5 @@
 {
-  "name": "fyp-test-app",
+  "name": "schedulizer",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -24,6 +24,7 @@
     "react-router-dom": "^6.18.0",
     "react-use": "^17.4.0",
     "slick-carousel": "^1.8.1",
+    "taos": "^1.0.5",
     "tw-elements": "^1.0.0"
   },
   "devDependencies": {
@@ -42,6 +43,7 @@
     "jest": "^29.7.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5",
+    "tailwindcss-animated": "^1.0.1",
     "vite": "^4.4.5"
   }
 }
