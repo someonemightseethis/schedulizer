@@ -9,7 +9,7 @@ function Navbar() {
 			<nav className="px-4 py-2 flex justify-between items-center space-x-2 lg:space-x-4">
 				<div className="flex-shrink-0 flex items-center">
 					<img src="./images/logo.png" alt="logo" className="w-12 h-12 mr-4" />
-					<Link to="/fyp-schedulizer/">
+					<Link to="/schedulizer/">
 						<span className="text-black text-3xl font-bold">Schedulizer</span>
 					</Link>
 				</div>
@@ -18,7 +18,7 @@ function Navbar() {
 				<div className="lg:block xl:block xs:hidden">
 					<Button
 						buttonname="add your business"
-						buttonlink="/fyp-schedulizer/businessregistration"
+						buttonlink="/schedulizer/businessregistration"
 					/>
 				</div>
 
@@ -52,7 +52,7 @@ function Navbar() {
 						</a>
 					</div>
 					<Link
-						to="/fyp-schedulizer/login"
+						to="schedulizer/login"
 						className="xl:flex lg:flex md:flex items-center group sm:hidden
 						xs:hidden"
 					>

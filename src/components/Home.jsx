@@ -19,7 +19,7 @@ function Home() {
 					<div className="xl:lg:flex md:flex-col md:sm:xs:space-y-6 justify-center items-center space-x-8 pt-12">
 						<Button
 							buttonname="Get Started"
-							buttonlink="/fyp-schedulizer/services"
+							buttonlink="/schedulizer/services"
 						/>
 						<p className="text-indigo-600 italic font-thin">
 							by looking at the services provided on our platform and find the

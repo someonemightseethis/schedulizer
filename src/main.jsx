@@ -15,20 +15,20 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<Routes>
-				<Route path="/fyp-schedulizer/" element={<Home />} />
-				<Route path="/fyp-schedulizer/dashboard" element={<Dashboard />} />
-				<Route path="/fyp-schedulizer/services" element={<Services />} />
-				<Route path="/fyp-schedulizer/login" element={<Login />} />
+				<Route path="/schedulizer/" element={<Home />} />
+				<Route path="/schedulizer/dashboard" element={<Dashboard />} />
+				<Route path="/schedulizer/services" element={<Services />} />
+				<Route path="/schedulizer/login" element={<Login />} />
 				<Route
-					path="/fyp-schedulizer/registration"
+					path="/schedulizer/registration"
 					element={<Registration />}
 				/>
 				<Route
-					path="/fyp-schedulizer/businessregistration"
+					path="/schedulizer/businessregistration"
 					element={<BusinessRegistrationForm />}
 				/>
 				<Route
-					path="/fyp-schedulizer/businessinfo"
+					path="/schedulizer/businessinfo"
 					element={<BusinessInfo />}
 				/>
 			</Routes>

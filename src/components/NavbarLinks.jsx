@@ -6,7 +6,7 @@ function NavbarLinks(){
             <li>
                 <Link
                     className="text-sm text-black hover:underline hover:underline-offset-4"
-                    to="/fyp-schedulizer/"
+                    to="/schedulizer/"
                 >
                     Home
                 </Link>
@@ -30,7 +30,7 @@ function NavbarLinks(){
             <li>
                 <Link
                     className="text-sm text-black hover:underline hover:underline-offset-4"
-                    to="/fyp-schedulizer/services"
+                    to="/schedulizer/services"
                 >
                     Services
                 </Link>
@@ -54,7 +54,7 @@ function NavbarLinks(){
             <li>
                 <Link
                     className="text-sm text-black hover:underline hover:underline-offset-4"
-                    to="/fyp-schedulizer/dashboard"
+                    to="/schedulizer/dashboard"
                 >
                     Dashboard
                 </Link>
