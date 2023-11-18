@@ -1,14 +1,14 @@
 import DashboardSidebar from "./DashboardSidebar";
-import Navbar from "../Navbar";
-import CustomerSatisfaction from "./CustomerSatisfaction";
+import Navbar from "../Navbar/Navbar";
+import DashboardMain from "./DashboardMain";
 
 function Dashboard() {
 	return (
 		<div className="flex flex-col h-screen">
 			<Navbar />
-			<div className="grid grid-cols-2 my-[66px]">
+			<div className="my-[66px] w-full">
 				<DashboardSidebar />
-				<CustomerSatisfaction />
+				<DashboardMain />
 			</div>
 		</div>
 	);

@@ -1,7 +1,7 @@
 import BackToTopButton from "./BacktoTopButton";
 import BusinessCard from "./BusinessCard";
 import Filters from "./Filters";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 function Services() {
 	return (

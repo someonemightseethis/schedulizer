@@ -1,6 +1,6 @@
 import BackToTopButton from "./BacktoTopButton";
 import Button from "./Button";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 import Team from "./Team";
 
 function Home() {

@@ -1,7 +1,7 @@
 import Button from "./Button";
 import DropdownButton from "./DropdownButton";
 import InputField from "./InputField";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 function BusinessRegistrationForm() {
 	return (

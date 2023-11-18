@@ -1,5 +1,5 @@
 import AppointmentCard from "./AppointmentCard";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 import BackToTopButton from "./BacktoTopButton";
 import Ratings from "./Ratings";
 // import Button from "./Button";
@@ -9,8 +9,8 @@ function BusinessInfo() {
 	return (
 		<div className="">
 			<Navbar />
-			<div className="h-screen overflow-y-scroll p-12">
-				<div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-8 px-6">
+			<div className="h-screen p-12">
+				<div className="grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 lg:gap-8 px-4">
 					<div className="">
 						<div className="lg:fixed lg:top-[120px] lg:left-14 lg:w-3/12 md:fixed md:w-5/12 space-y-6">
 							<div className="bg-white p-8 rounded-lg shadow-md max-w-md w-full border-2 border-black">
@@ -79,7 +79,7 @@ function BusinessInfo() {
 								{/* <Button buttonname="submit a feedback" /> */}
 								<FeedbackModal />
 							</div>
-							<div className="flex justify-center items-center text-center flex-col">
+							<div className="flex justify-center items-center text-center flex-col bottom-0">
 								<h4 className="text-lg font-bold text-black">
 									Would you like to give this business a rating?
 								</h4>

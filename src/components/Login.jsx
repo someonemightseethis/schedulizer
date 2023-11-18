@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
 import InputField from "./InputField";
-import Navbar from "./Navbar";
+import Navbar from "./Navbar/Navbar";
 
 function Login() {
 	return (

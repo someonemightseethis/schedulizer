@@ -13,10 +13,10 @@ function Satisfication() {
 	const tau = 2 * pi;
 
 	return (
-		<div className="p-4 h-full">
-			<div className="flex flex-col items-center justify-center mb-3">
-				<h3 className="text-black font-bold">Customer Satisfaction</h3>
-				<h3 className="mt-3">from all appointments</h3>
+		<div className="">
+			<div className="flex flex-col items-center justify-center">
+				<h3 className="text-2xl text-black font-bold">Customer Satisfaction</h3>
+				<h3 className="text-md font-thin">from all appointments</h3>
 			</div>
 			<div className="flex justify-center">
 				<svg
@@ -28,13 +28,13 @@ function Satisfication() {
 				>
 					<path
 						d="M100 350C100 283.696 126.339 220.107 173.223 173.223C220.107 126.339 283.696 100 350 100C416.304 100 479.893 126.339 526.777 173.223C573.661 220.107 600 283.696 600 350"
-						stroke="#2d2d2d"
+						stroke="#E0E7FF"
 						strokeWidth="40"
 						strokeLinecap="round"
 					/>
 					<animated.path
 						d="M100 350C100 283.696 126.339 220.107 173.223 173.223C220.107 126.339 283.696 100 350 100C416.304 100 479.893 126.339 526.777 173.223C573.661 220.107 600 283.696 600 350"
-						stroke="#2f49d0"
+						stroke="#6366F1"
 						strokeWidth="40"
 						strokeLinecap="round"
 						strokeDasharray="785.4"
@@ -51,101 +51,101 @@ function Satisfication() {
 							(x) => 350 + 250 * Math.sin(map(x, 785.4, 0, pi, tau))
 						)}
 						r="12"
-						fill="#fff"
+						fill="white"
 					/>
-					<circle cx="140" cy="350" r="5" fill="#2f49d0" />
+					<circle cx="140" cy="350" r="5" fill="#6366F1" />
 					<circle
 						cx="144.5890038459008"
 						cy="306.3385449282706"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="158.15545389505382"
 						cy="264.58530495408195"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="180.10643118126103"
 						cy="226.56509701858067"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="209.48257266463972"
 						cy="193.93958664974724"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="244.9999999999999"
 						cy="168.1346652052679"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="285.10643118126103"
 						cy="150.27813157801776"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="328.0490227137926"
 						cy="141.15040197266262"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="371.95097728620715"
 						cy="141.1504019726626"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="414.8935688187389"
 						cy="150.27813157801774"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="454.9999999999999"
 						cy="168.1346652052678"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="490.51742733536014"
 						cy="193.93958664974713"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="519.8935688187389"
 						cy="226.5650970185806"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="541.8445461049462"
 						cy="264.58530495408183"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
 					<circle
 						cx="555.4109961540992"
 						cy="306.33854492827044"
 						r="5"
-						fill="#2f49d0"
+						fill="#6366F1"
 					/>
-					<circle cx="560" cy="349.99999999999994" r="5" fill="#2f49d0" />
+					<circle cx="560" cy="349.99999999999994" r="5" fill="#6366F1" />
 					<path
 						d="M349.292 375C395.845 375 433.583 337.261 433.583 290.708C433.583 244.155 395.845 206.417 349.292 206.417C302.739 206.417 265 244.155 265 290.708C265 337.261 302.739 375 349.292 375Z"
 						fill="white"
 					/>
 					<path
 						d="M349.292 358.708C386.847 358.708 417.292 328.264 417.292 290.708C417.292 253.153 386.847 222.708 349.292 222.708C311.736 222.708 281.292 253.153 281.292 290.708C281.292 328.264 311.736 358.708 349.292 358.708Z"
-						fill="#D2D6E7"
+						fill="#6366F1"
 					/>
 					<path
 						d="M347.167 343.833C376.898 343.833 401 319.731 401 290C401 260.269 376.898 236.167 347.167 236.167C317.435 236.167 293.333 260.269 293.333 290C293.333 319.731 317.435 343.833 347.167 343.833Z"
@@ -188,7 +188,7 @@ function Satisfication() {
 						>
 							97.78%
 						</div>
-						<div>Based on Ratings</div>
+						<div className="mt-4">Based on Ratings</div>
 					</div>
 					<div style={{ width: "50px" }}>100%</div>
 				</div>
