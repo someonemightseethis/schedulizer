@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import NavbarLinks from "./NavbarLinks";
-import Searchbar from "./Searchbar";
+import NavbarLinks from "./Navbar/NavbarLinks";
+import Searchbar from "./Navbar/Searchbar";
 
 function Navbar() {
 	return (

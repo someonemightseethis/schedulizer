@@ -1,8 +1,8 @@
 function DashboardSidebar() {
 	return (
-		<div className="fixed flex flex-col z-10 my-[66px] w-56 bg-white h-full border-r-2 border-black">
+		<div className="fixed flex flex-col w-56 bg-white h-full border-r-2 border-black">
 			<div className="overflow-y-auto overflow-x-hidden flex-grow">
-				<ul className="flex flex-col justify-between py-4 space-y-2 h-full">
+				<ul className="flex flex-col justify-between py-2 h-full">
 					<div className="top-0">
 						<li>
 							<a
@@ -30,7 +30,7 @@ function DashboardSidebar() {
 								</span>
 							</a>
 						</li>
-						<li className="pt-4">
+						<li className="pt-2">
 							<div className="flex flex-row items-center h-8 border-y-2 border-black">
 								<div className="text-sm font-light tracking-wide text-indigo-500 px-2">
 									Appointments
@@ -94,7 +94,7 @@ function DashboardSidebar() {
 						</li>
 					</div>
 					<div className="bottom-0 pb-16">
-						<li className="pt-4">
+						<li className="">
 							<div className="flex flex-row items-center h-8 border-y-2 border-black">
 								<div className="text-sm font-light tracking-wide text-indigo-500 px-2">
 									Settings

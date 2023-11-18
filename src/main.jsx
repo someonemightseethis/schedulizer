@@ -6,7 +6,7 @@ import "./index.css";
 import Login from "./components/Login.jsx";
 import Registration from "./components/Registration.jsx";
 import BusinessRegistrationForm from "./components/BusinessRegistrationForm.jsx";
-import Dashboard from "./components/Dashboard.jsx";
+import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import BusinessInfo from "./components/BusinessInfo.jsx";
 import Services from "./components/Services.jsx";
 import Home from "./components/Home.jsx";
