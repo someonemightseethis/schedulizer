@@ -13,7 +13,7 @@ function Satisfication() {
 	const tau = 2 * pi;
 
 	return (
-		<div className="">
+		<div className="font-cairoPlay">
 			<div className="flex flex-col items-center justify-center">
 				<h3 className="text-2xl text-black font-bold">Customer Satisfaction</h3>
 				<h3 className="text-md font-thin">from all appointments</h3>

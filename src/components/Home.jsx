@@ -7,21 +7,23 @@ function Home() {
 	return (
 		<div>
 			<Navbar />
-			<div className="pt-48">
-				<div className="mb-40 flex flex-col px-48">
-					<h2 className="text-6xl font-semibold text-right">
+			<div className="pt-48 mx-0">
+				<div className="mb-24 flex flex-col px-36">
+					<h2 className="text-6xl font-medium text-right font-bebas">
 						Exclusive Agency For
 					</h2>
-					<span className="text-8xl text-center text-indigo-500 leading-relaxed">
+					<span className="text-9xl font-extrabold text-center text-indigo-500 leading-relaxed font-bebas">
 						Appointment Scheduling
 					</span>
-					<h2 className="text-5xl text-right font-semibold">Solutions</h2>
+					<h2 className="text-5xl text-right font-medium font-bebas">
+						Solutions
+					</h2>
 					<div className="xl:lg:flex md:flex-col md:sm:xs:space-y-6 justify-center items-center space-x-8 pt-12">
 						<Button
 							buttonname="Get Started"
 							buttonlink="/schedulizer/services"
 						/>
-						<p className="text-indigo-600 italic font-thin">
+						<p className="text-indigo-600 text-2xl italic font-light font-smooch">
 							by looking at the services provided on our platform and find the
 							right match for your needs
 						</p>
@@ -30,16 +32,23 @@ function Home() {
 
 				<div
 					className="bg-cover bg-fixed bg-center justify-center items-center py-6"
-					style={{ backgroundImage: "url('./images/parallax1.jpg')" }}
+					style={{ backgroundImage: "url('./images/parallax5.jpg')" }}
 				>
-					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" className="-mt-12 mx-0">
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 1440 320"
+						className="-mt-12 mx-0"
+					>
 						<path
 							fill="#ffffff"
 							fillOpacity="1"
 							d="M0,224L48,213.3C96,203,192,181,288,154.7C384,128,480,96,576,90.7C672,85,768,107,864,128C960,149,1056,171,1152,181.3C1248,192,1344,192,1392,192L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
 						></path>
 					</svg>
-					<h1 className="text-white text-8xl text-center pb-28 font-semibold delay-[300ms] duration-[600ms] taos:[transform:translate3d(0,200px,0)_scale(0.6)] taos:opacity-0" data-taos-offset="200">
+					<h1
+						className="text-white text-9xl text-center pb-28 font-bebas font-semibold delay-[300ms] duration-[600ms] taos:[transform:translate3d(0,200px,0)_scale(0.6)] taos:opacity-0"
+						data-taos-offset="200"
+					>
 						This is Parallax Effect
 					</h1>
 					<div className="grid xl:lg:grid-cols-2 md:sm:xs:grid-cols-1 gap-16 px-24">
@@ -55,7 +64,7 @@ function Home() {
 						/>
 					</div>
 					<div className="px-96 py-12">
-						<h2 className="my-20 text-8xl text-white text-center font-semibold">
+						<h2 className="my-20 text-9xl text-white text-center font-semibold font-bebas">
 							Meet the team
 						</h2>
 						<Team />
@@ -74,10 +83,10 @@ function Home() {
 				</div>
 
 				<div className="py-20 px-36">
-					<h1 className="text-6xl text-center mb-12 font-semibold">
+					<h1 className="text-9xl text-center mb-12 font-semibold font-bebas">
 						Tempor sit labore nostrud
 					</h1>
-					<div>
+					<div className="font-cairoPlay">
 						<p>
 							Exercitation non Lorem exercitation tempor amet ad esse velit.
 							Anim deserunt id nulla quis ex magna culpa exercitation. Mollit

@@ -1,6 +1,6 @@
 function DashboardAppointmentsToday() {
 	return (
-		<div>
+		<div className="font-cairoPlay">
 			<h2 className="text-2xl font-bold mb-4">Your appointments today</h2>
 
 			<div className="space-y-4">

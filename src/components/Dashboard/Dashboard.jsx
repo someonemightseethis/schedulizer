@@ -6,7 +6,7 @@ function Dashboard() {
 	return (
 		<div className="flex flex-col h-screen">
 			<Navbar />
-			<div className="my-[66px] w-full">
+			<div className="xl:lg:my-[66px] md:sm:my-[58px] w-full">
 				<DashboardSidebar />
 				<DashboardMain />
 			</div>
