@@ -31,13 +31,13 @@ function Home() {
 				</div>
 
 				<div
-					className="bg-cover bg-fixed bg-center justify-center items-center py-6"
+					className="bg-cover bg-fixed bg-center justify-center items-center py-6 mx-auto"
 					style={{ backgroundImage: "url('./images/parallax5.jpg')" }}
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 1440 320"
-						className="-mt-12 mx-0"
+						className="mx-0 -mt-12"
 					>
 						<path
 							fill="#ffffff"
@@ -51,7 +51,7 @@ function Home() {
 					>
 						This is Parallax Effect
 					</h1>
-					<div className="grid xl:lg:grid-cols-2 md:sm:xs:grid-cols-1 gap-16 px-24">
+					<div className="grid xl:lg:grid-cols-2 md:grid-cols-1 gap-16 px-24">
 						<img
 							src="./images/services-page.png"
 							alt="services"
@@ -63,7 +63,7 @@ function Home() {
 							className="rounded-xl shadow-2xl mt-28 hover:scale-110 duration-500"
 						/>
 					</div>
-					<div className="px-96 py-12">
+					<div className="xl:px-80 lg:px-72 md:px-52 sm:px-0 xs:px-0 py-12">
 						<h2 className="my-20 text-9xl text-white text-center font-semibold font-bebas">
 							Meet the team
 						</h2>

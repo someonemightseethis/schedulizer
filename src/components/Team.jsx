@@ -5,7 +5,7 @@ function Team() {
   return (
     <div className="py-12">
       <section className="text-center">
-        <div className="grid xl:lg:grid-cols-2 md:grid-cols-1 justify-center px-2 gap-32">
+        <div className="grid xl:lg:grid-cols-2 justify-center px-2 gap-32">
           {teamData.map((member, index) => (
             <MemberCard key={index} member={member} />
           ))}
