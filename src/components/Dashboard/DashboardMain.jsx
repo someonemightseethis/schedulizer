@@ -1,6 +1,7 @@
 import CustomerSatisfaction from "./CustomerSatisfaction";
 import DashboardAppointmentsToday from "./DashboardAppointmentsToday";
 import DashboardStatistics from "./DashboardStatistics";
+import BacktoTopButton from "../BacktoTopButton";
 
 function DashboardMain() {
 	return (
@@ -13,6 +14,7 @@ function DashboardMain() {
 					<DashboardAppointmentsToday />
 				</div>
 			</div>
+			<BacktoTopButton />
 		</div>
 	);
 }

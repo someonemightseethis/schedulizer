@@ -6,9 +6,9 @@ function DashboardStatistics() {
 			<div className="grid grid-cols-2 gap-4">
 				<div className="col-span-2">
 					<div className="p-4 border-2 border-black  rounded-lg">
-						<div className="font-semibold text-2xl text-gray-800 leading-none">
-							Good day, username
-						</div>
+						<p className="font-medium text-2xl items-baseline inline-flex text-gray-800 leading-none">
+							Good day, <p className="font-semibold text-xl">&emsp; username</p>
+						</p>
 						<div className="mt-5">
 							<Button buttonname="manage appointments" buttonlink="/schedulizer/dashboard" />
 						</div>
