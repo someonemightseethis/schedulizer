@@ -2,14 +2,11 @@ import CustomerSatisfaction from "./CustomerSatisfaction";
 import DashboardAppointmentsToday from "./DashboardAppointmentsToday";
 import DashboardStatistics from "./DashboardStatistics";
 import BacktoTopButton from "../BacktoTopButton";
-import AppointmentsCRUD from "./AppointmentsCRUD";
+// import AppointmentsCRUD from "./AppointmentsCRUD";
 
 function DashboardMain() {
 	return (
 		<div className="py-12 bg-[#FAF8ED] xl:lg:ml-[208px] md:ml-[226px]">
-			<h2 className="text-8xl flex w-full justify-center font-semibold mb-20 font-bebas xl:lg:md:pt-0 sm:pt-12 xs:pt-12">
-				Statistics
-			</h2>
 			<div className="xl:lg:px-24 md:px-24 pb-12 flex xl:lg:flex-row xl:lg:space-x-36 md:space-x-12 md:flex-col sm:flex-col xs:flex-col md:gap-y-16 sm:gap-y-12 xs:gap-y-12 justify-center items-center">
 				<CustomerSatisfaction />
 				<div className="flex xl:lg:flex-row md:flex-row sm:flex-col xs:flex-col xl:gap-x-12 lg:gap-x-12 md:gap-x-12 sm:gap-y-12 xs:gap-y-12">
@@ -89,7 +86,7 @@ function DashboardMain() {
 						</div>
 					</div>
 			</div>
-			<AppointmentsCRUD />
+			{/* <AppointmentsCRUD /> */}
 			<BacktoTopButton />
 		</div>
 	);
