@@ -61,12 +61,12 @@ function DropdownButton(props) {
 		<div className="relative" data-te-dropdown-ref ref={dropdownRef}>
 			<label
 				htmlFor={props.dropdownlabelhtmlfor}
-				className="mb-4 px-1 text-sm text-start font-medium text-grey-900"
+				className="mb-4 px-1 text-md font-poppins text-start font-medium text-grey-900"
 			>
 				{props.dropdownlabelname}
 			</label>
 			<button
-				className={`flex items-center bg-white justify-between text-end w-full px-3 py-2 mt-2 mb-4 text-sm border-2 border-black rounded-lg ${buttonBorderColorClass} ${buttonColorClass}`}
+				className={`flex font-muktaVaani items-center bg-white justify-between text-end w-full px-3 py-2 mt-2 mb-4 text-sm border-2 border-black rounded-lg ${buttonBorderColorClass} ${buttonColorClass}`}
 				type="button"
 				id="dropdownMenuButton1"
 				data-te-dropdown-toggle-ref

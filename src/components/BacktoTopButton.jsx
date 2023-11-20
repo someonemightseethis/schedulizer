@@ -28,7 +28,7 @@ function BackToTopButton() {
 			{isVisible && (
 				<button
 					onClick={scrollToTop}
-					className="flex justify-between items-center rounded-full bg-indigo-500 hover:bg-indigo-600 transition-colors duration-200 p-4 opacity-75"
+					className="flex justify-between items-center rounded-full bg-indigo-500 hover:bg-indigo-600 transition-colors duration-200 py-4 px-6 opacity-90"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"

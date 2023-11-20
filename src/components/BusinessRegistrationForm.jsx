@@ -1,19 +1,19 @@
 import Button from "./Button";
-import DropdownButton from "./DropdownButton";
-import InputField from "./InputField";
+import DropdownButton from "./Form/DropdownButton";
+import InputField from "./Form/InputField";
 import Navbar from "./Navbar/Navbar";
 
 function BusinessRegistrationForm() {
 	return (
-		<div className="">
+		<div className="m-0">
 			<Navbar />
-			<div className="flex justify-center items-center pt-48">
-				<div className="flex justify-center py-12">
-					<div className="xl:w-[700px] lg:w-[600px] md:w-full">
-						<h3 className="pb-6 text-center text-4xl font-extrabold text-dark-grey-900">
-							Let us know more <br />
-							about your business.
-						</h3>
+			<div className="flex bg-[#FAF8ED] justify-center items-center pt-24 h-screen">
+				<div className="flex flex-col justify-center py-12">
+					<h3 className="pb-6 px-4 text-6xl font-medium text-dark-grey-900 font-bebas">
+						Let us <br />
+						<p className="text-9xl font-extrabold">know more about your business.</p>
+					</h3>
+					<div className="px-72 items-center justify-center w-full">
 						{/* <div className="mt-6">
 							<h1 className="text-black">Select type of account</h1>
 
@@ -71,16 +71,6 @@ function BusinessRegistrationForm() {
 
 								<div>
 									<InputField
-										inputfieldid="businesscity"
-										inputfieldtype="text"
-										inputfieldplaceholder="Islamabad"
-										inputfieldhtmlfor="businesscity"
-										inputfieldlabelname="City"
-									/>
-								</div>
-
-								<div>
-									<InputField
 										inputfieldid="businesscontactnumber"
 										inputfieldtype="tel"
 										inputfieldplaceholder="XXXX-XXXXXXX"
@@ -100,29 +90,39 @@ function BusinessRegistrationForm() {
 								</div>
 
 								<div>
-									<DropdownButton
-										dropdownbuttonname="select range"
-										dropdownlabelname="No. of Employees"
-										dropdownlistLength={4}
-										dropdownlabelhtmlfor="employeesno"
-										dropdownliname1="1 - 5"
-										dropdownliname2="5 - 10"
-										dropdownliname3="10 - 15"
-										dropdownliname4="15 - 20"
+									<InputField
+										inputfieldid="businesscity"
+										inputfieldtype="text"
+										inputfieldplaceholder="Islamabad"
+										inputfieldhtmlfor="businesscity"
+										inputfieldlabelname="City"
 									/>
 								</div>
 
-								<div>
-									<DropdownButton
-										dropdownbuttonname="public, private"
-										dropdownlabelname="Business Type"
-										dropdownlistLength={2}
-										dropdownlabelhtmlfor="businesstype"
-										dropdownliname1="Public Business"
-										dropdownliname2="Private Business"
-									/>
+								<div className="grid grid-cols-2 gap-x-6">
+									<div className="flex-grow">
+										<DropdownButton
+											dropdownbuttonname="public, private"
+											dropdownlabelname="Business Type"
+											dropdownlistLength={2}
+											dropdownlabelhtmlfor="businesstype"
+											dropdownliname1="Public Business"
+											dropdownliname2="Private Business"
+										/>
+									</div>
+									<div className="flex-shrink">
+										<DropdownButton
+											dropdownbuttonname="select range"
+											dropdownlabelname="No. of Employees"
+											dropdownlistLength={4}
+											dropdownlabelhtmlfor="employeesno"
+											dropdownliname1="1 - 5"
+											dropdownliname2="5 - 10"
+											dropdownliname3="10 - 15"
+											dropdownliname4="15 - 20"
+										/>
+									</div>
 								</div>
-
 								<div>
 									<InputField
 										inputfieldid="businesscategory"
@@ -155,7 +155,10 @@ function BusinessRegistrationForm() {
 							</div>
 
 							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
-								<Button buttonname="submit" buttonlink="/schedulizer/businessinfo" />
+								<Button
+									buttonname="SUBMIT"
+									buttonlink="/schedulizer/businessinfo"
+								/>
 							</div>
 						</form>
 					</div>

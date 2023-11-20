@@ -2,14 +2,14 @@ import PropTypes from "prop-types"; // Import PropTypes
 
 function MemberCard({ member }) {
 	return (
-		<div className="lg:mb-0 py-12 bg-white rounded-xl hover:scale-110 duration-500 hover:cursor-pointer">
+		<div className="lg:mb-0 py-12 bg-[#FAF8ED] rounded-xl hover:scale-110 duration-500 hover:cursor-pointer">
 			<img
 				className="mx-auto mb-6 w-[100px] border-[#2B3467]"
 				src={member.profileImageSrc}
 				alt="avatar"
 			/>
-			<h5 className="mb-4 text-lg font-bold">{member.name}</h5>
-			<p className="mb-6 px-12">{member.designation}</p>
+			<h5 className="mb-4 text-2xl font-bold font-poppins">{member.name}</h5>
+			<p className="mb-6 text-lg px-12 font-muktaVaani">{member.designation}</p>
 			<ul className="mx-auto flex list-inside justify-center space-x-2">
 				<a href={member.socialLinks.twitter} className="px-2">
 					<svg

@@ -5,7 +5,7 @@ function InputField(props) {
 		<div>
 			<label
 				htmlFor={props.inputfieldhtmlfor}
-				className="mb-4 px-1 text-sm text-start font-medium text-grey-900"
+				className="mb-4 px-1 text-md text-start font-poppins font-medium text-grey-900"
 			>
 				{props.inputfieldlabelname}
 			</label>
@@ -14,7 +14,7 @@ function InputField(props) {
 				type={props.inputfieldtype}
 				placeholder={props.inputfieldplaceholder}
 				pattern={props.inputfieldpattern}
-				className="flex items-center w-full px-3 py-2 mr-2 text-sm border-2 border-black mt-2 mb-4 placeholder:text-grey-700 text-black rounded-lg focus:border-indigo-500 focus:outline-none"
+				className="flex font-muktaVaani items-center w-full px-3 py-2 mr-2 text-sm border-2 border-black mt-2 mb-4 placeholder:text-grey-700 text-black rounded-lg focus:border-indigo-500 focus:outline-none"
 			/>
 		</div>
 	);

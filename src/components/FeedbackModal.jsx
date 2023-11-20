@@ -8,7 +8,7 @@ function FeedbackModal() {
 			<div className="px-12">
 				<button
 					type="button"
-					className="pb-2 pt-2.5 font-medium uppercase leading-normal ease-in-out flex justify-center items-center w-full px-6 md:px-4 sm:py-2 xs:py-2 rounded-md text-sm bg-indigo-500 text-white hover:bg-indigo-600 transition-colors duration-200"
+					className="pb-2 pt-2.5 font-medium uppercase leading-normal ease-in-out flex justify-center items-center w-full px-6 md:px-4 sm:py-2 xs:py-2 rounded-md text-md bg-indigo-500 text-white hover:bg-indigo-600 transition-colors duration-200 font-jaldi"
 					data-te-toggle="modal"
 					data-te-target="#exampleModalCenteredScrollable"
 					data-te-ripple-init

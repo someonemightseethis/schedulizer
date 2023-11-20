@@ -1,22 +1,21 @@
 function DashboardSidebar() {
 	return (
-		<div className="overflow-y-scroll overflow-x-hidden px-2 fixed xl:flex lg:flex md:flex flex-col bg-white w-max h-full border-r-2 border-black sm:hidden xs:hidden">
-			<ul className="flex flex-col justify-between py-2 h-full font-cairoPlay">
+		<div className="overflow-y-scroll overflow-x-hidden px-2 fixed xl:flex lg:flex md:flex flex-col bg-[#FAF8ED] w-max h-full border-r-2 border-black sm:hidden xs:hidden">
+			<ul className="flex flex-col justify-between py-2 h-full">
 				<div className="top-0">
-					<div className="bg-indigo-100 rounded-xl flex items-center justify-start sm:justify-center xl:justify-start py-2 px-2 mx-2 my-2 sm:px-0 xl:px-3">
-						<img src="./images/logo.png" className="w-9 h-9 " />
-						<div className="block ml-3">
-							<div className="text-lg font-semibold text-black">
+					<div className="flex items-center justify-start sm:justify-center xl:justify-start py-2 my-2 sm:px-0 xl:px-3 border-b-2 border-black">
+						<div className="block">
+							<div className="text-xl font-bold text-black font-poppins">
 								Business Name
 							</div>
-							<div className="text-sm font-light">category</div>
+							<div className="text-sm text-black font-muktaVaani font-light text-end">category</div>
 						</div>
 						<div className="block sm:hidden xl:block flex-grow" />
 					</div>
 					<li>
 						<a
 							href="#"
-							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-semibold border-l-4 border-transparent hover:border-indigo-500 pr-6"
+							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-medium font-ptSansCaption border-l-4 border-transparent hover:border-indigo-500 pr-6"
 						>
 							<span className="inline-flex justify-center items-center ml-2">
 								<svg
@@ -34,7 +33,7 @@ function DashboardSidebar() {
 									></path>
 								</svg>
 							</span>
-							<span className="ml-2 text-md tracking-wide truncate">
+							<span className="ml-2 text-sm tracking-wide truncate">
 								Dashboard
 							</span>
 						</a>
@@ -42,7 +41,7 @@ function DashboardSidebar() {
 					<li>
 						<a
 							href="#"
-							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-semibold border-l-4 border-transparent hover:border-indigo-500 pr-6"
+							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-medium font-ptSansCaption border-l-4 border-transparent hover:border-indigo-500 pr-6"
 						>
 							<span className="inline-flex justify-center items-center ml-2">
 								<svg
@@ -60,7 +59,7 @@ function DashboardSidebar() {
 									></path>
 								</svg>
 							</span>
-							<span className="ml-2 text-md tracking-wide truncate">
+							<span className="ml-2 text-sm tracking-wide truncate">
 								My Appointments
 							</span>
 						</a>
@@ -68,7 +67,7 @@ function DashboardSidebar() {
 					<li>
 						<a
 							href="#"
-							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-semibold border-l-4 border-transparent hover:border-indigo-500 pr-6"
+							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-medium font-ptSansCaption border-l-4 border-transparent hover:border-indigo-500 pr-6"
 						>
 							<span className="inline-flex justify-center items-center ml-2">
 								<svg
@@ -86,7 +85,7 @@ function DashboardSidebar() {
 									></path>
 								</svg>
 							</span>
-							<span className="ml-2 text-md tracking-wide truncate">
+							<span className="ml-2 text-sm tracking-wide truncate">
 								Clients
 							</span>
 							<span className="px-2 py-0.5 ml-auto text-xs font-medium tracking-wide text-green-500 bg-green-50 rounded-full">
@@ -95,7 +94,7 @@ function DashboardSidebar() {
 						</a>
 					</li>
 				</div>
-				<div className="bottom-0 pb-16">
+				<div className="bottom-0 pb-20">
 					{/* <div className="flex-shrink-0 overflow-hidden">
 						<div className="bg-indigo-100 rounded-xl flex items-center h-full sm:justify-center xl:justify-start p-2 py-2 px-2 mx-2 my-2">
 							<img src="./images/logo.png" className="w-10 h-10" />
@@ -106,7 +105,7 @@ function DashboardSidebar() {
 					<li>
 						<a
 							href="#"
-							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-semibold border-l-4 border-transparent hover:border-indigo-500 pr-6"
+							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-medium border-l-4 border-transparent hover:border-indigo-500 pr-6 font-ptSansCaption"
 						>
 							<span className="inline-flex justify-center items-center ml-2">
 								<svg
@@ -130,7 +129,7 @@ function DashboardSidebar() {
 									></path>
 								</svg>
 							</span>
-							<span className="ml-2 text-md tracking-wide truncate">
+							<span className="ml-2 text-sm tracking-wide truncate">
 								Settings
 							</span>
 						</a>
@@ -138,7 +137,7 @@ function DashboardSidebar() {
 					<li>
 						<a
 							href="#"
-							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-semibold border-l-4 border-transparent hover:border-indigo-500 pr-6"
+							className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gray-50 text-gray-600 hover:text-gray-800 hover:font-medium font-ptSansCaption border-l-4 border-transparent hover:border-indigo-500 pr-6"
 						>
 							<span className="inline-flex justify-center items-center ml-2">
 								<svg
@@ -156,7 +155,7 @@ function DashboardSidebar() {
 									></path>
 								</svg>
 							</span>
-							<span className="ml-2 text-md tracking-wide truncate">
+							<span className="ml-2 text-sm tracking-wide truncate">
 								Logout
 							</span>
 						</a>

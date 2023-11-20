@@ -5,12 +5,12 @@ import Navbar from "./Navbar/Navbar";
 
 function Services() {
 	return (
-		<div className="">
+		<div className="bg-[#FAF8ED]">
 			<Navbar />
 			<div className="md:pt-[62px]">
 				{/* Add padding top to create space for fixed navbar */}
 				<Filters />
-				<div className="grid xl:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 px-16 py-24 xs:pt-36 space-y-6">
+				<div className="flex flex-wrap justify-center items-center gap-x-28 px-20 gap-y-6 py-6 md:py-24 xs:py-36 lg:pt-24">
 					<BusinessCard />
 					<BusinessCard />
 					<BusinessCard />

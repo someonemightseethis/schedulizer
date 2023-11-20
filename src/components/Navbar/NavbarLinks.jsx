@@ -9,10 +9,10 @@ function NavbarLinks() {
 
 	return (
 		<div className="">
-			<ul className="lg:mx-auto lg:items-center lg:w-auto lg:space-x-6 sm:hidden xs:hidden md:hidden lg:hidden xl:flex font-smooch">
+			<ul className="lg:mx-auto lg:items-center lg:w-auto lg:space-x-6 sm:hidden xs:hidden md:hidden lg:hidden xl:flex font-ptSansCaption">
 				<li>
 					<Link
-						className={`text-xl hover:underline hover:underline-offset-4 hover:font-medium ${
+						className={`text-sm hover:underline hover:underline-offset-4 hover:font-medium ${
 							isRouteActive("/schedulizer/")
 								? "text-indigo-500 font-medium"
 								: ""
@@ -40,7 +40,7 @@ function NavbarLinks() {
 				</li>
 				<li>
 					<Link
-						className={`text-xl hover:underline hover:underline-offset-4 hover:font-medium ${
+						className={`text-sm hover:underline hover:underline-offset-4 hover:font-medium ${
 							isRouteActive("/schedulizer/services")
 								? "text-indigo-500 font-medium"
 								: ""
@@ -68,7 +68,7 @@ function NavbarLinks() {
 				</li>
 				<li>
 					<Link
-						className={`text-xl hover:underline hover:underline-offset-4 hover:font-medium ${
+						className={`text-sm hover:underline hover:underline-offset-4 hover:font-medium ${
 							isRouteActive("/schedulizer/dashboard")
 								? "text-indigo-500 font-medium"
 								: ""

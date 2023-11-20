@@ -2,12 +2,12 @@ import Button from "./Button";
 
 function AppointmentCard() {
 	return (
-		<div className="flex items-center justify-center bg-white">
+		<div className="flex items-center justify-center bg-[#FAF8ED]">
 			<div className="p-8 rounded-lg transition duration-300 ease-in-out hover:drop-shadow-xl border-2 border-black">
 				<div className="text-center">
-					<h3 className="text-center text-2xl font-bold">Appointment Name</h3>
+					<h3 className="text-center font-poppins text-2xl font-bold">Appointment Name</h3>
 				</div>
-				<p className="text-center py-6">
+				<p className="text-center font-muktaVaani text-lg py-6">
 					We gotta burn the rain forest, dump toxic waste, pollute the air, and
 					rip up the OZONE! Cause maybe if we screw up this planet enough, they
 					wont want it anymore! Theyre using our own satellites against us. And
@@ -17,7 +17,7 @@ function AppointmentCard() {
 				</p>
 				<ul className="py-6 flex justify-center text-center text-md space-x-4">
 					<li className="flex flex-col">
-						<span className="font-bold">Duration</span> 25 mins
+						<span className="text-lg font-ptSansCaption font-semibold">Duration</span> 25 mins
 					</li>
 					<li className="py-4">
 						<svg
@@ -36,7 +36,7 @@ function AppointmentCard() {
 						</svg>
 					</li>
 					<li className="flex flex-col">
-						<span className="font-bold">Timings</span> 12am - 1pm
+						<span className="text-lg font-ptSansCaption font-semibold">Timings</span> 12am - 1pm
 					</li>
                     <li className="py-4">
 						<svg
@@ -55,7 +55,7 @@ function AppointmentCard() {
 						</svg>
 					</li>
 					<li className="flex flex-col">
-						<span className="font-bold">Days</span> mon - thu
+						<span className="text-lg font-ptSansCaption font-semibold">Days</span> mon - thu
 					</li>
 					<li className="py-4">
 						<svg
@@ -74,11 +74,11 @@ function AppointmentCard() {
 						</svg>
 					</li>
 					<li className="flex flex-col">
-						<span className="font-bold">Price</span> $45
+						<span className="text-lg font-ptSansCaption font-semibold">Price</span> $45
 					</li>
 				</ul>
 				<div className="py-4 px-20">
-					<Button buttonname="book appointment" buttonlink="/fyp-schedulizer/dashboard" />
+					<Button buttonname="BOOK APPOINTMENT" buttonlink="/fyp-schedulizer/dashboard" />
 				</div>
 			</div>
 		</div>

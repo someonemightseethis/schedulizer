@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
 import Login from "./components/Login.jsx";
-import Registration from "./components/Registration.jsx";
+import Signup from "./components/Signup.jsx";
 import BusinessRegistrationForm from "./components/BusinessRegistrationForm.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import BusinessInfo from "./components/BusinessInfo.jsx";
@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 				<Route path="/schedulizer/login" element={<Login />} />
 				<Route
 					path="/schedulizer/registration"
-					element={<Registration />}
+					element={<Signup />}
 				/>
 				<Route
 					path="/schedulizer/businessregistration"

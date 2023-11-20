@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
 import Button from "./Button";
-import InputField from "./InputField";
+import InputField from "./Form/InputField";
 import Navbar from "./Navbar/Navbar";
 
-function Registration() {
+function Signup() {
 	return (
 		<div className="">
 			<Navbar />
-			<div className="flex justify-center items-center pt-48">
+			<div className="flex justify-center items-center pt-36 bg-[#FAF8ED] h-screen">
 				<div className="flex justify-center py-12">
 					<div className="xl:w-[700px] lg:w-[600px] md:w-full">
-						<h3 className="pb-6 text-center text-4xl font-extrabold text-dark-grey-900">
+						<h3 className="pb-6 text-center text-9xl font-bebas font-extrabold text-dark-grey-900">
 							Sign Up
 						</h3>
 						{/* <div className="mt-6">
@@ -119,14 +119,14 @@ function Registration() {
 								</div>
 							</div>
 							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
-								<Button buttonname="Sign Up" buttonlink="/schedulizer/login" />
+								<Button buttonname="SIGN UP" buttonlink="/schedulizer/login" />
 							</div>
 						</form>
-						<p className="text-sm text-center leading-relaxed text-grey-900">
+						<p className="text-md font-muktaVaani text-center leading-relaxed text-grey-900">
 							Already have an account?{" "}
 							<Link
 								to="/schedulizer/login"
-								className="font-bold text-grey-700"
+								className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600"
 							>
 								Sign In
 							</Link>
@@ -137,9 +137,9 @@ function Registration() {
 							<hr className="h-0 border-b border-solid border-grey-500 grow" />
 						</div>
 						<div className="xl:px-36 md:px-32 xs:px-16">
-							<a className="flex items-center justify-center w-full py-2 xs:px-4 mb-6 text-sm font-medium transition duration-300 rounded-lg text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300 border-2 border-black">
+							<a className="flex items-center justify-center w-full py-2 xs:px-4 mb-6 text-sm font-medium transition duration-300 rounded-lg text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300 border-2 border-black font-ptSansCaption cursor-pointer">
 								<img
-									className="h-5 mr-2"
+									className="h-5 mr-6"
 									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
 									alt=""
 								/>
@@ -153,4 +153,4 @@ function Registration() {
 	);
 }
 
-export default Registration;
+export default Signup;
