@@ -4,9 +4,9 @@ import DashboardMain from "./DashboardMain";
 
 function Dashboard() {
 	return (
-		<div className="flex flex-col h-screen bg-[#FAF8ED]">
+		<div className="flex h-screen flex-col bg-[#FAF8ED]">
 			<Navbar />
-			<div className="xl:lg:my-[66px] md:sm:my-[58px] w-full">
+			<div className="w-full md:sm:my-[58px] xl:lg:my-[66px]">
 				<DashboardSidebar />
 				<DashboardMain />
 			</div>

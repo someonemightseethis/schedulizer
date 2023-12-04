@@ -2,28 +2,36 @@ import BackToTopButton from "./BacktoTopButton";
 import Button from "./Button";
 import Navbar from "./Navbar/Navbar";
 import Team from "./Team";
+// import { useSpring, animated } from "@react-spring/web";
 
 function Home() {
+	// const props = useSpring({
+	// 	from: { opacity: 0.2 },
+	// 	to: { opacity: 1 },
+	// });
+
 	return (
 		<div>
 			<Navbar />
-			<div className="pt-48 mx-0 bg-[#FAF8ED]">
+			<div className="mx-auto bg-[#FAF8ED] pt-48">
 				<div className="mb-24 flex flex-col">
-					<h2 className="text-6xl px-40 font-medium text-right font-bebas">
-						Exclusive Agency For
-					</h2>
-					<span className="text-[12rem] font-extrabold text-center text-indigo-500 leading-relaxed font-bebas">
-						Appointment Scheduling
-					</span>
-					<h2 className="text-5xl px-40 text-right font-medium font-bebas">
-						Solutions
-					</h2>
-					<div className="xl:lg:flex md:flex-col md:sm:xs:space-y-6 justify-center items-center space-x-8 pt-12">
+					<div>
+						<h2 className="px-40 text-right font-bebas text-6xl font-medium">
+							Exclusive Agency For
+						</h2>
+						<h2 className="px-6 text-center font-bebas text-[12rem] font-extrabold leading-relaxed text-indigo-500">
+							Appointment Scheduling
+						</h2>
+						<h2 className="px-40 text-right font-bebas text-5xl font-medium">
+							Solutions
+						</h2>
+					</div>
+					<div className="items-center justify-center space-x-8 pt-12 md:sm:xs:space-y-6 md:flex-col xl:lg:flex">
 						<Button
 							buttonname="GET STARTED"
 							buttonlink="/schedulizer/services"
 						/>
-						<p className="text-indigo-600 text-xl italic font-light font-muktaVaani">
+						<p className="font-muktaVaani text-xl font-light italic text-indigo-600">
 							by looking at the services provided on our platform and find the
 							right match for your needs
 						</p>
@@ -31,37 +39,34 @@ function Home() {
 				</div>
 
 				<div
-					className="bg-cover bg-fixed bg-center justify-center items-center py-6 mx-auto"
-					style={{ backgroundImage: "url('./images/parallax5.jpg')" }}
-				>
+					className="mx-auto items-center justify-center bg-cover bg-fixed bg-center py-6"
+					style={{ backgroundImage: "url('./images/parallax5.jpg')" }}>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 1440 320"
-						className="mx-0 -mt-12"
-					>
+						className="mx-0 -mt-12">
 						<path
 							fill="#FAF8ED"
 							fillOpacity="1"
-							d="M0,224L48,213.3C96,203,192,181,288,154.7C384,128,480,96,576,90.7C672,85,768,107,864,128C960,149,1056,171,1152,181.3C1248,192,1344,192,1392,192L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"
-						></path>
+							d="M0,224L48,213.3C96,203,192,181,288,154.7C384,128,480,96,576,90.7C672,85,768,107,864,128C960,149,1056,171,1152,181.3C1248,192,1344,192,1392,192L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
 					</svg>
-					<h1 className="text-white text-9xl text-center pb-28 font-bebas font-semibold">
+					{/* <h1 className="pb-28 text-center font-bebas text-9xl font-semibold text-white">
 						This is Parallax Effect
-					</h1>
-					<div className="grid xl:lg:grid-cols-2 md:grid-cols-1 gap-16 px-24">
+					</h1> */}
+					<div className="grid gap-16 px-24 md:grid-cols-1 xl:lg:grid-cols-2">
 						<img
 							src="./images/services-page.png"
 							alt="services"
-							className="rounded-xl shadow-2xl hover:scale-110 duration-500 hover:cursor-pointer"
+							className="rounded-xl shadow-2xl duration-500 hover:scale-110 hover:cursor-pointer"
 						/>
 						<img
 							src="./images/businessinfo-page.png"
 							alt="services"
-							className="rounded-xl shadow-2xl mt-28 hover:scale-110 duration-500 hover:cursor-pointer"
+							className="mt-28 rounded-xl shadow-2xl duration-500 hover:scale-110 hover:cursor-pointer"
 						/>
 					</div>
-					<div className="xl:px-80 lg:px-72 md:px-52 sm:px-0 xs:px-0 py-12">
-						<h2 className="my-20 text-9xl text-white text-center font-semibold font-bebas">
+					<div className="py-12 xs:px-0 sm:px-0 md:px-52 lg:px-72 xl:px-80">
+						<h2 className="my-20 text-center font-bebas text-[10rem] font-semibold text-white">
 							Meet the team
 						</h2>
 						<Team />
@@ -69,21 +74,19 @@ function Home() {
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 1440 320"
-						className="mx-0 -mb-8"
-					>
+						className="mx-0 -mb-8">
 						<path
 							fill="#FAF8ED"
 							fillOpacity="1"
-							d="M0,224L48,224C96,224,192,224,288,229.3C384,235,480,245,576,245.3C672,245,768,235,864,213.3C960,192,1056,160,1152,133.3C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"
-						></path>
+							d="M0,224L48,224C96,224,192,224,288,229.3C384,235,480,245,576,245.3C672,245,768,235,864,213.3C960,192,1056,160,1152,133.3C1248,107,1344,85,1392,74.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
 					</svg>
 				</div>
 
-				<div className="py-20 px-36">
-					<h1 className="text-9xl text-center mb-12 font-semibold font-bebas">
+				<div className="px-36 py-20">
+					<h1 className="mb-12 text-center font-bebas text-9xl font-semibold">
 						Tempor sit labore nostrud
 					</h1>
-					<div className="font-muktaVaani text-xl px-36">
+					<div className="px-36 font-muktaVaani text-xl">
 						<p>
 							Exercitation non Lorem exercitation tempor amet ad esse velit.
 							Anim deserunt id nulla quis ex magna culpa exercitation. Mollit
