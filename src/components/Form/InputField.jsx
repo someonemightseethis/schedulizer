@@ -1,32 +1,53 @@
 import PropTypes from "prop-types";
 
 function InputField(props) {
+	const isRequired = props.isRequired || false;
+
 	return (
 		<div>
 			<label
-				htmlFor={props.inputfieldhtmlfor}
-				className="mb-4 px-1 text-md text-start font-poppins font-medium text-grey-900"
-			>
-				{props.inputfieldlabelname}
+				htmlFor={props.inputFieldHtmlFor}
+				className="text-md text-grey-900 mb-4 px-1 text-start font-poppins font-medium">
+				{props.inputFieldLabelName}
 			</label>
-			<input
-				id={props.inputfieldid}
-				type={props.inputfieldtype}
-				placeholder={props.inputfieldplaceholder}
-				pattern={props.inputfieldpattern}
-				className="flex font-muktaVaani items-center w-full px-3 py-2 mr-2 text-sm border-2 border-black mt-2 mb-4 placeholder:text-grey-700 text-black rounded-lg focus:border-indigo-500 focus:outline-none"
-			/>
+			{props.fieldType === "textarea" ? (
+				<textarea
+					id={props.inputFieldId}
+					placeholder={props.inputFieldPlaceholder}
+					{...(isRequired ? { required: true } : {})}
+					cols={props.cols}
+					rows={props.rows}
+					maxLength={props.maxLength}
+					className="placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 border-black px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none"
+					{...(isRequired ? { required: true } : {})}
+				/>
+			) : (
+				<input
+					id={props.inputFieldId}
+					type={props.inputFieldType}
+					placeholder={props.inputFieldPlaceholder}
+					pattern={props.inputFieldPattern}
+					{...(isRequired ? { required: true } : {})}
+					className="placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 border-black px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none"
+					{...(isRequired ? { required: true } : {})}
+				/>
+			)}
 		</div>
 	);
 }
 
 InputField.propTypes = {
-	inputfieldhtmlfor: PropTypes.string.isRequired,
-	inputfieldlabelname: PropTypes.string.isRequired,
-	inputfieldid: PropTypes.string.isRequired,
-	inputfieldtype: PropTypes.string.isRequired,
-	inputfieldplaceholder: PropTypes.string.isRequired,
-	inputfieldpattern: PropTypes.string,
+	inputFieldHtmlFor: PropTypes.string.isRequired,
+	inputFieldLabelName: PropTypes.string.isRequired,
+	inputFieldId: PropTypes.string.isRequired,
+	inputFieldType: PropTypes.string.isRequired,
+	inputFieldPlaceholder: PropTypes.string.isRequired,
+	inputFieldPattern: PropTypes.string,
+	isRequired: PropTypes.bool, // New prop for specifying if the input is required
+	fieldType: PropTypes.oneOf(["input", "textarea"]), // New prop for specifying the type of input
+	cols: PropTypes.number, // New prop for textarea columns
+	rows: PropTypes.number, // New prop for textarea rows
+	maxLength: PropTypes.number, // New prop for textarea maxLength
 };
 
 export default InputField;

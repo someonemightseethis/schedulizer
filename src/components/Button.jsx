@@ -2,11 +2,16 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 function Button(props) {
+	// Determine the button type based on the presence of the prop
+	const buttonType = props.buttonType || "button";
+
 	return (
 		<div className="flex justify-center text-center">
-			<Link to={props.buttonlink}>
-				<button className="flex justify-center items-center w-full px-6 md:px-4 sm:py-2 xs:py-2 rounded-md text-sm bg-indigo-500 text-white hover:bg-indigo-600 transition-colors duration-200 font-jaldi">
-					{props.buttonname}
+			<Link to={props.buttonLink}>
+				<button
+					type={buttonType}
+					className="flex w-full items-center justify-center rounded-md bg-indigo-500 px-6 font-jaldi text-sm text-white transition-colors duration-200 hover:bg-indigo-600 xs:py-2 sm:py-2 md:px-4">
+					{props.buttonName}
 				</button>
 			</Link>
 		</div>
@@ -14,8 +19,9 @@ function Button(props) {
 }
 
 Button.propTypes = {
-	buttonname: PropTypes.string.isRequired,
-	buttonlink: PropTypes.string.isRequired,
+	buttonName: PropTypes.string.isRequired,
+	buttonLink: PropTypes.string.isRequired,
+	buttonType: PropTypes.oneOf(["button", "submit", "reset"]), // Add buttonType prop
 };
 
 export default Button;

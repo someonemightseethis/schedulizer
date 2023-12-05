@@ -15,12 +15,12 @@ function CustomerSatisfaction() {
 	const percentage = 97.78;
 
 	return (
-		<div className="w-max">
+		<div className="w-max rounded-lg border-2 border-black p-12">
 			<div className="flex flex-col items-center justify-center">
-				<h3 className="text-2xl text-black font-bold font-poppins">
+				<h3 className="font-poppins text-2xl font-bold text-black">
 					Customer Satisfaction
 				</h3>
-				<h3 className="text-lg font-thin font-muktaVaani">
+				<h3 className="font-muktaVaani text-lg font-thin">
 					from all appointments
 				</h3>
 			</div>
@@ -30,8 +30,7 @@ function CustomerSatisfaction() {
 					fill="none"
 					width="300"
 					xmlns="http://www.w3.org/2000/svg"
-					id="svg"
-				>
+					id="svg">
 					<path
 						d="M100 350C100 283.696 126.339 220.107 173.223 173.223C220.107 126.339 283.696 100 350 100C416.304 100 479.893 126.339 526.777 173.223C573.661 220.107 600 283.696 600 350"
 						stroke="#E0E7FF"
@@ -64,8 +63,7 @@ function CustomerSatisfaction() {
 						y={330}
 						textAnchor="middle"
 						fill="#2f49d1"
-						className="text-6xl font-bold"
-					>
+						className="text-6xl font-bold">
 						{percentage}%
 					</text>
 					<circle cx="140" cy="350" r="5" fill="#6366F1" />
@@ -158,11 +156,13 @@ function CustomerSatisfaction() {
 			</div>
 
 			<div className="flex justify-center">
-				<div className="flex items-baseline justify-between mt-2" style={{ width: "300px" }}>
+				<div
+					className="mt-2 flex items-baseline justify-between"
+					style={{ width: "300px" }}>
 					<div style={{ width: "50px", paddingLeft: "16px" }}>0%</div>
 					<div className="font-ptSansCaption font-semibold">
-							Based on Ratings
-						</div>
+						Based on Ratings
+					</div>
 					<div style={{ width: "50px" }}>100%</div>
 				</div>
 			</div>

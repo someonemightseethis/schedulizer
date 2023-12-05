@@ -11,7 +11,7 @@ function DashboardAppointmentsToday() {
 						<div className="text-sm text-gray-400">Number 10</div>
 						<div className="text-sm text-gray-400">4h ago</div>
 					</div>
-					<a href="javascript:void(0)" className="text-lg font-bold">
+					<a href="#" className="text-lg font-bold">
 						Blog and social posts
 					</a>
 					<div className="text-md text-gray-600">
@@ -32,7 +32,7 @@ function DashboardAppointmentsToday() {
 						<div className="text-sm text-gray-400">Number 10</div>
 						<div className="text-sm text-gray-400">4h ago</div>
 					</div>
-					<a href="javascript:void(0)" className="text-lg font-bold">
+					<a href="#" className="text-lg font-bold">
 						Blog and social posts
 					</a>
 					<div className="text-md text-gray-600">
