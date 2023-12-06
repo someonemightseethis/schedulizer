@@ -28,8 +28,8 @@ function Home() {
 					</div>
 					<div className="items-center justify-center space-x-8 pt-12 md:sm:xs:space-y-6 md:flex-col xl:lg:flex">
 						<Button
-							buttonname="GET STARTED"
-							buttonlink="/schedulizer/services"
+							buttonName="GET STARTED"
+							buttonLink="/schedulizer/services"
 						/>
 						<p className="font-muktaVaani text-xl font-light italic text-indigo-600">
 							by looking at the services provided on our platform and find the

@@ -11,7 +11,9 @@ function BusinessRegistrationForm() {
 				<div className="flex flex-col justify-center py-12">
 					<h3 className="pb-6 px-4 text-6xl font-medium text-dark-grey-900 font-bebas">
 						Let us <br />
-						<p className="text-9xl font-extrabold">know more about your business.</p>
+						<p className="text-9xl font-extrabold">
+							know more about your business.
+						</p>
 					</h3>
 					<div className="px-72 items-center justify-center w-full">
 						{/* <div className="mt-6">
@@ -61,41 +63,49 @@ function BusinessRegistrationForm() {
 							<div className="grid grid-cols-1 gap-x-8 gap-y-4 mt-8 md:grid-cols-2">
 								<div>
 									<InputField
-										inputfieldid="businessname"
-										inputfieldtype="text"
-										inputfieldplaceholder="John & Sons"
-										inputfieldhtmlfor="businessname"
-										inputfieldlabelname="Registered Name"
+										inputFieldId="businessName"
+										inputFieldType="text"
+										inputFieldPlaceholder="John & Sons"
+										inputFieldHtmlFor="businessName"
+										inputFieldLabelName="Registered Business Name"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid="businesscontactnumber"
-										inputfieldtype="tel"
-										inputfieldplaceholder="XXXX-XXXXXXX"
-										inputfieldhtmlfor="businesscontactnumber"
-										inputfieldlabelname="Contact Number"
+										inputFieldId="businessContactNumber"
+										inputFieldType="text"
+										inputFieldPlaceholder="XXXX-XXXXXXX"
+										inputFieldHtmlFor="businessContactNumber"
+										inputFieldLabelName="Contact Number"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid="businessemail"
-										inputfieldtype="email"
-										inputfieldplaceholder="johnsnow@example.com"
-										inputfieldhtmlfor="businessemail"
-										inputfieldlabelname="Work Email"
+										inputFieldId="businessEmail"
+										inputFieldType="email"
+										inputFieldPlaceholder="johnsnow@example.com"
+										inputFieldHtmlFor="businessEmail"
+										inputFieldLabelName="Work Email"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid="businesscity"
-										inputfieldtype="text"
-										inputfieldplaceholder="Islamabad"
-										inputfieldhtmlfor="businesscity"
-										inputfieldlabelname="City"
+										inputFieldId="businessCity"
+										inputFieldType="email"
+										inputFieldPlaceholder="Islamabad"
+										inputFieldHtmlFor="businessCity"
+										inputFieldLabelName="City"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
@@ -125,39 +135,46 @@ function BusinessRegistrationForm() {
 								</div>
 								<div>
 									<InputField
-										inputfieldid="businesscategory"
-										inputfieldtype="text"
-										inputfieldplaceholder="e.g. IT, Marketing, etc."
-										inputfieldhtmlfor="businesscategory"
-										inputfieldlabelname="Field of Work"
+										inputFieldId="businessCategory"
+										inputFieldType="text"
+										inputFieldPlaceholder="e.g. IT, Marketing, etc."
+										inputFieldHtmlFor="businessCategory"
+										inputFieldLabelName="Field of Work"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid="businessaddress"
-										inputfieldtype="text"
-										inputfieldplaceholder="Appt. 123, Street 123, Sector 123, Islamabad"
-										inputfieldhtmlfor="businessaddress"
-										inputfieldlabelname="Address"
+										inputFieldId="businessAddress"
+										inputFieldType="text"
+										inputFieldPlaceholder="Appt. 123, Street 123, Sector 123, Islamabad"
+										inputFieldHtmlFor="businessAddress"
+										inputFieldLabelName="Address"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid="businessaddresslink"
-										inputfieldtype="url"
-										inputfieldplaceholder="https://www.google.com/maps/..."
-										inputfieldhtmlfor="businessaddresslink"
-										inputfieldlabelname="Link to Google Maps"
+										inputFieldId="businessAddressLink"
+										inputFieldType="url"
+										inputFieldPlaceholder="https://www.google.com/maps/..."
+										inputFieldHtmlFor="businessAddressLink"
+										inputFieldLabelName="Link to Google Maps"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 							</div>
 
 							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
 								<Button
-									buttonname="SUBMIT"
-									buttonlink="/schedulizer/businessinfo"
+									buttonName="SUBMIT"
+									buttonLink="/schedulizer/businessinfo"
+									buttonType="submit"
 								/>
 							</div>
 						</form>

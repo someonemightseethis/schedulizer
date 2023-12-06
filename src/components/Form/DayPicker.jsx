@@ -2,7 +2,7 @@
 
 function DayPicker() {
 	return (
-		<div className="text-md flex items-center justify-between pb-6 pt-4">
+		<div className="text-md flex items-center justify-between pb-4">
 			<label className="inline-block pl-[0.15rem] font-poppins font-medium">
 				Select Appointment Days:
 			</label>

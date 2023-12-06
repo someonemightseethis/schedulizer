@@ -14,32 +14,44 @@ function Login() {
 					</h3>
 					<form className="w-[400px] grid grid-cols-1 rounded-3xl">
 						<InputField
-							inputfieldid="email"
-							inputfieldtype="email"
-							inputfieldplaceholder="mail@google.com"
-							inputfieldhtmlfor="email"
-							inputfieldlabelname="Email"
+							inputFieldId="userEmail"
+							inputFieldType="email"
+							inputFieldPlaceholder="mail@example.com"
+							inputFieldHtmlFor="userEmail"
+							inputFieldLabelName="Email"
+							isRequired={true}
+							fieldType="input"
 						/>
 						<InputField
-							inputfieldid="password"
-							inputfieldtype="password"
-							inputfieldplaceholder="enter your password"
-							inputfieldhtmlfor="password"
-							inputfieldlabelname="Password"
+							inputFieldId="userPassword"
+							inputFieldType="password"
+							inputFieldPlaceholder="enter your password"
+							inputFieldHtmlFor="userPassword"
+							inputFieldLabelName="Password"
+							isRequired={true}
+							fieldType="input"
 						/>
 						<div className="py-4 xl:px-12 px-16">
-							<Button buttonname="SIGN IN" buttonlink="/schedulizer/services" />
+							<Button
+								buttonName="SIGN IN"
+								buttonLink="/schedulizer/services"
+								buttonType="submit"
+							/>
 						</div>
 						<div className="py-4 flex flex-col justify-center items-center">
 							<p className="text-md font-muktaVaani leading-relaxed text-grey-900">
 								Not registered yet?{" "}
-								<Link to="/schedulizer/registration" className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600">
+								<Link
+									to="/schedulizer/registration"
+									className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600">
 									Create an Account
 								</Link>
 							</p>
 							<p className="text-md font-muktaVaani leading-relaxed text-grey-900">
 								Forget Password?{" "}
-								<a href="" className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600">
+								<a
+									href=""
+									className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600">
 									Reset now
 								</a>
 							</p>

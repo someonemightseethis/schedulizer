@@ -1,23 +1,33 @@
 import InputField from "../Form/InputField";
 import Button from "../Button";
 import DayPicker from "../Form/DayPicker";
+import { useState, useEffect, useRef } from "react";
 
 function AppointmentsCRUD() {
-	// const textAreaElement = document.querySelector("#appointmentdescription");
-	// const characterCounterElement = document.querySelector("#character-counter");
-	// const typedCharactersElement = document.querySelector("#typed-characters");
-	// const maximumCharacters = 500;
+	const [typedCharacters, setTypedCharacters] = useState(0);
+	const typedCharactersElementRef = useRef(null);
 
-	// textAreaElement.addEventListener("keydown", () => {
-	// 	const typedCharacters = textAreaElement.value.length;
-	// 	typedCharactersElement.textContent = typedCharacters;
+	useEffect(() => {
+		const textAreaElement = document.querySelector("#appointmentdescription");
+		typedCharactersElementRef.current =
+			document.querySelector("#typed-characters");
 
-	// 	if (typedCharacters >= maximumCharacters) {
-	// 		characterCounterElement.classList.replace("opacity-80", "opacity-100");
-	// 	} else if (typedCharacters > 0) {
-	// 		characterCounterElement.classList.replace("opacity-100", "opacity-80");
-	// 	}
-	// });
+		const updateCharacterCount = () => {
+			setTypedCharacters(textAreaElement.value.length);
+		};
+
+		textAreaElement.addEventListener("input", updateCharacterCount);
+
+		return () => {
+			textAreaElement.removeEventListener("input", updateCharacterCount);
+		};
+	}, []);
+
+	useEffect(() => {
+		if (typedCharactersElementRef.current) {
+			typedCharactersElementRef.current.textContent = typedCharacters;
+		}
+	}, [typedCharacters]);
 
 	return (
 		<div className="flex items-center justify-center py-4">
@@ -27,17 +37,18 @@ function AppointmentsCRUD() {
 				</h2>
 				<form method="POST" action="" className="">
 					<div className="px-52">
-						<div className="py-2">
-							<InputField
-								inputFieldId="appointmenttitle"
-								inputFieldType="text"
-								inputFieldPlaceholder="appointment title"
-								inputFieldHtmlFor="appointmenttitle"
-								inputFieldLabelName="Appointment Title"
-								isRequired={true}
-								fieldType="input"
-							/>
-							<div className="flex w-full items-center justify-between">
+						<div className="py-2 space-y-4">
+							<div className="grid grid-cols-2 gap-4 w-full">
+								<InputField
+									inputFieldId="appointmenttitle"
+									inputFieldType="text"
+									inputFieldPlaceholder="appointment title"
+									inputFieldHtmlFor="appointmenttitle"
+									inputFieldLabelName="Appointment Title"
+									isRequired={true}
+									fieldType="input"
+								/>
+
 								<InputField
 									inputFieldId="appointmentDuration"
 									inputFieldType="number"
@@ -47,7 +58,9 @@ function AppointmentsCRUD() {
 									isRequired={true}
 									fieldType="input"
 								/>
+							</div>
 
+							<div className="grid grid-cols-3 gap-4 w-full">
 								<InputField
 									inputFieldId="AppointmentPrice"
 									inputFieldType="number"
@@ -57,57 +70,49 @@ function AppointmentsCRUD() {
 									isRequired={true}
 									fieldType="input"
 								/>
-							</div>
 
-							{/* <div className="grid grid-cols-2 space-x-4 text-[#002B5B]">
-							<div className="flex items-baseline justify-center space-x-2">
-								<label htmlFor="startdate" className="text-sm">
-									Start Date
-								</label>
-								<input
-									type="date"
-									name="startdate"
-									min=""
-									max=""
-									className="mb-3 mt-1 w-fit rounded-md border-2 border-[#292C6D] bg-[#F9F5EB] object-left px-2 py-1.5 font-mono text-sm text-[#002B5B] placeholder-gray-400 shadow-sm focus:border-[#EA5455] focus:outline-none focus:ring-1 focus:ring-[#EA5455]"
-									value=""
+								<InputField
+									inputFieldId="AppointmentStartTime"
+									inputFieldType="time"
+									inputFieldPlaceholder="xx am/pm"
+									inputFieldHtmlFor="AppointmentStartTime"
+									inputFieldLabelName="Appointment Start Time"
+									isRequired={true}
+									fieldType="input"
+								/>
+
+								<InputField
+									inputFieldId="AppointmentEndTime"
+									inputFieldType="time"
+									inputFieldPlaceholder="xx am/pm"
+									inputFieldHtmlFor="AppointmentEndTime"
+									inputFieldLabelName="Appointment End Time"
+									isRequired={true}
+									fieldType="input"
 								/>
 							</div>
-							<div className="flex items-baseline justify-center space-x-2">
-								<label htmlFor="enddate" className="text-sm">
-									End Date
-								</label>
-								<input
-									type="date"
-									name="enddate"
-									min=""
-									max=""
-									className="mb-3 mt-1 w-fit rounded-md border-2 border-[#292C6D] bg-[#F9F5EB] object-right px-2 py-1.5 font-mono text-sm text-[#002B5B] placeholder-gray-400 shadow-sm focus:border-[#EA5455] focus:outline-none focus:ring-1 focus:ring-[#EA5455]"
-									required
-								/>
-							</div>
-						</div> */}
 
 							<DayPicker />
-
-							<InputField
-								inputFieldId="appointmentdescription"
-								inputFieldType="text"
-								inputFieldPlaceholder="appointment description"
-								inputFieldHtmlFor="appointmentdescription"
-								inputFieldLabelName="Appointment Description"
-								isRequired={true}
-								fieldType="textarea"
-								cols={10}
-								rows={5}
-								maxLength={500}
-							/>
-							<div
-								id="character-counter"
-								className="text-right text-sm text-indigo-500 opacity-80">
-								<span id="typed-characters">0</span>
-								<span>/</span>
-								<span id="maximum-characters">500</span>
+							<div>
+								<InputField
+									inputFieldId="appointmentdescription"
+									inputFieldType="text"
+									inputFieldPlaceholder="appointment description"
+									inputFieldHtmlFor="appointmentdescription"
+									inputFieldLabelName="Appointment Description"
+									isRequired={true}
+									fieldType="textarea"
+									cols={10}
+									rows={5}
+									maxLength={500}
+								/>
+								<div
+									id="character-counter"
+									className="text-right text-sm text-indigo-500 opacity-80">
+									<span id="typed-characters">0</span>
+									<span>/</span>
+									<span id="maximum-characters">500</span>
+								</div>
 							</div>
 						</div>
 						<div className="py-4 xs:px-16 md:px-32 xl:px-36">

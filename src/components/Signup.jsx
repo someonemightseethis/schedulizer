@@ -60,74 +60,89 @@ function Signup() {
 							<div className="grid grid-cols-1 gap-x-8 gap-y-4 mt-8 md:grid-cols-2">
 								<div>
 									<InputField
-										inputfieldid=""
-										inputfieldtype="text"
-										inputfieldplaceholder="John"
-										inputfieldhtmlfor=""
-										inputfieldlabelname="First Name"
+										inputFieldId="userFirstName"
+										inputFieldType="text"
+										inputFieldPlaceholder="John"
+										inputFieldHtmlFor="userFirstName"
+										inputFieldLabelName="First Name"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid=""
-										inputfieldtype="text"
-										inputfieldplaceholder="Snow"
-										inputfieldhtmlfor=""
-										inputfieldlabelname="Last name"
+										inputFieldId="userLastName"
+										inputFieldType="text"
+										inputFieldPlaceholder="Snow"
+										inputFieldHtmlFor="userLastName"
+										inputFieldLabelName="Last Name"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid=""
-										inputfieldtype="text"
-										inputfieldplaceholder="XXXX-XXXXXXX"
-										inputfieldhtmlfor=""
-										inputfieldlabelname="Phone number"
+										inputFieldId="userPhoneNumber"
+										inputFieldType="text"
+										inputFieldPlaceholder="XXXX-XXXXXXX"
+										inputFieldHtmlFor="userPhoneNumber"
+										inputFieldLabelName="Phone Number"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid=""
-										inputfieldtype="email"
-										inputfieldplaceholder="johnsnow@example.com"
-										htmlfor=""
-										inputfieldlabelname="Email address"
+										inputFieldId="userEmail"
+										inputFieldType="email"
+										inputFieldPlaceholder="johnsnow@example.com"
+										inputFieldHtmlFor="userEmail"
+										inputFieldLabelName="Email address"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid=""
-										inputfieldtype="password"
-										inputfieldplaceholder="Enter your password"
-										inputfieldhtmlfor=""
-										inputfieldlabelname="Password"
+										inputFieldId="userPassword"
+										inputFieldType="password"
+										inputFieldPlaceholder="Enter your password"
+										inputFieldHtmlFor="userPassword"
+										inputFieldLabelName="Password"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputfieldid=""
-										inputfieldtype="password"
-										inputfieldplaceholder="Confirm password"
-										inputfieldhtmlfor=""
-										inputfieldlabelname="Confirm password"
+										inputFieldId="userPasswordConfirm"
+										inputFieldType="password"
+										inputFieldPlaceholder="Confirm your password"
+										inputFieldHtmlFor="userPasswordConfirm"
+										inputFieldLabelName="Confirm Password"
+										isRequired={true}
+										fieldType="input"
 									/>
 								</div>
 							</div>
 							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
-								<Button buttonname="SIGN UP" buttonlink="/schedulizer/login" />
+								<Button
+									buttonName="SIGN UP"
+									buttonLink="/schedulizer/login"
+									buttonType="submit"
+								/>
 							</div>
 						</form>
 						<p className="text-md font-muktaVaani text-center leading-relaxed text-grey-900">
 							Already have an account?{" "}
 							<Link
 								to="/schedulizer/login"
-								className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600"
-							>
+								className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600">
 								Sign In
 							</Link>
 						</p>
