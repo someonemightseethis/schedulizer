@@ -15,13 +15,10 @@ function CustomerSatisfaction() {
 	const percentage = 97.78;
 
 	return (
-		<div className="w-max rounded-lg border-2 border-black p-12">
+		<div className="w-max items-center flex flex-col">
 			<div className="flex flex-col items-center justify-center">
 				<h3 className="font-poppins text-2xl font-bold text-black">
 					Customer Satisfaction
-				</h3>
-				<h3 className="font-muktaVaani text-lg font-thin">
-					from all appointments
 				</h3>
 			</div>
 			<div className="flex justify-center">
@@ -166,6 +163,9 @@ function CustomerSatisfaction() {
 					<div style={{ width: "50px" }}>100%</div>
 				</div>
 			</div>
+			<h3 className="font-muktaVaani text-lg font-thin text-center py-4">
+				from all appointments
+			</h3>
 		</div>
 	);
 }

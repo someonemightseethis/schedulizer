@@ -1,18 +1,22 @@
-const express = require("express");
-const {addAppointments,getAll,getById,updateById,deleteById}=require('../controllers/appointment');
+import express from "express";
+import {
+	addAppointments,
+	getAll,
+	getById,
+	updateById,
+	deleteById,
+} from "../controllers/appointment.js";
 
-const router=express.Router();
-
+const appointmentRouter = express.Router();
 
 // Register Business
-router.post("/add",addAppointments);
-router.get("/all",getAll);
-router.get("/:id",getById);
-router.put("/:id", updateById);
-router.delete("/:id", deleteById);
+appointmentRouter.post("/add", addAppointments);
+appointmentRouter.get("/all", getAll);
+appointmentRouter.get("/:id", getById);
+appointmentRouter.put("/:id", updateById);
+appointmentRouter.delete("/:id", deleteById);
 
-// Login user 
+// Login user
 //router.post("/appointments",businessAppointments);
 
-
-module.exports = router;
+export default appointmentRouter;

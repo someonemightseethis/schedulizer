@@ -1,15 +1,12 @@
-const mongoose = require('mongoose');
-async function DbConnect(url){
-    return await mongoose.connect(url)
-    // Check database connected or not
-.then(() => {
-    console.log("Database Connected Successfully");
-})
-.catch(() => {
-    console.log("Database cannot be Connected");
-})
-    
+import mongoose from "mongoose";
+
+async function db(url) {
+	try {
+		await mongoose.connect(url);
+		console.log("Database Connected Successfully");
+	} catch (error) {
+		console.log("Database cannot be Connected");
+	}
 }
 
-
-module.exports = DbConnect;
+export default db;

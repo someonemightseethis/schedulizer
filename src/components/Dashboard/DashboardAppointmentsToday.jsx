@@ -2,10 +2,10 @@ function DashboardAppointmentsToday() {
 	return (
 		<div className="bg-[#FAF8ED]">
 			<h2 className="mb-4 font-poppins text-2xl font-bold">
-				Your appointments today
+				Todays Appointments
 			</h2>
 
-			<div className="space-y-4 font-muktaVaani">
+			<div className="space-y-6 font-muktaVaani">
 				<div className="cursor-pointer space-y-2 rounded-lg border-2 border-black p-4 text-gray-800 duration-500 hover:scale-110">
 					<div className="flex justify-between">
 						<div className="text-sm text-gray-400">Number 10</div>

@@ -1,17 +1,21 @@
-const express = require("express");
-const {registeredBusiness,getAll,getById,updateById,deleteById,uploadPic}=
-require('../controllers/business');
+import express from "express";
+import {
+	registeredBusiness,
+	getAll,
+	getById,
+	updateById,
+	deleteById,
+	uploadPic,
+} from "../controllers/business.js";
 
-const router=express.Router();
-
+const businessRouter = express.Router();
 
 // Register Business
-router.post("/registered",registeredBusiness);
-router.get("/all",getAll);
-router.get("/:id",getById);
-router.put("/:id",updateById);
-router.delete("/:id",deleteById);
-router.post("/profile/:id",uploadPic);
+businessRouter.post("/registered", registeredBusiness);
+businessRouter.get("/all", getAll);
+businessRouter.get("/:id", getById);
+businessRouter.put("/:id", updateById);
+businessRouter.delete("/:id", deleteById);
+businessRouter.post("/profile/:id", uploadPic);
 
-
-module.exports = router;
+export default businessRouter;

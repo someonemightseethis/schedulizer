@@ -2,6 +2,7 @@ import InputField from "../Form/InputField";
 import Button from "../Button";
 import DayPicker from "../Form/DayPicker";
 import { useState, useEffect, useRef } from "react";
+import DbConnect from "../../../backend/config/db";
 
 function AppointmentsCRUD() {
 	const [typedCharacters, setTypedCharacters] = useState(0);
@@ -29,9 +30,14 @@ function AppointmentsCRUD() {
 		}
 	}, [typedCharacters]);
 
+	useEffect(() => {
+		const url = "mongodb://localhost:27017/schedulizer";
+		DbConnect(url);
+	}, []);
+
 	return (
 		<div className="flex items-center justify-center py-4">
-			<div className="px-12 py-28">
+			<div className="py-28">
 				<h2 className="mb-12 flex items-center justify-center font-bebas text-9xl font-semibold md:px-24 xl:lg:px-52">
 					Add an Appointment
 				</h2>
@@ -51,7 +57,7 @@ function AppointmentsCRUD() {
 
 								<InputField
 									inputFieldId="appointmentDuration"
-									inputFieldType="number"
+									inputFieldType="text"
 									inputFieldPlaceholder="appointment duration"
 									inputFieldHtmlFor="appointmentDuration"
 									inputFieldLabelName="Appointment Duration (in minutes)"
@@ -63,7 +69,7 @@ function AppointmentsCRUD() {
 							<div className="grid grid-cols-3 gap-4 w-full">
 								<InputField
 									inputFieldId="AppointmentPrice"
-									inputFieldType="number"
+									inputFieldType="text"
 									inputFieldPlaceholder="appointment price"
 									inputFieldHtmlFor="AppointmentPrice"
 									inputFieldLabelName="Appointment Price"
@@ -93,26 +99,24 @@ function AppointmentsCRUD() {
 							</div>
 
 							<DayPicker />
-							<div>
-								<InputField
-									inputFieldId="appointmentdescription"
-									inputFieldType="text"
-									inputFieldPlaceholder="appointment description"
-									inputFieldHtmlFor="appointmentdescription"
-									inputFieldLabelName="Appointment Description"
-									isRequired={true}
-									fieldType="textarea"
-									cols={10}
-									rows={5}
-									maxLength={500}
-								/>
-								<div
-									id="character-counter"
-									className="text-right text-sm text-indigo-500 opacity-80">
-									<span id="typed-characters">0</span>
-									<span>/</span>
-									<span id="maximum-characters">500</span>
-								</div>
+							<InputField
+								inputFieldId="appointmentdescription"
+								inputFieldType="text"
+								inputFieldPlaceholder="appointment description"
+								inputFieldHtmlFor="appointmentdescription"
+								inputFieldLabelName="Appointment Description"
+								isRequired={true}
+								fieldType="textarea"
+								cols={10}
+								rows={5}
+								maxLength={500}
+							/>
+							<div
+								id="character-counter"
+								className="text-right text-sm text-indigo-500 opacity-80">
+								<span id="typed-characters">0</span>
+								<span>/</span>
+								<span id="maximum-characters">500</span>
 							</div>
 						</div>
 						<div className="py-4 xs:px-16 md:px-32 xl:px-36">
