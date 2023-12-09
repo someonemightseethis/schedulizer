@@ -6,13 +6,14 @@ import sign from "jsonwebtoken";
 // Register User
 async function SignUp(req, res) {
 	const data = {
-		firstName: req.body.firstname,
-		lastName: req.body.lastname,
-		phoneNumber: req.body.phonenumber,
-		email: req.body.email,
-		password: req.body.password,
-		confPassword: req.body.confpassword,
+		firstName: req.body.userFirstName,
+		lastName: req.body.userLastName,
+		phoneNumber: req.body.userPhoneNumber,
+		email: req.body.userEmail,
+		password: req.body.userPassword,
+		confPassword: req.body.userConfirmPassword,
 	};
+
 	if (
 		!data.firstName ||
 		!data.lastName ||
@@ -21,23 +22,31 @@ async function SignUp(req, res) {
 		!data.password ||
 		!data.confPassword
 	) {
-		return res.status(400).send("All Fields are required.");
+		return res.status(400).json({ error: "All Fields are required." });
 	}
 
-	// Check if the username already exists in the database
-	const existingUser = await User.findOne({ email: data.email });
-	if (existingUser) {
-		res.send("User already exists. Please choose a different Email.");
-	} else {
-		// Hash the password using bcrypt
-		const saltRounds = 10; // Number of salt rounds for bcrypt
+	if (data.password !== data.confPassword) {
+		return res.status(400).json({ error: "Passwords do not match." });
+	}
+
+	try {
+		const existingUser = await User.findOne({ email: data.email });
+		if (existingUser) {
+			return res.status(400).json({
+				error: "User already exists. Please choose a different Email.",
+			});
+		}
+
+		const saltRounds = 10;
 		const hashedPassword = await hash(data.password, saltRounds);
+		data.password = hashedPassword;
 
-		data.password = hashedPassword; // Replace the original password with the hashed one
-
-		const userdata = await create(data);
-		console.log(userdata);
-		return res.send("User Registered Sucessfuly");
+		const userData = await create(data);
+		console.log(userData);
+		return res.status(200).json({ message: "User Registered Successfully" });
+	} catch (error) {
+		console.error("Error during signup:", error);
+		return res.status(500).json({ error: "Internal Server Error" });
 	}
 }
 

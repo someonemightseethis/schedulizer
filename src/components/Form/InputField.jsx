@@ -20,6 +20,7 @@ function InputField(props) {
 					maxLength={props.maxLength}
 					className="placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 border-black px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none"
 					{...(isRequired ? { required: true } : {})}
+					// value={props.inputFieldValue}
 				/>
 			) : (
 				<input
@@ -30,6 +31,7 @@ function InputField(props) {
 					{...(isRequired ? { required: true } : {})}
 					className="placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 border-black px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none"
 					{...(isRequired ? { required: true } : {})}
+					// value={props.inputFieldValue}
 				/>
 			)}
 		</div>
@@ -48,6 +50,7 @@ InputField.propTypes = {
 	cols: PropTypes.number, // New prop for textarea columns
 	rows: PropTypes.number, // New prop for textarea rows
 	maxLength: PropTypes.number, // New prop for textarea maxLength
+	// inputFieldValue: PropTypes.string, // New prop for textarea value
 };
 
 export default InputField;

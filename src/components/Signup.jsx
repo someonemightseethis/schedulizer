@@ -2,62 +2,48 @@ import { Link } from "react-router-dom";
 import Button from "./Button";
 import InputField from "./Form/InputField";
 import Navbar from "./Navbar/Navbar";
+import axios from "axios";
+import { useState } from "react";
 
 function Signup() {
+	const [userFirstName, setUserFirstName] = useState("");
+	const [userLastName, setUserLastName] = useState("");
+	const [userPhoneNumber, setUserPhoneNumber] = useState("");
+	const [userEmail, setUserEmail] = useState("");
+	const [userPassword, setUserPassword] = useState("");
+	const [userConfirmPassword, setUserConfirmPassword] = useState("");
+
+	const handleSubmit = async (event) => {
+		event.preventDefault();
+
+		const userData = {
+			userFirstName,
+			userLastName,
+			userPhoneNumber,
+			userEmail,
+			userPassword,
+			userConfirmPassword,
+		};
+
+		try {
+			const response = await axios.post("/user/signup", userData);
+			console.log(response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
 	return (
 		<div className="">
 			<Navbar />
-			<div className="flex justify-center items-center pt-36 bg-[#FAF8ED] h-screen">
+			<div className="flex h-screen items-center justify-center bg-[#FAF8ED] pt-36 pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
 				<div className="flex justify-center py-12">
-					<div className="xl:w-[700px] lg:w-[600px] md:w-full">
-						<h3 className="pb-6 text-center text-9xl font-bebas font-extrabold text-dark-grey-900">
+					<div className="md:w-full lg:w-[600px] xl:w-[700px]">
+						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
 							Sign Up
 						</h3>
-						{/* <div className="mt-6">
-							<h1 className="text-black">Select type of account</h1>
-
-							<div className="mt-3 md:flex md:items-center md:-mx-2">
-								<button className="flex justify-center w-full px-6 py-3 text-black rounded-md md:w-auto md:mx-2 focus:outline-none">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="w-6 h-6"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										strokeWidth="2"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-										/>
-									</svg>
-
-									<span className="mx-2">client</span>
-								</button>
-
-								<button className="flex justify-center w-full px-6 py-3 mt-4 text-black border border-blue-500 rounded-md md:mt-0 md:w-auto md:mx-2 focus:outline-none">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="w-6 h-6"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										strokeWidth="2"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-										/>
-									</svg>
-
-									<span className="mx-2">worker</span>
-								</button>
-							</div>
-						</div> */}
-						<form>
-							<div className="grid grid-cols-1 gap-x-8 gap-y-4 mt-8 md:grid-cols-2">
+						<form onSubmit={handleSubmit}>
+							<div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2">
 								<div>
 									<InputField
 										inputFieldId="userFirstName"
@@ -67,6 +53,8 @@ function Signup() {
 										inputFieldLabelName="First Name"
 										isRequired={true}
 										fieldType="input"
+										value={userFirstName}
+										onChange={(e) => setUserFirstName(e.target.value)}
 									/>
 								</div>
 
@@ -79,6 +67,8 @@ function Signup() {
 										inputFieldLabelName="Last Name"
 										isRequired={true}
 										fieldType="input"
+										value={userLastName}
+										onChange={(e) => setUserLastName(e.target.value)}
 									/>
 								</div>
 
@@ -91,6 +81,8 @@ function Signup() {
 										inputFieldLabelName="Phone Number"
 										isRequired={true}
 										fieldType="input"
+										value={userPhoneNumber}
+										onChange={(e) => setUserPhoneNumber(e.target.value)}
 									/>
 								</div>
 
@@ -103,6 +95,8 @@ function Signup() {
 										inputFieldLabelName="Email address"
 										isRequired={true}
 										fieldType="input"
+										value={userEmail}
+										onChange={(e) => setUserEmail(e.target.value)}
 									/>
 								</div>
 
@@ -115,22 +109,26 @@ function Signup() {
 										inputFieldLabelName="Password"
 										isRequired={true}
 										fieldType="input"
+										value={userPassword}
+										onChange={(e) => setUserPassword(e.target.value)}
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputFieldId="userPasswordConfirm"
+										inputFieldId="userConfirmPassword"
 										inputFieldType="password"
 										inputFieldPlaceholder="Confirm your password"
-										inputFieldHtmlFor="userPasswordConfirm"
+										inputFieldHtmlFor="userConfirmPassword"
 										inputFieldLabelName="Confirm Password"
 										isRequired={true}
 										fieldType="input"
+										value={userConfirmPassword}
+										onChange={(e) => setUserConfirmPassword(e.target.value)}
 									/>
 								</div>
 							</div>
-							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
+							<div className="py-4 xs:px-16 md:px-32 xl:px-36">
 								<Button
 									buttonName="SIGN UP"
 									buttonLink="/schedulizer/login"
@@ -138,23 +136,23 @@ function Signup() {
 								/>
 							</div>
 						</form>
-						<p className="text-md font-muktaVaani text-center leading-relaxed text-grey-900">
+						<p className="text-md text-grey-900 text-center font-muktaVaani leading-relaxed">
 							Already have an account?{" "}
 							<Link
 								to="/schedulizer/login"
-								className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600">
+								className="font-poppins text-sm font-semibold text-indigo-500 hover:text-indigo-600">
 								Sign In
 							</Link>
 						</p>
-						<div className="flex items-center mb-3 pt-6">
-							<hr className="h-0 border-b border-solid border-grey-500 grow" />
-							<p className="mx-4 text-grey-600">or</p>
-							<hr className="h-0 border-b border-solid border-grey-500 grow" />
+						<div className="mb-3 flex items-center pt-6">
+							<hr className="border-grey-500 h-0 grow border-b border-solid" />
+							<p className="text-grey-600 mx-4">or</p>
+							<hr className="border-grey-500 h-0 grow border-b border-solid" />
 						</div>
-						<div className="xl:px-36 md:px-32 xs:px-16">
-							<a className="flex items-center justify-center w-full py-2 xs:px-4 mb-6 text-sm font-medium transition duration-300 rounded-lg text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300 border-2 border-black font-ptSansCaption cursor-pointer">
+						<div className="xs:px-16 md:px-32 xl:px-36">
+							<a className="text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-grey-300 mb-6 flex w-full cursor-pointer items-center justify-center rounded-lg border-2 border-black py-2 font-ptSansCaption text-sm font-medium transition duration-300 focus:ring-4 xs:px-4">
 								<img
-									className="h-5 mr-6"
+									className="mr-6 h-5"
 									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
 									alt=""
 								/>

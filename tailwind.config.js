@@ -1,6 +1,8 @@
 // Import the tw-elements plugin using ES module syntax
 import twElementsPlugin from "tw-elements/dist/plugin.cjs";
 import tailwindcssAnimated from "tailwindcss-animated";
+import tailwindcssPatterns from "tailwindcss-patterns";
+
 /** @type {import('tailwindcss').Config} */
 
 export default {
@@ -24,7 +26,7 @@ export default {
 		},
 		extend: {},
 	},
-	plugins: [twElementsPlugin, tailwindcssAnimated],
+	plugins: [twElementsPlugin, tailwindcssAnimated, tailwindcssPatterns],
 	darkMode: "class",
 	safelist: [
 		"!duration-[0ms]",

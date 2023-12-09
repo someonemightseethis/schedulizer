@@ -8,11 +8,11 @@ function BusinessInfo() {
 	return (
 		<div className="">
 			<Navbar />
-			<div className="h-screen bg-[#FAF8ED] p-6">
-				<div className="grid h-screen grid-cols-1 bg-[#FAF8ED] px-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+			<div className="h-screen bg-[#FAF8ED] p-6 pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+				<div className="grid h-screen grid-cols-1 px-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 					<div className="">
-						<div className="h-screen space-y-6 bg-[#FAF8ED] md:fixed md:w-5/12 lg:fixed lg:left-14 lg:top-[150px] lg:w-3/12">
-							<div className="w-full max-w-md rounded-lg border-2 border-black p-8 shadow-md">
+						<div className="h-screen space-y-6 md:fixed md:w-5/12 lg:fixed lg:left-14 lg:top-[150px] lg:w-3/12">
+							<div className="w-full max-w-md rounded-lg border-2 border-black bg-[#FAF8ED] p-8 shadow-md">
 								<div className="flex w-full justify-center">
 									<div className="relative">
 										<img
@@ -78,8 +78,8 @@ function BusinessInfo() {
 							</div>
 						</div>
 					</div>
-					<div className="mt-16 bg-[#FAF8ED] pb-32 pt-[24px] lg:col-span-2">
-						<div className="grid gap-8 bg-[#FAF8ED] lg:grid-cols-1 xl:grid-cols-2">
+					<div className="mt-16 pb-32 pt-[24px] lg:col-span-2">
+						<div className="grid gap-8 lg:grid-cols-1 xl:grid-cols-2">
 							<AppointmentCard />
 							<AppointmentCard />
 							<AppointmentCard />

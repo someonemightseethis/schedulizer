@@ -7,23 +7,23 @@ function BusinessRegistrationForm() {
 	return (
 		<div className="m-0">
 			<Navbar />
-			<div className="flex bg-[#FAF8ED] justify-center items-center pt-24 h-screen">
+			<div className="flex h-screen items-center justify-center bg-[#FAF8ED] pt-24 pattern-texture-indigo-500/50 pattern-texture-scale-[1.5]">
 				<div className="flex flex-col justify-center py-12">
-					<h3 className="pb-6 px-4 text-6xl font-medium text-dark-grey-900 font-bebas">
+					<h3 className="text-dark-grey-900 px-4 pb-6 font-bebas text-6xl font-medium">
 						Let us <br />
 						<p className="text-9xl font-extrabold">
 							know more about your business.
 						</p>
 					</h3>
-					<div className="px-72 items-center justify-center w-full">
+					<div className="w-full items-center justify-center px-72">
 						{/* <div className="mt-6">
 							<h1 className="text-black">Select type of account</h1>
 
-							<div className="mt-3 md:flex md:items-center md:-mx-2">
-								<button className="flex justify-center w-full px-6 py-3 text-black rounded-md md:w-auto md:mx-2 focus:outline-none">
+							<div className="mt-3 md:-mx-2 md:flex md:items-center">
+								<button className="flex w-full justify-center rounded-md px-6 py-3 text-black focus:outline-none md:mx-2 md:w-auto">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
-										className="w-6 h-6"
+										className="h-6 w-6"
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke="currentColor"
@@ -39,10 +39,10 @@ function BusinessRegistrationForm() {
 									<span className="mx-2">client</span>
 								</button>
 
-								<button className="flex justify-center w-full px-6 py-3 mt-4 text-black border border-blue-500 rounded-md md:mt-0 md:w-auto md:mx-2 focus:outline-none">
+								<button className="mt-4 flex w-full justify-center rounded-md border border-blue-500 px-6 py-3 text-black focus:outline-none md:mx-2 md:mt-0 md:w-auto">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
-										className="w-6 h-6"
+										className="h-6 w-6"
 										fill="none"
 										viewBox="0 0 24 24"
 										stroke="currentColor"
@@ -60,7 +60,7 @@ function BusinessRegistrationForm() {
 							</div>
 						</div> */}
 						<form>
-							<div className="grid grid-cols-1 gap-x-8 gap-y-4 mt-8 md:grid-cols-2">
+							<div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2">
 								<div>
 									<InputField
 										inputFieldId="businessName"
@@ -170,7 +170,7 @@ function BusinessRegistrationForm() {
 								</div>
 							</div>
 
-							<div className="py-4 xl:px-36 md:px-32 xs:px-16">
+							<div className="py-4 xs:px-16 md:px-32 xl:px-36">
 								<Button
 									buttonName="SUBMIT"
 									buttonLink="/schedulizer/businessinfo"

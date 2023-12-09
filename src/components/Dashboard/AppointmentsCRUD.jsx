@@ -31,7 +31,7 @@ function AppointmentsCRUD() {
 	}, [typedCharacters]);
 
 	useEffect(() => {
-		const url = "mongodb://localhost:27017/schedulizer";
+		const url = "mongodb://localhost:27017/Schedulizer";
 		DbConnect(url);
 	}, []);
 
@@ -43,8 +43,8 @@ function AppointmentsCRUD() {
 				</h2>
 				<form method="POST" action="" className="">
 					<div className="px-52">
-						<div className="py-2 space-y-4">
-							<div className="grid grid-cols-2 gap-4 w-full">
+						<div className="space-y-4 py-2">
+							<div className="grid w-full grid-cols-2 gap-4">
 								<InputField
 									inputFieldId="appointmenttitle"
 									inputFieldType="text"
@@ -66,7 +66,7 @@ function AppointmentsCRUD() {
 								/>
 							</div>
 
-							<div className="grid grid-cols-3 gap-4 w-full">
+							<div className="grid w-full grid-cols-3 gap-4">
 								<InputField
 									inputFieldId="AppointmentPrice"
 									inputFieldType="text"

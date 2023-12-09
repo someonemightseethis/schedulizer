@@ -7,10 +7,10 @@ function Services() {
 	return (
 		<div className="bg-[#FAF8ED]">
 			<Navbar />
-			<div className="md:pt-[62px]">
+			<div className="pattern-texture-indigo-500/30 pattern-texture-scale-[1.5] md:pt-[62px]">
 				{/* Add padding top to create space for fixed navbar */}
 				<Filters />
-				<div className="flex flex-wrap justify-center items-center gap-x-28 px-20 gap-y-6 py-6 md:py-24 xs:py-36 lg:pt-24">
+				<div className="flex flex-wrap items-center justify-center gap-x-28 gap-y-6 px-20 py-6 xs:py-36 md:py-24 lg:pt-24">
 					<BusinessCard />
 					<BusinessCard />
 					<BusinessCard />

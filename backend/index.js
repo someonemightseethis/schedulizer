@@ -6,7 +6,7 @@ import appointmentRouter from "./routes/appointment.js";
 
 const app = express();
 
-DbConnect("mongodb://127.0.0.1:27017/Schdulizer");
+DbConnect("mongodb://localhost:27017/Schedulizer");
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());

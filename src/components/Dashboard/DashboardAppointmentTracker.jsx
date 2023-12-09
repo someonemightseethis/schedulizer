@@ -7,21 +7,21 @@ function DashboardAppointmentTracker() {
 	});
 
 	return (
-		<div className="flex flex-col space-y-6 bg-[#FAF8ED] font-muktaVaani">
-			<h2 className="font-poppins text-2xl font-bold text-center">
+		<div className="flex flex-col space-y-6 bg-[#FAF8ED] font-muktaVaani pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+			<h2 className="text-center font-poppins text-2xl font-bold">
 				Tasks Tracker
 			</h2>
 			<div className="flex space-x-4">
-				<div className="rounded-lg border-2 border-black p-4 text-gray-800">
+				<div className="rounded-lg border-2 border-black bg-[#FAF8ED] p-4 text-gray-800">
 					<div className="text-2xl font-bold leading-none">20</div>
 					<div className="mt-2">Tasks finished this week</div>
 				</div>
-				<div className="rounded-lg border-2 border-black p-4 text-gray-800">
+				<div className="rounded-lg border-2 border-black bg-[#FAF8ED] p-4 text-gray-800">
 					<div className="text-2xl font-bold leading-none">5.5</div>
 					<div className="mt-2">Tracked hours this week</div>
 				</div>
 			</div>
-			<div className="col-span-2 rounded-lg border-2 border-black">
+			<div className="col-span-2 rounded-lg border-2 border-black bg-[#FAF8ED]">
 				<div className="rounded-lg p-4 text-gray-800">
 					<div className="text-xl font-bold leading-none">
 						Your daily appointments
