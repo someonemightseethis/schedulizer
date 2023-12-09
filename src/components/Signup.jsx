@@ -1,21 +1,69 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import InputField from "./Form/InputField";
 import Navbar from "./Navbar/Navbar";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Signup() {
+	const navigate = useNavigate(); // Define navigate here
 	const [userFirstName, setUserFirstName] = useState("");
 	const [userLastName, setUserLastName] = useState("");
 	const [userPhoneNumber, setUserPhoneNumber] = useState("");
 	const [userEmail, setUserEmail] = useState("");
 	const [userPassword, setUserPassword] = useState("");
 	const [userConfirmPassword, setUserConfirmPassword] = useState("");
+	const [errors, setErrors] = useState({});
+	const [isLoading, setIsLoading] = useState(false);
+
+	const formatPassword = (value) => value.trim();
+
+	useEffect(() => {
+		validateField(
+			userConfirmPassword,
+			(value) => value === userPassword,
+			"Passwords do not match",
+			"userConfirmPassword"
+		);
+	}, [userPassword, userConfirmPassword]);
+
+	const validateField = (value, validateFunc, errorMessage, fieldName) => {
+		if (!validateFunc(value)) {
+			setErrors((prevErrors) => ({
+				...prevErrors,
+				[fieldName]: errorMessage,
+			}));
+		} else {
+			setErrors((prevErrors) => {
+				//eslint-disable-next-line no-unused-vars
+				const { [fieldName]: _, ...rest } = prevErrors;
+				return rest;
+			});
+		}
+	};
 
 	const handleSubmit = async (event) => {
-		console.log("inside handleSubmit");
+		setIsLoading(true);
 		event.preventDefault();
+
+		// Validate password confirmation
+		const passwordMatch = userConfirmPassword === userPassword;
+		if (!passwordMatch) {
+			setErrors((prevErrors) => ({
+				...prevErrors,
+				userConfirmPassword: "Passwords do not match",
+			}));
+
+			setIsLoading(false);
+			return;
+		}
+
+		// Clear the error if passwords match
+		setErrors((prevErrors) => {
+			//eslint-disable-next-line no-unused-vars
+			const { userConfirmPassword: _, ...rest } = prevErrors;
+			return rest;
+		});
 
 		const userData = {
 			userFirstName,
@@ -26,9 +74,21 @@ function Signup() {
 			userConfirmPassword,
 		};
 
-		const response = await axios.post("/user/signup", userData);
+		try {
+			const response = await axios.post("/user/signup", userData);
+			console.log(response.data);
 
-		console.log(response.data);
+			// Check if the form submission was successful
+			if (response.data.success) {
+				setIsLoading(false);
+				// Use navigate from useNavigate hook to programmatically navigate
+				navigate("/schedulizer/login");
+			} else {
+				setIsLoading(false);
+			}
+		} catch (error) {
+			setIsLoading(false);
+		}
 	};
 
 	return (
@@ -53,6 +113,15 @@ function Signup() {
 										fieldType="input"
 										value={userFirstName}
 										onChange={(e) => setUserFirstName(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												(value) => value.trim() !== "",
+												"First name is required",
+												"userFirstName"
+											)
+										}
 									/>
 								</div>
 
@@ -67,6 +136,15 @@ function Signup() {
 										fieldType="input"
 										value={userLastName}
 										onChange={(e) => setUserLastName(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												(value) => value.trim() !== "",
+												"Last name is required",
+												"userLastName"
+											)
+										}
 									/>
 								</div>
 
@@ -80,7 +158,9 @@ function Signup() {
 										isRequired={true}
 										fieldType="input"
 										value={userPhoneNumber}
-										onChange={(e) => setUserPhoneNumber(e.target.value)}
+										onChange={(e) => {
+											setUserPhoneNumber(e.target.value);
+										}}
 									/>
 								</div>
 
@@ -95,6 +175,16 @@ function Signup() {
 										fieldType="input"
 										value={userEmail}
 										onChange={(e) => setUserEmail(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												(value) => value.includes("@"),
+												"Invalid email address",
+												"userEmail"
+											)
+										}
+										inputFieldError={errors.userEmail}
 									/>
 								</div>
 
@@ -108,7 +198,22 @@ function Signup() {
 										isRequired={true}
 										fieldType="input"
 										value={userPassword}
-										onChange={(e) => setUserPassword(e.target.value)}
+										onChange={(e) =>
+											setUserPassword(formatPassword(e.target.value))
+										}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												(value) =>
+													/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$/.test(
+														value
+													),
+												"Password should be at least 8 characters, include one capital letter and one number",
+												"userPassword"
+											)
+										}
+										inputFieldError={errors.userPassword}
 									/>
 								</div>
 
@@ -123,14 +228,15 @@ function Signup() {
 										fieldType="input"
 										value={userConfirmPassword}
 										onChange={(e) => setUserConfirmPassword(e.target.value)}
+										inputFieldError={errors.userConfirmPassword}
 									/>
 								</div>
 							</div>
 							<div className="py-4 xs:px-16 md:px-32 xl:px-36">
 								<Button
-									buttonName="SIGN UP"
-									buttonLink="/schedulizer/login"
+									buttonName="Sign Up"
 									buttonType="submit"
+									disabled={isLoading || Object.keys(errors).length > 0}
 								/>
 							</div>
 						</form>

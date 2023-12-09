@@ -2,6 +2,11 @@ import PropTypes from "prop-types";
 
 function InputField(props) {
 	const isRequired = props.isRequired || false;
+	const handleBlur = (e) => {
+		if (props.validateOnBlur) {
+			props.validate(e.target.value);
+		}
+	};
 
 	return (
 		<div>
@@ -18,9 +23,11 @@ function InputField(props) {
 					cols={props.cols}
 					rows={props.rows}
 					maxLength={props.maxLength}
-					className="placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 border-black px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none"
+					className={`placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 ${
+						props.inputFieldError ? "border-red-500" : "border-black"
+					} px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none`}
 					{...(isRequired ? { required: true } : {})}
-					// value={props.inputFieldValue}
+					onBlur={handleBlur}
 				/>
 			) : (
 				<input
@@ -29,10 +36,15 @@ function InputField(props) {
 					placeholder={props.inputFieldPlaceholder}
 					pattern={props.inputFieldPattern}
 					{...(isRequired ? { required: true } : {})}
-					className="placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 border-black px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none"
+					className={`placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 ${
+						props.inputFieldError ? "border-red-500" : "border-black"
+					} px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none`}
 					{...(isRequired ? { required: true } : {})}
-					// value={props.inputFieldValue}
+					onBlur={handleBlur}
 				/>
+			)}
+			{props.inputFieldError && (
+				<p className="text-red-500 text-sm mt-1">{props.inputFieldError}</p>
 			)}
 		</div>
 	);
@@ -51,6 +63,9 @@ InputField.propTypes = {
 	rows: PropTypes.number, // New prop for textarea rows
 	maxLength: PropTypes.number, // New prop for textarea maxLength
 	// inputFieldValue: PropTypes.string, // New prop for textarea value
+	inputFieldError: PropTypes.string, // New prop for textarea error message
+	validateOnBlur: PropTypes.bool, // New prop for enabling validation on blur
+	validate: PropTypes.func, // New prop for the validation function
 };
 
 export default InputField;
