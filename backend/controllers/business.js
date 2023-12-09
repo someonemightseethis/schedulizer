@@ -4,16 +4,18 @@ import nodemailer from "nodemailer";
 
 // Register Business
 export const registeredBusiness = async (req, res) => {
+	console.log(req.body); // This will log the request body
+
 	const data = {
-		name: req.body.name,
-		contactNumber: req.body.contactNumber,
-		email: req.body.email,
-		city: req.body.city,
-		type: req.body.type,
-		employees: req.body.employees,
-		workField: req.body.workField,
-		address: req.body.address,
-		googleMapLink: req.body.googleMapLink,
+		name: req.body.businessName,
+		contactNumber: req.body.businessContactNumber,
+		email: req.body.businessEmail,
+		city: req.body.businessCity,
+		type: req.body.businessType,
+		employees: req.body.numberOfEmployees,
+		workField: req.body.businessCategory,
+		address: req.body.businessAddress,
+		addressLink: req.body.businessAddressLink,
 	};
 
 	if (
@@ -25,7 +27,7 @@ export const registeredBusiness = async (req, res) => {
 		!data.employees ||
 		!data.workField ||
 		!data.address ||
-		!data.googleMapLink
+		!data.addressLink
 	) {
 		return res.status(400).send("All Fields are required.");
 	}
@@ -39,7 +41,10 @@ export const registeredBusiness = async (req, res) => {
 			const businessdata = await Business.create(data);
 			sendMail(req.body.email, req.body.name, req.body.contactNumber);
 			console.log(businessdata);
-			return res.send("Business Registered Successfully");
+			return res.send({
+				message: "Business Registered Successfully",
+				success: true,
+			});
 		}
 	} catch (error) {
 		console.error(error);
@@ -94,7 +99,8 @@ export const updateById = async (req, res) => {
 			req.body.employees || existingBusiness.employees;
 		existingBusiness.workField =
 			req.body.workField || existingBusiness.workField;
-		existingBusiness.address = req.body.address || existingBusiness.address;
+		existingBusiness.addressLink =
+			req.body.addressLink || existingBusiness.addressLink;
 		existingBusiness.googleMapLink =
 			req.body.googleMapLink || existingBusiness.googleMapLink;
 

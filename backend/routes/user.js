@@ -7,7 +7,7 @@ const userRouter = express.Router();
 userRouter.post("/signup", UserController.SignUp);
 
 // Login user
-userRouter.post("/login", UserController.Login);
+userRouter.post("/signin", UserController.SignIn);
 
 //getUserdata
 userRouter.post("/user", UserController.auth);

@@ -49,10 +49,14 @@ function InputField(props) {
 					{...(isRequired ? { required: true } : {})}
 					onBlur={handleBlur}
 					onChange={handleChange}
+					name={props.inputFieldName} // Add this line
+					{...(props.inputFieldAutoComplete ? { autocomplete: "off" } : {})}
 				/>
 			)}
 			{props.inputFieldError && (
-				<p className="text-red-500 text-sm mt-1">{props.inputFieldError}</p>
+				<p className="text-red-500 text-sm mt-1 font-poppins">
+					{props.inputFieldError}
+				</p>
 			)}
 		</div>
 	);
@@ -75,6 +79,8 @@ InputField.propTypes = {
 	validateOnBlur: PropTypes.bool, // New prop for enabling validation on blur
 	validate: PropTypes.func, // New prop for the validation function
 	onChange: PropTypes.func, // New prop for the onChange function
+	inputFieldName: PropTypes.string, // New prop for the name of the input
+	inputFieldAutoComplete: PropTypes.bool, // New prop for disabling autocomplete
 };
 
 export default InputField;

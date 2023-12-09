@@ -1,9 +1,14 @@
+import dotenv from "dotenv";
+
+dotenv.config();
+
 import express from "express";
 import DbConnect from "./config/db.js";
 import userRouter from "./routes/user.js";
 import businessRouter from "./routes/business.js";
 import appointmentRouter from "./routes/appointment.js";
 
+console.log("JWT_SECRET:", process.env.JWT_SECRET);
 const app = express();
 
 DbConnect("mongodb://localhost:27017/Schedulizer");

@@ -1,7 +1,7 @@
 // import express from "express";
 import User, { create } from "../models/user.js";
 import { hash, compare } from "bcrypt";
-import sign from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 // Register User
 async function SignUp(req, res) {
@@ -46,29 +46,43 @@ async function SignUp(req, res) {
 	}
 }
 
-// Login user
-async function Login(req, res) {
+// SignIn user
+async function SignIn(req, res) {
 	try {
-		const existingUser = await User.findOne({ email: req.body.email });
+		const existingUser = await User.findOne({ email: req.body.userEmail });
 		if (!existingUser) {
-			return res.send("User name cannot found");
+			return res
+				.status(400)
+				.json({ error: "No user found with the given email" });
 		}
+
 		// Compare the hashed password from the database with the plaintext password
 		const isPasswordMatch = await compare(
-			req.body.password,
+			req.body.userPassword,
 			existingUser.password
 		);
 		if (!isPasswordMatch) {
-			return res.send("wrong Password");
+			return res.status(400).json({ error: "Wrong Password" });
 		}
-		const token = sign({ id: existingUser.id }, process.env.JWT_SECRET, {
+
+		const token = jwt.sign({ id: existingUser.id }, process.env.JWT_SECRET, {
 			expiresIn: "1d",
 		});
+
+		res.token = token;
+
+		// const token = jwt.sign({ id: existingUser.id }, process.env.JWT_SECRET || 'default_secret', {
+		// 	expiresIn: "1d",
+		//   });
+
 		res
 			.status(200)
-			.send({ message: "Login Successfuly", success: true, token });
-	} catch {
-		return res.send("wrong Details");
+			.json({ message: "Sign In Successful", success: true, token });
+	} catch (error) {
+		console.error(error);
+		res
+			.status(500)
+			.json({ error: "Internal Server Error", details: error.stack });
 	}
 }
 
@@ -101,6 +115,6 @@ const auth = async (req, res) => {
 
 export default {
 	SignUp,
-	Login,
+	SignIn,
 	auth,
 };

@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 
-import Login from "./components/Login.jsx";
-import Signup from "./components/Signup.jsx";
+import SignIn from "./components/SignIn.jsx";
+import SignUp from "./components/Signup.jsx";
 import BusinessRegistrationForm from "./components/BusinessRegistrationForm.jsx";
 import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import BusinessInfo from "./components/BusinessInfo.jsx";
@@ -18,19 +18,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 				<Route path="/schedulizer/" element={<Home />} />
 				<Route path="/schedulizer/dashboard" element={<Dashboard />} />
 				<Route path="/schedulizer/services" element={<Services />} />
-				<Route path="/schedulizer/login" element={<Login />} />
-				<Route
-					path="/schedulizer/registration"
-					element={<Signup />}
-				/>
+				<Route path="/schedulizer/signin" element={<SignIn />} />
+				<Route path="/schedulizer/signup" element={<SignUp />} />
 				<Route
 					path="/schedulizer/businessregistration"
 					element={<BusinessRegistrationForm />}
 				/>
-				<Route
-					path="/schedulizer/businessinfo"
-					element={<BusinessInfo />}
-				/>
+				<Route path="/schedulizer/businessinfo" element={<BusinessInfo />} />
 			</Routes>
 		</BrowserRouter>
 	</React.StrictMode>

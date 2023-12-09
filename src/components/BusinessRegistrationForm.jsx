@@ -1,9 +1,63 @@
+import useState from "react";
+import useNavigate from "react-router-dom";
+import axios from "axios";
 import Button from "./Button";
 import DropdownButton from "./Form/DropdownButton";
 import InputField from "./Form/InputField";
 import Navbar from "./Navbar/Navbar";
 
 function BusinessRegistrationForm() {
+	const navigate = useNavigate();
+	const [businessName, setBusinessName] = useState("");
+	const [businessContactNumber, setBusinessContactNumber] = useState("");
+	const [businessEmail, setBusinessEmail] = useState("");
+	const [businessCity, setBusinessCity] = useState("");
+	const [businessType, setBusinessType] = useState("");
+	const [numberOfEmployees, setNumberOfEmployees] = useState("");
+	const [businessCategory, setBusinessCategory] = useState("");
+	const [businessAddress, setBusinessAddress] = useState("");
+	const [businessAddressLink, setBusinessAddressLink] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
+
+	const handleSubmit = async (event) => {
+		setIsLoading(true);
+		event.preventDefault();
+
+		const businessData = {
+			businessName,
+			businessContactNumber,
+			businessEmail,
+			businessCity,
+			businessType,
+			numberOfEmployees,
+			businessCategory,
+			businessAddress,
+			businessAddressLink,
+		};
+
+		try {
+			const response = await axios.post("/business/registered", businessData, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			console.log(response.data);
+
+			// Check if the form submission was successful
+			if (response.data.success) {
+				setIsLoading(false);
+				// Use navigate from useNavigate hook to programmatically navigate
+				navigate("/schedulizer/dashboard");
+			} else {
+				setIsLoading(false);
+			}
+		} catch (error) {
+			console.log("error data", error.response?.data);
+			console.log("Form data", businessData);
+			setIsLoading(false);
+		}
+	};
+
 	return (
 		<div className="m-0">
 			<Navbar />
@@ -16,50 +70,7 @@ function BusinessRegistrationForm() {
 						</p>
 					</h3>
 					<div className="w-full items-center justify-center px-72">
-						{/* <div className="mt-6">
-							<h1 className="text-black">Select type of account</h1>
-
-							<div className="mt-3 md:-mx-2 md:flex md:items-center">
-								<button className="flex w-full justify-center rounded-md px-6 py-3 text-black focus:outline-none md:mx-2 md:w-auto">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="h-6 w-6"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										strokeWidth="2"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-										/>
-									</svg>
-
-									<span className="mx-2">client</span>
-								</button>
-
-								<button className="mt-4 flex w-full justify-center rounded-md border border-blue-500 px-6 py-3 text-black focus:outline-none md:mx-2 md:mt-0 md:w-auto">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										className="h-6 w-6"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										strokeWidth="2"
-									>
-										<path
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-										/>
-									</svg>
-
-									<span className="mx-2">worker</span>
-								</button>
-							</div>
-						</div> */}
-						<form>
+						<form onSubmit={handleSubmit}>
 							<div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2">
 								<div>
 									<InputField
@@ -70,6 +81,8 @@ function BusinessRegistrationForm() {
 										inputFieldLabelName="Registered Business Name"
 										isRequired={true}
 										fieldType="input"
+										value={businessName}
+										onChange={(e) => setBusinessName(e.target.value)}
 									/>
 								</div>
 
@@ -82,6 +95,8 @@ function BusinessRegistrationForm() {
 										inputFieldLabelName="Contact Number"
 										isRequired={true}
 										fieldType="input"
+										value={businessContactNumber}
+										onChange={(e) => setBusinessContactNumber(e.target.value)}
 									/>
 								</div>
 
@@ -94,18 +109,22 @@ function BusinessRegistrationForm() {
 										inputFieldLabelName="Work Email"
 										isRequired={true}
 										fieldType="input"
+										value={businessEmail}
+										onChange={(e) => setBusinessEmail(e.target.value)}
 									/>
 								</div>
 
 								<div>
 									<InputField
 										inputFieldId="businessCity"
-										inputFieldType="email"
+										inputFieldType="text"
 										inputFieldPlaceholder="Islamabad"
 										inputFieldHtmlFor="businessCity"
 										inputFieldLabelName="City"
 										isRequired={true}
 										fieldType="input"
+										value={businessCity}
+										onChange={(e) => setBusinessCity(e.target.value)}
 									/>
 								</div>
 
@@ -118,6 +137,7 @@ function BusinessRegistrationForm() {
 											dropdownlabelhtmlfor="businesstype"
 											dropdownliname1="Public Business"
 											dropdownliname2="Private Business"
+											onOptionSelect={setBusinessType}
 										/>
 									</div>
 									<div className="flex-shrink">
@@ -130,6 +150,7 @@ function BusinessRegistrationForm() {
 											dropdownliname2="5 - 10"
 											dropdownliname3="10 - 15"
 											dropdownliname4="15 - 20"
+											onOptionSelect={setNumberOfEmployees}
 										/>
 									</div>
 								</div>
@@ -142,6 +163,8 @@ function BusinessRegistrationForm() {
 										inputFieldLabelName="Field of Work"
 										isRequired={true}
 										fieldType="input"
+										value={businessCategory}
+										onChange={(e) => setBusinessCategory(e.target.value)}
 									/>
 								</div>
 
@@ -149,23 +172,27 @@ function BusinessRegistrationForm() {
 									<InputField
 										inputFieldId="businessAddress"
 										inputFieldType="text"
-										inputFieldPlaceholder="Appt. 123, Street 123, Sector 123, Islamabad"
+										inputFieldPlaceholder="e.g. 1234 Main St"
 										inputFieldHtmlFor="businessAddress"
-										inputFieldLabelName="Address"
+										inputFieldLabelName="Business Address"
 										isRequired={true}
 										fieldType="input"
+										value={businessAddress}
+										onChange={(e) => setBusinessAddress(e.target.value)}
 									/>
 								</div>
 
 								<div>
 									<InputField
 										inputFieldId="businessAddressLink"
-										inputFieldType="url"
-										inputFieldPlaceholder="https://www.google.com/maps/..."
+										inputFieldType="text"
+										inputFieldPlaceholder="e.g. https://maps.google.com/?q=1234+Main+St"
 										inputFieldHtmlFor="businessAddressLink"
-										inputFieldLabelName="Link to Google Maps"
+										inputFieldLabelName="Google Maps Link to Business Address"
 										isRequired={true}
 										fieldType="input"
+										value={businessAddressLink}
+										onChange={(e) => setBusinessAddressLink(e.target.value)}
 									/>
 								</div>
 							</div>
@@ -173,8 +200,8 @@ function BusinessRegistrationForm() {
 							<div className="py-4 xs:px-16 md:px-32 xl:px-36">
 								<Button
 									buttonName="SUBMIT"
-									buttonLink="/schedulizer/businessinfo"
 									buttonType="submit"
+									disabled={isLoading}
 								/>
 							</div>
 						</form>

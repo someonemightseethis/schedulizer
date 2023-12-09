@@ -5,7 +5,7 @@ import Navbar from "./Navbar/Navbar";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-function Signup() {
+function SignUp() {
 	const navigate = useNavigate();
 	const [userFirstName, setUserFirstName] = useState("");
 	const [userLastName, setUserLastName] = useState("");
@@ -15,16 +15,19 @@ function Signup() {
 	const [userConfirmPassword, setUserConfirmPassword] = useState("");
 	const [errors, setErrors] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState("");
 
 	const formatPassword = (value) => value.trim();
 
 	useEffect(() => {
-		validateField(
-			userConfirmPassword,
-			(value) => value === userPassword,
-			"Passwords do not match",
-			"userConfirmPassword"
-		);
+		if (userConfirmPassword) {
+			validateField(
+				userConfirmPassword,
+				(value) => value === userPassword,
+				"Passwords do not match",
+				"userConfirmPassword"
+			);
+		}
 	}, [userPassword, userConfirmPassword]);
 
 	const validateField = (value, validateFunc, errorMessage, fieldName) => {
@@ -40,6 +43,16 @@ function Signup() {
 				return rest;
 			});
 		}
+	};
+
+	const validatePhoneNumber = (value) => {
+		const isValidPhoneNumber = /^\d+$/.test(value);
+		validateField(
+			value,
+			() => isValidPhoneNumber,
+			"Phone number should be a number",
+			"userPhoneNumber"
+		);
 	};
 
 	const handleSubmit = async (event) => {
@@ -81,8 +94,7 @@ function Signup() {
 			if (response.data.success) {
 				setIsLoading(false);
 				// Use navigate from useNavigate hook to programmatically navigate
-				navigate("/schedulizer/login");
-				console.log("okvro");
+				navigate("/schedulizer/signin");
 			} else {
 				setIsLoading(false);
 			}
@@ -90,6 +102,7 @@ function Signup() {
 			console.log("error data", error.response?.data);
 			console.log("Form data", userData);
 			setIsLoading(false);
+			setError(error.response.data.error);
 		}
 	};
 
@@ -162,7 +175,11 @@ function Signup() {
 										value={userPhoneNumber}
 										onChange={(e) => {
 											setUserPhoneNumber(e.target.value);
+											validatePhoneNumber(e.target.value); // validate phone number
 										}}
+										inputFieldName="userPhoneNumber"
+										inputFieldAutoComplete={false}
+										inputFieldError={errors.userPhoneNumber} // display error for phone number
 									/>
 								</div>
 
@@ -176,7 +193,10 @@ function Signup() {
 										isRequired={true}
 										fieldType="input"
 										value={userEmail}
-										onChange={(e) => setUserEmail(e.target.value)}
+										onChange={(e) => {
+											setUserEmail(e.target.value);
+											setError(""); // clear the error
+										}}
 										validateOnBlur={true}
 										validate={(value) =>
 											validateField(
@@ -234,6 +254,9 @@ function Signup() {
 									/>
 								</div>
 							</div>
+							{error && (
+								<p className="text-red-500 text-sm mt-1 text-center">{error}</p>
+							)}
 							<div className="py-4 xs:px-16 md:px-32 xl:px-36">
 								<Button
 									buttonName="Sign Up"
@@ -245,7 +268,7 @@ function Signup() {
 						<p className="text-md text-grey-900 text-center font-muktaVaani leading-relaxed">
 							Already have an account?{" "}
 							<Link
-								to="/schedulizer/login"
+								to="/schedulizer/signin"
 								className="font-poppins text-sm font-semibold text-indigo-500 hover:text-indigo-600">
 								Sign In
 							</Link>
@@ -272,4 +295,4 @@ function Signup() {
 	);
 }
 
-export default Signup;
+export default SignUp;

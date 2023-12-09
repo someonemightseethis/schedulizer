@@ -23,7 +23,7 @@ const BusinessSchema = new mongoose.Schema({
 		required: true,
 	},
 	employees: {
-		type: Number,
+		type: String,
 		required: true,
 	},
 	workField: {
@@ -34,7 +34,7 @@ const BusinessSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	googleMapLink: {
+	addressLink: {
 		type: String,
 		required: true,
 	},
