@@ -11,7 +11,6 @@ async function SignUp(req, res) {
 		phoneNumber: req.body.userPhoneNumber,
 		email: req.body.userEmail,
 		password: req.body.userPassword,
-		confPassword: req.body.userConfirmPassword,
 	};
 
 	if (
@@ -19,14 +18,9 @@ async function SignUp(req, res) {
 		!data.lastName ||
 		!data.phoneNumber ||
 		!data.email ||
-		!data.password ||
-		!data.confPassword
+		!data.password
 	) {
 		return res.status(400).json({ error: "All Fields are required." });
-	}
-
-	if (data.password !== data.confPassword) {
-		return res.status(400).json({ error: "Passwords do not match." });
 	}
 
 	try {
@@ -43,7 +37,9 @@ async function SignUp(req, res) {
 
 		const userData = await create(data);
 		console.log(userData);
-		return res.status(200).json({ message: "User Registered Successfully" });
+		return res
+			.status(200)
+			.send({ message: "User Registered Successfully", success: true });
 	} catch (error) {
 		console.error("Error during signup:", error);
 		return res.status(500).json({ error: "Internal Server Error" });

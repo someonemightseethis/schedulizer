@@ -21,10 +21,6 @@ const Loginschema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	confPassword: {
-		type: String,
-		required: true,
-	},
 });
 
 const User = mongoose.model("User", Loginschema);

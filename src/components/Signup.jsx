@@ -6,7 +6,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function Signup() {
-	const navigate = useNavigate(); // Define navigate here
+	const navigate = useNavigate();
 	const [userFirstName, setUserFirstName] = useState("");
 	const [userLastName, setUserLastName] = useState("");
 	const [userPhoneNumber, setUserPhoneNumber] = useState("");
@@ -71,7 +71,6 @@ function Signup() {
 			userPhoneNumber,
 			userEmail,
 			userPassword,
-			userConfirmPassword,
 		};
 
 		try {
@@ -83,10 +82,13 @@ function Signup() {
 				setIsLoading(false);
 				// Use navigate from useNavigate hook to programmatically navigate
 				navigate("/schedulizer/login");
+				console.log("okvro");
 			} else {
 				setIsLoading(false);
 			}
 		} catch (error) {
+			console.log("error data", error.response?.data);
+			console.log("Form data", userData);
 			setIsLoading(false);
 		}
 	};

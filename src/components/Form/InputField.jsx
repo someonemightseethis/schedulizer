@@ -8,6 +8,12 @@ function InputField(props) {
 		}
 	};
 
+	const handleChange = (e) => {
+		if (props.onChange) {
+			props.onChange(e);
+		}
+	};
+
 	return (
 		<div>
 			<label
@@ -28,6 +34,7 @@ function InputField(props) {
 					} px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none`}
 					{...(isRequired ? { required: true } : {})}
 					onBlur={handleBlur}
+					onChange={handleChange}
 				/>
 			) : (
 				<input
@@ -41,6 +48,7 @@ function InputField(props) {
 					} px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none`}
 					{...(isRequired ? { required: true } : {})}
 					onBlur={handleBlur}
+					onChange={handleChange}
 				/>
 			)}
 			{props.inputFieldError && (
@@ -66,6 +74,7 @@ InputField.propTypes = {
 	inputFieldError: PropTypes.string, // New prop for textarea error message
 	validateOnBlur: PropTypes.bool, // New prop for enabling validation on blur
 	validate: PropTypes.func, // New prop for the validation function
+	onChange: PropTypes.func, // New prop for the onChange function
 };
 
 export default InputField;
