@@ -14,6 +14,7 @@ function Signup() {
 	const [userConfirmPassword, setUserConfirmPassword] = useState("");
 
 	const handleSubmit = async (event) => {
+		console.log("inside handleSubmit");
 		event.preventDefault();
 
 		const userData = {
@@ -25,12 +26,9 @@ function Signup() {
 			userConfirmPassword,
 		};
 
-		try {
-			const response = await axios.post("/user/signup", userData);
-			console.log(response.data);
-		} catch (error) {
-			console.error(error);
-		}
+		const response = await axios.post("/user/signup", userData);
+
+		console.log(response.data);
 	};
 
 	return (
