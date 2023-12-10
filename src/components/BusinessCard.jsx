@@ -3,7 +3,7 @@ import Button from "./Button";
 function BusinessCard() {
 	return (
 		<div className="flex items-center justify-center">
-			<div className="group relative mb-6 mt-6 w-full break-words rounded-xl border-2 border-black bg-[#FAF8ED] shadow-lg md:max-w-sm">
+			<div className="group relative mb-6 mt-6 w-full break-words rounded-xl shadow-indigo-800 bg-[#FAF8ED] shadow-sm md:max-w-sm">
 				<div className="pb-6">
 					<div className="flex flex-wrap justify-center">
 						<div className="flex w-full justify-center">

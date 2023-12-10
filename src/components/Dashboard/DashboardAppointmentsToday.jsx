@@ -1,12 +1,12 @@
 function DashboardAppointmentsToday() {
 	return (
-		<div className="bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+		<div className="">
 			<h2 className="mb-4 font-poppins text-2xl font-bold">
 				Todays Appointments
 			</h2>
 
 			<div className="space-y-6 font-muktaVaani">
-				<div className="cursor-pointer space-y-2 rounded-lg border-2 border-black bg-[#FAF8ED] p-4 text-gray-800 duration-500 hover:scale-110">
+				<div className="cursor-pointer space-y-2 rounded-xl shadow-sm shadow-indigo-800 bg-[#FAF8ED] p-4 text-gray-800 duration-500 hover:scale-105">
 					<div className="flex justify-between">
 						<div className="text-sm text-gray-400">Number 10</div>
 						<div className="text-sm text-gray-400">4h ago</div>
@@ -27,7 +27,7 @@ function DashboardAppointmentsToday() {
 						upcoming in 3 hours
 					</div>
 				</div>
-				<div className="cursor-pointer space-y-2 rounded-lg border-2 border-black bg-[#FAF8ED] p-4 text-gray-800 duration-500 hover:scale-110">
+				<div className="cursor-pointer space-y-2 rounded-xl shadow-sm shadow-indigo-800 bg-[#FAF8ED] p-4 text-gray-800 duration-500 hover:scale-105">
 					<div className="flex justify-between">
 						<div className="text-sm text-gray-400">Number 10</div>
 						<div className="text-sm text-gray-400">4h ago</div>

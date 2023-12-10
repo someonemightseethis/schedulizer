@@ -2,7 +2,7 @@ import Button from "./Button";
 
 function AppointmentCard() {
 	return (
-		<div className="flex items-center justify-center bg-[#FAF8ED] rounded-xl shadow-md shadow-indigo-300">
+		<div className="flex items-center justify-center bg-[#FAF8ED] rounded-xl shadow-sm shadow-indigo-800">
 			<div className=" p-8">
 				<div className="text-center">
 					<h3 className="text-center font-poppins text-xl font-bold">

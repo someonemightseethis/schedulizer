@@ -8,11 +8,11 @@ import Button from "./Button";
 function BusinessInfo() {
 	return (
 		<Layout className="min-h-screen">
-			<div className="flex flex-col justify-center h-auto bg-[#FAF8ED] pattern-texture-indigo-500/60 pattern-texture-scale-[1.5] p-12">
+			<div className="flex flex-col justify-center h-auto bg-[#FAF8ED] pattern-texture-indigo-600/30 pattern-texture-scale-[1.5] p-12">
 				<div className="grid h-auto grid-cols-2 px-4 xl:gap-x-0 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 					<div className="py-32">
 						<div className="h-auto flex flex-col items-center justify-center space-y-6 fixed">
-							<div className="w-full  rounded-xl shadow-indigo-300 bg-[#FAF8ED] py-4 shadow-md">
+							<div className="w-full rounded-xl shadow-indigo-800 bg-[#FAF8ED] py-4 shadow-sm">
 								<div className="flex w-full justify-center">
 									<div className="relative">
 										<img
@@ -57,7 +57,7 @@ function BusinessInfo() {
 									</div>
 								</div>
 							</div>
-							<div className="w-full max-w-md rounded-xl shadow-indigo-300 bg-[#FAF8ED] p-8 shadow-md">
+							<div className="w-full max-w-md rounded-xl shadow-indigo-800 bg-[#FAF8ED] p-8 shadow-sm">
 								<p className="text-center font-muktaVaani text-md">
 									We gotta burn the rain forest, dump toxic waste, pollute the
 									air, and rip up the OZONE! Cause maybe if we screw up this
