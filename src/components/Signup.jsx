@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import InputField from "./Form/InputField";
-import Navbar from "./Navbar/Navbar";
+import Layout from "./Layout";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -107,11 +107,10 @@ function SignUp() {
 	};
 
 	return (
-		<div className="">
-			<Navbar />
-			<div className="flex h-screen items-center justify-center bg-[#FAF8ED] pt-36 pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+		<Layout>
+			<div className="flex flex-col justify-center min-h-screen bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
 				<div className="flex justify-center py-12">
-					<div className="md:w-full lg:w-[600px] xl:w-[700px]">
+					<div className="md:w-full lg:w-[600px] xl:w-[700px] pt-12">
 						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
 							Sign Up
 						</h3>
@@ -291,7 +290,7 @@ function SignUp() {
 					</div>
 				</div>
 			</div>
-		</div>
+		</Layout>
 	);
 }
 

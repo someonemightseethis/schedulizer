@@ -16,11 +16,13 @@ function InputField(props) {
 
 	return (
 		<div>
-			<label
-				htmlFor={props.inputFieldHtmlFor}
-				className="text-md text-grey-900 mb-4 px-1 text-start font-poppins font-medium">
-				{props.inputFieldLabelName}
-			</label>
+			{props.inputFieldLabelName && (
+				<label
+					htmlFor={props.inputFieldHtmlFor}
+					className="text-md text-grey-900 mb-4 px-1 text-start font-poppins font-medium">
+					{props.inputFieldLabelName}
+				</label>
+			)}
 			{props.fieldType === "textarea" ? (
 				<textarea
 					id={props.inputFieldId}

@@ -10,18 +10,18 @@ function BusinessCard() {
 							<div className="relative">
 								<img
 									src="./images/logo.png"
-									className="absolute -bottom-14 -left-10 flex max-w-[80px] items-center justify-center rounded-full border-2 border-black bg-[#FAF8ED]"
+									className="absolute -bottom-12 -left-10 flex max-w-[80px] items-center justify-center rounded-full border-2 border-black bg-[#FAF8ED]"
 								/>
 							</div>
 						</div>
 					</div>
-					<div className="pt-20 text-center">
+					<div className="pt-16 text-center">
 						<div className="flex justify-center space-x-6">
 							<div>
-								<h4 className="font-poppins text-2xl font-bold text-black">
+								<h4 className="font-poppins text-xl font-bold text-black">
 									Business Name
 								</h4>
-								<p className="text-md font-muktaVaani font-normal text-gray-600">
+								<p className="text-sm font-muktaVaani font-normal text-gray-600">
 									Business Category / Type
 								</p>
 							</div>
@@ -41,10 +41,10 @@ function BusinessCard() {
 								</svg>
 							</div>
 							<div className="flex flex-col items-center justify-center">
-								<p className="font-poppins text-2xl font-bold text-black">
+								<p className="font-poppins text-xl font-bold text-black">
 									4.3 / 5
 								</p>
-								<p className="text-md font-muktaVaani font-normal text-gray-600">
+								<p className="text-sm font-muktaVaani font-normal text-gray-600">
 									Rating
 								</p>
 							</div>
@@ -53,17 +53,19 @@ function BusinessCard() {
 					<div className="mx-6 mt-6 border-t border-indigo-500 pt-6 text-center">
 						<div className="flex flex-wrap justify-center">
 							<div className="w-full px-2">
-								<p className="mb-4 font-muktaVaani text-lg leading-relaxed text-black">
+								<p className="mb-4 font-muktaVaani text-md leading-relaxed text-black">
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
 									turpis orci, maximus sed purus a, cursus scelerisque purus.
 									Morbi molestie, odio at sagittis rhoncus, felis massa iaculis
 									mi, quis molestie erat ipsum vel risus.
 								</p>
 							</div>
-							<Button
-								buttonName="KNOW MORE / BOOK AN APPOINTMENT"
-								buttonLink="/schedulizer/businessinfo"
-							/>
+							<div className="py-4">
+								<Button
+									buttonName="KNOW MORE / BOOK AN APPOINTMENT"
+									buttonLink="/schedulizer/businessinfo"
+								/>
+							</div>
 						</div>
 					</div>
 				</div>

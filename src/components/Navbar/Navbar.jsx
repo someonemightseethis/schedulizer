@@ -7,8 +7,8 @@ function Navbar() {
 	const firstName = localStorage.getItem("firstName");
 
 	return (
-		<div className="fixed left-0 z-10 w-full border-b-2 border-black bg-[#FAF8ED] px-6">
-			<nav className="flex items-center justify-between space-x-2 px-4 py-2 lg:space-x-4">
+		<div className="fixed top-0 left-0 z-10 w-full bg-[#FAF8ED] px-6 drop-shadow-md">
+			<nav className="flex items-center justify-between space-x-2 px-4 py-1 lg:space-x-4">
 				<div className="flex flex-shrink-0 items-center">
 					<img src="./images/logo.png" alt="logo" className="mr-4 h-12 w-12" />
 					<Link to="/schedulizer/">
