@@ -8,11 +8,11 @@ import Button from "./Button";
 function BusinessInfo() {
 	return (
 		<Layout className="min-h-screen">
-			<div className="flex flex-col justify-center h-auto bg-[#FAF8ED] pattern-texture-indigo-600/30 pattern-texture-scale-[1.5] p-12">
-				<div className="grid h-auto grid-cols-2 px-4 xl:gap-x-0 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+			<div className="flex h-auto flex-col justify-center bg-[#FAF8ED] p-12 pattern-texture-indigo-600/30 pattern-texture-scale-[1.5]">
+				<div className="grid h-auto grid-cols-2 px-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:gap-x-0">
 					<div className="py-32">
-						<div className="h-auto flex flex-col items-center justify-center space-y-6 fixed">
-							<div className="w-full rounded-xl shadow-indigo-800 bg-[#FAF8ED] py-4 shadow-sm">
+						<div className="fixed flex h-auto flex-col items-center justify-center space-y-6">
+							<div className="w-full rounded-xl bg-[#FAF8ED] py-4 shadow-sm shadow-indigo-800">
 								<div className="flex w-full justify-center">
 									<div className="relative">
 										<img
@@ -27,7 +27,7 @@ function BusinessInfo() {
 											<h4 className="font-poppins text-xl font-bold text-black">
 												Business Name
 											</h4>
-											<p className="text-sm font-muktaVaani font-normal text-gray-600">
+											<p className="font-muktaVaani text-sm font-normal text-gray-600">
 												Business Category / Type
 											</p>
 										</div>
@@ -50,15 +50,15 @@ function BusinessInfo() {
 											<p className="font-poppins text-xl font-bold text-black">
 												4.3 / 5
 											</p>
-											<p className="text-sm font-muktaVaani font-normal text-gray-600">
+											<p className="font-muktaVaani text-sm font-normal text-gray-600">
 												Rating
 											</p>
 										</div>
 									</div>
 								</div>
 							</div>
-							<div className="w-full max-w-md rounded-xl shadow-indigo-800 bg-[#FAF8ED] p-8 shadow-sm">
-								<p className="text-center font-muktaVaani text-md">
+							<div className="w-full max-w-md rounded-xl bg-[#FAF8ED] p-8 shadow-sm shadow-indigo-800">
+								<p className="text-md text-center font-muktaVaani">
 									We gotta burn the rain forest, dump toxic waste, pollute the
 									air, and rip up the OZONE! Cause maybe if we screw up this
 									planet enough, they wont want it anymore! Theyre using our own
@@ -68,8 +68,8 @@ function BusinessInfo() {
 								</p>
 							</div>
 							<div className="w-full p-4">
-								<h4 className="font-ptSansCaption text-xl font-semibold text-black text-center pb-2">
-									BUSINESS FEEDBACK
+								<h4 className="pb-2 text-center font-ptSansCaption text-lg font-semibold text-black">
+									Business Feedback
 								</h4>
 								<form>
 									<InputField

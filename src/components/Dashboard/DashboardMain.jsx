@@ -6,7 +6,7 @@ import AppointmentsCRUD from "./AppointmentsCRUD";
 
 function DashboardMain() {
 	return (
-		<div className="bg-[#FAF8ED] py-12 pattern-texture-indigo-900/30 pattern-texture-scale-[1.5] md:ml-[226px] md:px-24 xl:lg:ml-[208px] xl:lg:px-20">
+		<div className="bg-[#FAF8ED] py-12 pattern-texture-indigo-600/30 pattern-texture-scale-[1.5] md:ml-[226px] md:px-24 xl:lg:ml-[208px] xl:lg:px-20">
 			<h2 className="mb-12 flex items-baseline justify-center font-bebas text-7xl font-semibold md:px-24 xl:lg:px-52">
 				Good day,
 				<p className="font-ptSansCaption text-4xl font-medium">
@@ -21,7 +21,7 @@ function DashboardMain() {
 				</div>
 			</div>
 			<div className="flex items-center justify-between xs:flex-col xs:gap-y-12 sm:flex-col sm:gap-y-12 md:flex-col md:gap-y-16 md:space-x-12 md:px-12 xl:lg:flex-row xl:lg:px-48 xl:lg:space-x-6">
-				<div className="rounded-xl shadow-sm shadow-indigo-800 bg-[#FAF8ED] px-12 py-6">
+				<div className="rounded-xl bg-[#FAF8ED] px-12 py-6 shadow-sm shadow-indigo-800">
 					<div className="text-grey-darker mb-2">
 						<span className="align-top text-3xl">RS</span>
 						<span className="text-5xl">21,404</span>
@@ -30,7 +30,7 @@ function DashboardMain() {
 						Revenue This Month
 					</div>
 				</div>
-				<div className="rounded-xl shadow-sm shadow-indigo-800 bg-[#FAF8ED] px-12 py-6">
+				<div className="rounded-xl bg-[#FAF8ED] px-12 py-6 shadow-sm shadow-indigo-800">
 					<div className="text-grey-darker mb-2">
 						<span className="align-top text-3xl">RS</span>
 						<span className="text-5xl">21,404</span>
@@ -39,7 +39,7 @@ function DashboardMain() {
 						Revenue This Month
 					</div>
 				</div>
-				<div className="rounded-xl shadow-sm shadow-indigo-800 bg-[#FAF8ED] px-12 py-6">
+				<div className="rounded-xl bg-[#FAF8ED] px-12 py-6 shadow-sm shadow-indigo-800">
 					<div className="text-grey-darker mb-2">
 						<span className="align-top text-3xl">RS</span>
 						<span className="text-5xl">21,404</span>

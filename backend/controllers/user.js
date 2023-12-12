@@ -5,6 +5,8 @@ import jwt from "jsonwebtoken";
 
 // Register User
 async function SignUp(req, res) {
+	console.log("req.body", req.body);
+
 	const data = {
 		firstName: req.body.userFirstName,
 		lastName: req.body.userLastName,
@@ -65,15 +67,15 @@ async function SignIn(req, res) {
 			return res.status(400).json({ error: "Wrong Password" });
 		}
 
-		const token = jwt.sign({ id: existingUser.id }, process.env.JWT_SECRET, {
-			expiresIn: "1d",
-		});
+		const token = jwt.sign(
+			{ id: existingUser.id, firstName: existingUser.firstName },
+			process.env.JWT_SECRET,
+			{
+				expiresIn: "10s",
+			}
+		);
 
 		res.token = token;
-
-		// const token = jwt.sign({ id: existingUser.id }, process.env.JWT_SECRET || 'default_secret', {
-		// 	expiresIn: "1d",
-		//   });
 
 		res
 			.status(200)

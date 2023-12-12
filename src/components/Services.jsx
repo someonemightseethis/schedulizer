@@ -7,7 +7,7 @@ function Services() {
 	return (
 		<Layout>
 			<Filters />
-			<div className="flex flex-wrap items-center justify-center gap-x-28 gap-y-6 px-20 pt-36 pb-12">
+			<div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4 px-20 pb-12 pt-36">
 				<BusinessCard />
 				<BusinessCard />
 				<BusinessCard />

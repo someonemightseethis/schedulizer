@@ -15,16 +15,17 @@ export default {
 	theme: {
 		fontFamily: {
 			bebas: ["Bebas Neue", "sans-serif"],
-			smooch: ["Smooch Sans", "sans-serif"],
 			cairoPlay: ["Cairo Play", "sans-serif"],
-			dosis: ["Dosis", "sans-serif"],
 			jaldi: ["Jaldi", "sans-serif"],
 			muktaVaani: ["Mukta Vaani", "sans-serif"],
 			poppins: ["Poppins", "sans-serif"],
 			ptSansCaption: ["PT Sans Caption", "sans-serif"],
-			reemKufi: ["Reem Kufi Fun", "sans-serif"],
 		},
-		extend: {},
+		extend: {
+			text: {
+				"5r": "5rem",
+			},
+		},
 	},
 	plugins: [twElementsPlugin, tailwindcssAnimated, tailwindcssPatterns],
 	darkMode: "class",

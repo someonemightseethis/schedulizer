@@ -9,7 +9,7 @@ function NavbarLinks() {
 
 	return (
 		<div className="">
-			<ul className="lg:mx-auto lg:items-center lg:w-auto lg:space-x-6 sm:hidden xs:hidden md:hidden lg:hidden xl:flex font-ptSansCaption">
+			<ul className="font-ptSansCaption xs:hidden sm:hidden md:hidden lg:mx-auto lg:hidden lg:w-auto lg:items-center lg:space-x-6 xl:flex">
 				<li>
 					<Link
 						className={`text-sm hover:underline hover:underline-offset-4 hover:font-medium ${
@@ -17,8 +17,7 @@ function NavbarLinks() {
 								? "text-indigo-500 font-medium"
 								: ""
 						}`}
-						to="/schedulizer/"
-					>
+						to="/schedulizer/">
 						Home
 					</Link>
 				</li>
@@ -27,9 +26,8 @@ function NavbarLinks() {
 						xmlns="http://www.w3.org/2000/svg"
 						fill="#6366F1"
 						stroke="#6366F1"
-						className="w-4 h-4 current-fill"
-						viewBox="0 0 24 24"
-					>
+						className="current-fill h-4 w-4"
+						viewBox="0 0 24 24">
 						<path
 							strokeLinecap="round"
 							strokeLinejoin="round"
@@ -45,8 +43,7 @@ function NavbarLinks() {
 								? "text-indigo-500 font-medium"
 								: ""
 						}`}
-						to="/schedulizer/services"
-					>
+						to="/schedulizer/services">
 						Services
 					</Link>
 				</li>
@@ -55,9 +52,8 @@ function NavbarLinks() {
 						xmlns="http://www.w3.org/2000/svg"
 						fill="#6366F1"
 						stroke="#6366F1"
-						className="w-4 h-4 current-fill"
-						viewBox="0 0 24 24"
-					>
+						className="current-fill h-4 w-4"
+						viewBox="0 0 24 24">
 						<path
 							strokeLinecap="round"
 							strokeLinejoin="round"
@@ -73,8 +69,7 @@ function NavbarLinks() {
 								? "text-indigo-500 font-medium"
 								: ""
 						}`}
-						to="/schedulizer/dashboard"
-					>
+						to="/schedulizer/dashboard">
 						Dashboard
 					</Link>
 				</li>

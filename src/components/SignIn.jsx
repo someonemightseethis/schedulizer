@@ -60,8 +60,15 @@ function SignIn() {
 				);
 
 				const decodedToken = JSON.parse(jsonPayload);
-				localStorage.setItem("firstName", decodedToken.firstName);
-				navigate("/schedulizer/services");
+				console.log("Decoded Token:", decodedToken);
+
+				// Updated code to set localStorage and navigate
+				const setLocalStorageAndNavigate = async () => {
+					localStorage.setItem("firstName", decodedToken.firstName);
+					await navigate("/schedulizer/services");
+				};
+
+				setLocalStorageAndNavigate();
 			}
 		} catch (error) {
 			if (
@@ -86,14 +93,14 @@ function SignIn() {
 
 	return (
 		<Layout>
-			<div className="flex flex-col justify-center min-h-screen bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+			<div className="flex min-h-screen flex-col justify-center bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
 				<div className="flex justify-center py-12">
 					<div className="pt-12">
 						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
 							Sign In
 						</h3>
 						<form
-							className="w-[400px] grid grid-cols-1 rounded-3xl"
+							className="grid w-[400px] grid-cols-1 rounded-3xl"
 							onSubmit={handleSubmit}>
 							<InputField
 								inputFieldId="userEmail"
@@ -136,41 +143,41 @@ function SignIn() {
 								validateOnBlur={true}
 								inputFieldError={passwordError}
 							/>
-							<div className="py-4 xl:px-12 px-16">
+							<div className="px-16 py-4 xl:px-12">
 								<Button
 									buttonName="Sign In"
 									buttonType="submit"
 									disabled={isLoading}
 								/>
 							</div>
-							<div className="py-4 flex flex-col justify-center items-center">
-								<p className="text-md font-muktaVaani leading-relaxed text-grey-900">
+							<div className="flex flex-col items-center justify-center py-4">
+								<p className="text-md text-grey-900 font-muktaVaani leading-relaxed">
 									Not registered yet?{" "}
 									<Link
 										to="/schedulizer/signup"
-										className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600">
+										className="font-poppins text-sm font-semibold text-indigo-500 hover:text-indigo-600">
 										Create an Account
 									</Link>
 								</p>
-								<p className="text-md font-muktaVaani leading-relaxed text-grey-900">
+								<p className="text-md text-grey-900 font-muktaVaani leading-relaxed">
 									Forget Password?{" "}
 									<a
 										href=""
-										className="font-semibold font-poppins text-sm text-indigo-500 hover:text-indigo-600">
+										className="font-poppins text-sm font-semibold text-indigo-500 hover:text-indigo-600">
 										Reset now
 									</a>
 								</p>
 							</div>
 						</form>
-						<div className="flex items-center mb-3 pt-6">
-							<hr className="h-0 border-b border-solid border-grey-500 grow" />
-							<p className="mx-4 text-grey-600">or</p>
-							<hr className="h-0 border-b border-solid border-grey-500 grow" />
+						<div className="mb-3 flex items-center pt-6">
+							<hr className="border-grey-500 h-0 grow border-b border-solid" />
+							<p className="text-grey-600 mx-4">or</p>
+							<hr className="border-grey-500 h-0 grow border-b border-solid" />
 						</div>
-						<div className="xl:px-12 px-16">
-							<a className="flex items-center justify-center w-full py-2 mb-6 text-sm font-medium transition duration-300 rounded-lg text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-4 focus:ring-grey-300 border-2 border-black cursor-pointer font-ptSansCaption">
+						<div className="px-16 xl:px-12">
+							<a className="text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-grey-300 mb-6 flex w-full cursor-pointer items-center justify-center rounded-lg border-2 border-black py-2 font-ptSansCaption text-sm font-medium transition duration-300 focus:ring-4">
 								<img
-									className="h-5 mr-6"
+									className="mr-6 h-5"
 									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
 									alt=""
 								/>

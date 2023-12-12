@@ -56,7 +56,7 @@ function InputField(props) {
 				/>
 			)}
 			{props.inputFieldError && (
-				<p className="text-red-500 text-sm mt-1 font-poppins">
+				<p className="mt-1 font-poppins text-xs text-red-500">
 					{props.inputFieldError}
 				</p>
 			)}

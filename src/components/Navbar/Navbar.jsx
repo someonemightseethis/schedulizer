@@ -2,12 +2,26 @@ import { Link } from "react-router-dom";
 import Button from "../Button";
 import NavbarLinks from "./NavbarLinks";
 import Searchbar from "./Searchbar";
+// import { useState, useEffect } from "react";
+import { jwtDecode } from "jwt-decode";
 
 function Navbar() {
-	const firstName = localStorage.getItem("firstName");
+	let firstName = localStorage.getItem("firstName");
+	const token = localStorage.getItem("token"); // get the token from localStorage
+
+	if (token) {
+		const decodedToken = jwtDecode(token);
+		if (decodedToken.exp * 1000 < Date.now()) {
+			// Token has expired
+			localStorage.removeItem("firstName");
+			firstName = null;
+		}
+	}
+
+	console.log(firstName);
 
 	return (
-		<div className="fixed top-0 left-0 z-10 w-full bg-[#FAF8ED] px-6 drop-shadow-md">
+		<div className="fixed left-0 top-0 z-10 w-full bg-[#FAF8ED] px-6 drop-shadow-md">
 			<nav className="flex items-center justify-between space-x-2 px-4 py-1 lg:space-x-4">
 				<div className="flex flex-shrink-0 items-center">
 					<img src="./images/logo.png" alt="logo" className="mr-4 h-12 w-12" />

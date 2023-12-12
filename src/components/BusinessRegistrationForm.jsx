@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "./Button";
 import DropdownButton from "./Form/DropdownButton";
 import InputField from "./Form/InputField";
 import Layout from "./Layout";
+import { Dialog, Transition } from "@headlessui/react";
 
 function BusinessRegistrationForm() {
 	const navigate = useNavigate();
@@ -18,6 +19,7 @@ function BusinessRegistrationForm() {
 	const [businessAddress, setBusinessAddress] = useState("");
 	const [businessAddressLink, setBusinessAddressLink] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleSubmit = async (event) => {
 		setIsLoading(true);
@@ -46,8 +48,11 @@ function BusinessRegistrationForm() {
 			// Check if the form submission was successful
 			if (response.data.success) {
 				setIsLoading(false);
-				// Use navigate from useNavigate hook to programmatically navigate
-				navigate("/schedulizer/dashboard");
+				setIsModalOpen(true);
+				// Delay navigation by 4 seconds
+				setTimeout(() => {
+					navigate("/schedulizer/dashboard");
+				}, 4000);
 			} else {
 				setIsLoading(false);
 			}
@@ -58,9 +63,14 @@ function BusinessRegistrationForm() {
 		}
 	};
 
+	const closeModalAndNavigate = () => {
+		setIsModalOpen(false);
+		navigate("/schedulizer/dashboard");
+	};
+
 	return (
 		<Layout>
-			<div className="flex flex-col justify-center min-h-screen bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+			<div className="flex min-h-screen flex-col justify-center bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
 				<div className="flex justify-center py-12">
 					<div className="pt-12">
 						<h3 className="text-dark-grey-900 px-4 pb-6 font-bebas text-6xl font-medium">
@@ -209,6 +219,35 @@ function BusinessRegistrationForm() {
 					</div>
 				</div>
 			</div>
+			<Transition appear show={isModalOpen} as={Fragment}>
+				<Dialog
+					as="div"
+					className="fixed inset-0 z-10 overflow-y-auto bg-indigo-600 pattern-texture-[#FAF8ED]/60 pattern-texture-scale-[1.5]"
+					onClose={closeModalAndNavigate}>
+					<div className="min-h-screen text-center">
+						<Dialog.Overlay className="fixed" />
+						<span
+							className="inline-block h-screen align-middle"
+							aria-hidden="true">
+							&#8203;
+						</span>
+						<Dialog.Description
+							as="div"
+							className="my-8 inline-block w-full max-w-md transform overflow-hidden rounded-2xl bg-[#FAF8ED] p-12 text-center align-middle transition-all">
+							<Dialog.Title
+								as="h1"
+								className="leading-2 font-bebas text-5xl font-semibold text-indigo-500">
+								Business Registration Successful!
+							</Dialog.Title>
+							<div className="mt-2">
+								<p className="font-poppins text-sm text-black">
+									You will be redirected to your Dashboard shortly.
+								</p>
+							</div>
+						</Dialog.Description>
+					</div>
+				</Dialog>
+			</Transition>
 		</Layout>
 	);
 }

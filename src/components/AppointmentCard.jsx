@@ -2,14 +2,14 @@ import Button from "./Button";
 
 function AppointmentCard() {
 	return (
-		<div className="flex items-center justify-center bg-[#FAF8ED] rounded-xl shadow-sm shadow-indigo-800">
-			<div className=" p-8">
+		<div className="flex items-center justify-center rounded-xl bg-[#FAF8ED] shadow-sm shadow-indigo-800">
+			<div className="p-8">
 				<div className="text-center">
 					<h3 className="text-center font-poppins text-xl font-bold">
 						Appointment Name
 					</h3>
 				</div>
-				<p className="py-6 text-center font-muktaVaani text-md">
+				<p className="text-md py-6 text-center font-muktaVaani">
 					We gotta burn the rain forest, dump toxic waste, pollute the air, and
 					rip up the OZONE! Cause maybe if we screw up this planet enough, they
 					wont want it anymore! Theyre using our own satellites against us. And
@@ -19,7 +19,7 @@ function AppointmentCard() {
 				</p>
 				<ul className="text-md flex justify-center space-x-4 py-6 text-center">
 					<li className="flex flex-col">
-						<span className="font-ptSansCaption text-md font-semibold">
+						<span className="text-md font-ptSansCaption font-semibold">
 							Duration
 						</span>{" "}
 						25 mins
@@ -40,7 +40,7 @@ function AppointmentCard() {
 						</svg>
 					</li>
 					<li className="flex flex-col">
-						<span className="font-ptSansCaption text-md font-semibold">
+						<span className="text-md font-ptSansCaption font-semibold">
 							Timings
 						</span>{" "}
 						12am - 1pm
@@ -61,7 +61,7 @@ function AppointmentCard() {
 						</svg>
 					</li>
 					<li className="flex flex-col">
-						<span className="font-ptSansCaption text-md font-semibold">
+						<span className="text-md font-ptSansCaption font-semibold">
 							Days
 						</span>{" "}
 						mon - thu
@@ -82,7 +82,7 @@ function AppointmentCard() {
 						</svg>
 					</li>
 					<li className="flex flex-col">
-						<span className="font-ptSansCaption text-md font-semibold">
+						<span className="text-md font-ptSansCaption font-semibold">
 							Price
 						</span>{" "}
 						$45

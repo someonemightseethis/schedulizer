@@ -3,10 +3,10 @@ import Button from "./Button";
 import InputField from "./Form/InputField";
 import Layout from "./Layout";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 
 function SignUp() {
-	const navigate = useNavigate();
 	const [userFirstName, setUserFirstName] = useState("");
 	const [userLastName, setUserLastName] = useState("");
 	const [userPhoneNumber, setUserPhoneNumber] = useState("");
@@ -16,6 +16,9 @@ function SignUp() {
 	const [errors, setErrors] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState("");
+	const [isModalOpen, setIsModalOpen] = useState(false);
+
+	const navigate = useNavigate();
 
 	const formatPassword = (value) => value.trim();
 
@@ -93,8 +96,11 @@ function SignUp() {
 			// Check if the form submission was successful
 			if (response.data.success) {
 				setIsLoading(false);
-				// Use navigate from useNavigate hook to programmatically navigate
-				navigate("/schedulizer/signin");
+				setIsModalOpen(true);
+				// Delay navigation by 4 seconds
+				setTimeout(() => {
+					navigate("/schedulizer/signin");
+				}, 4000);
 			} else {
 				setIsLoading(false);
 			}
@@ -106,11 +112,16 @@ function SignUp() {
 		}
 	};
 
+	const closeModalAndNavigate = () => {
+		setIsModalOpen(false);
+		navigate("/schedulizer/signin");
+	};
+
 	return (
 		<Layout>
-			<div className="flex flex-col justify-center min-h-screen bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+			<div className="flex min-h-screen flex-col justify-center bg-[#FAF8ED] pattern-texture-indigo-600/30 pattern-texture-scale-[1.5]">
 				<div className="flex justify-center py-12">
-					<div className="md:w-full lg:w-[600px] xl:w-[700px] pt-12">
+					<div className="pt-12 md:w-full lg:w-[600px] xl:w-[700px]">
 						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
 							Sign Up
 						</h3>
@@ -230,7 +241,7 @@ function SignUp() {
 													/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$/.test(
 														value
 													),
-												"Password should be at least 8 characters, include one capital letter and one number",
+												"Password should be at least 8 characters, include one capital letter and one number.",
 												"userPassword"
 											)
 										}
@@ -254,7 +265,7 @@ function SignUp() {
 								</div>
 							</div>
 							{error && (
-								<p className="text-red-500 text-sm mt-1 text-center">{error}</p>
+								<p className="mt-1 text-center text-sm text-red-500">{error}</p>
 							)}
 							<div className="py-4 xs:px-16 md:px-32 xl:px-36">
 								<Button
@@ -290,6 +301,35 @@ function SignUp() {
 					</div>
 				</div>
 			</div>
+			<Transition appear show={isModalOpen} as={Fragment}>
+				<Dialog
+					as="div"
+					className="fixed inset-0 z-10 overflow-y-auto bg-indigo-600 pattern-texture-[#FAF8ED]/60 pattern-texture-scale-[1.5]"
+					onClose={closeModalAndNavigate}>
+					<div className="min-h-screen text-center">
+						<Dialog.Overlay className="fixed" />
+						<span
+							className="inline-block h-screen align-middle"
+							aria-hidden="true">
+							&#8203;
+						</span>
+						<Dialog.Description
+							as="div"
+							className="my-8 inline-block w-full max-w-md transform overflow-hidden rounded-2xl bg-[#FAF8ED] p-12 text-center align-middle transition-all">
+							<Dialog.Title
+								as="h1"
+								className="leading-2 font-bebas text-5xl font-semibold text-indigo-500">
+								Sign Up Successful!
+							</Dialog.Title>
+							<div className="mt-2">
+								<p className="font-poppins text-sm text-black">
+									You will be redirected to the Sign In page shortly.
+								</p>
+							</div>
+						</Dialog.Description>
+					</div>
+				</Dialog>
+			</Transition>
 		</Layout>
 	);
 }
