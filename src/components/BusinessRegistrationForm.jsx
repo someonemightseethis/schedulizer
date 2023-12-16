@@ -20,10 +20,12 @@ function BusinessRegistrationForm() {
 	const [businessAddressLink, setBusinessAddressLink] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [emailError, setEmailError] = useState("");
 
 	const handleSubmit = async (event) => {
 		setIsLoading(true);
 		event.preventDefault();
+		setEmailError("");
 
 		const businessData = {
 			businessName,
@@ -57,9 +59,17 @@ function BusinessRegistrationForm() {
 				setIsLoading(false);
 			}
 		} catch (error) {
-			console.log("error data", error.response?.data);
-			console.log("Form data", businessData);
-			setIsLoading(false);
+			if (
+				error.response &&
+				error.response.data.error ===
+					"Email already exists. Please choose a different Email."
+			) {
+				setEmailError("Email already exists. Please choose a different Email.");
+			} else {
+				console.log("error data", error.response?.data);
+				console.log("Form data", businessData);
+			}
+			setIsLoading(false); // Always set isLoading to false when an error occurs
 		}
 	};
 
@@ -67,6 +77,8 @@ function BusinessRegistrationForm() {
 		setIsModalOpen(false);
 		navigate("/schedulizer/dashboard");
 	};
+
+	console.log(emailError);
 
 	return (
 		<Layout>
@@ -120,7 +132,11 @@ function BusinessRegistrationForm() {
 											isRequired={true}
 											fieldType="input"
 											value={businessEmail}
-											onChange={(e) => setBusinessEmail(e.target.value)}
+											onChange={(e) => {
+												setBusinessEmail(e.target.value);
+												setEmailError(""); // Clear the error message when the input value changes
+											}}
+											inputFieldError={emailError}
 										/>
 									</div>
 
@@ -211,7 +227,18 @@ function BusinessRegistrationForm() {
 									<Button
 										buttonName="SUBMIT"
 										buttonType="submit"
-										disabled={isLoading}
+										disabled={
+											isLoading ||
+											!businessName ||
+											!businessContactNumber ||
+											!businessEmail ||
+											!businessCity ||
+											!businessType ||
+											!numberOfEmployees ||
+											!businessCategory ||
+											!businessAddress ||
+											!businessAddressLink
+										}
 									/>
 								</div>
 							</form>

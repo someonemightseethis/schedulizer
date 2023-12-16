@@ -17,6 +17,8 @@ function AppointmentsCRUD() {
 	const [durationUnit, setDurationUnit] = useState("mins");
 	const [selectedDays, setSelectedDays] = useState("");
 
+	const timing = appointmentStartTime + " " + appointmentEndTime;
+
 	const [errors, setErrors] = useState({});
 	const [error, setError] = useState("");
 
@@ -74,11 +76,11 @@ function AppointmentsCRUD() {
 		event.preventDefault();
 
 		const appointmentData = {
+			businessId: "60f9b4b3c9b0c4b4b8f3b0b5",
 			appointmentTitle,
 			appointmentDuration: `${appointmentDuration} ${durationUnit}`,
 			appointmentPrice,
-			appointmentStartTime,
-			appointmentEndTime,
+			timing,
 			appointmentDescription,
 			selectedDays, // Use the selected days here
 		};

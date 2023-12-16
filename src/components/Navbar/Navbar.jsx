@@ -18,8 +18,6 @@ function Navbar() {
 		}
 	}
 
-	console.log(firstName);
-
 	return (
 		<div className="fixed left-0 top-0 z-10 w-full bg-[#FAF8ED] px-6 drop-shadow-md">
 			<nav className="flex items-center justify-between space-x-2 px-4 py-1 lg:space-x-4">

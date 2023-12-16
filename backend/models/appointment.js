@@ -7,12 +7,12 @@ const Appointmentschema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	durration: {
-		type: Number,
+	duration: {
+		type: String,
 		required: true,
 	},
 	timing: {
-		type: Number,
+		type: String,
 		required: true,
 	},
 	days: {

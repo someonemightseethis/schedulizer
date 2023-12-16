@@ -17,6 +17,7 @@ function SignUp() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState("");
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [emailError, setEmailError] = useState("");
 
 	const navigate = useNavigate();
 
@@ -105,10 +106,19 @@ function SignUp() {
 				setIsLoading(false);
 			}
 		} catch (error) {
-			console.log("error data", error.response?.data);
-			console.log("Form data", userData);
+			if (
+				error.response &&
+				error.response.data.error ===
+					"User already exists. Please choose a different Email."
+			) {
+				setEmailError(
+					"Email already exists for an existing user. Sign in or choose a different email."
+				);
+			} else {
+				console.log("error data", error.response?.data);
+				console.log("Form data", userData);
+			}
 			setIsLoading(false);
-			setError(error.response.data.error);
 		}
 	};
 
@@ -116,6 +126,9 @@ function SignUp() {
 		setIsModalOpen(false);
 		navigate("/schedulizer/signin");
 	};
+
+	const displayError = (emailError, error) =>
+		emailError ? emailError : error.userEmail;
 
 	return (
 		<Layout>
@@ -216,7 +229,7 @@ function SignUp() {
 												"userEmail"
 											)
 										}
-										inputFieldError={errors.userEmail}
+										inputFieldError={displayError(emailError, error)}
 									/>
 								</div>
 
@@ -264,9 +277,9 @@ function SignUp() {
 									/>
 								</div>
 							</div>
-							{error && (
+							{/* {error && (
 								<p className="mt-1 text-center text-sm text-red-500">{error}</p>
-							)}
+							)} */}
 							<div className="py-4 xs:px-16 md:px-32 xl:px-36">
 								<Button
 									buttonName="Sign Up"

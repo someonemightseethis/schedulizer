@@ -1,9 +1,10 @@
 import Button from "./Button";
+import PropTypes from "prop-types";
 
-function BusinessCard() {
+function BusinessCard({ business }) {
 	return (
 		<div className="flex items-center justify-center">
-			<div className="group relative mb-6 mt-6 w-full break-words rounded-xl shadow-indigo-800 bg-[#FAF8ED] shadow-sm md:max-w-sm">
+			<div className="group relative mb-6 mt-6 w-full break-words rounded-xl bg-[#FAF8ED] shadow-sm shadow-indigo-800 md:max-w-sm">
 				<div className="pb-6">
 					<div className="flex flex-wrap justify-center">
 						<div className="flex w-full justify-center">
@@ -18,11 +19,11 @@ function BusinessCard() {
 					<div className="pt-16 text-center">
 						<div className="flex justify-center space-x-6">
 							<div>
-								<h4 className="font-poppins text-xl font-bold text-black">
-									Business Name
+								<h4 className="font-poppins text-lg font-bold text-black">
+									{business.name}
 								</h4>
-								<p className="text-sm font-muktaVaani font-normal text-gray-600">
-									Business Category / Type
+								<p className="font-muktaVaani text-xs font-normal text-gray-600">
+									{business.workField} / {business.type}
 								</p>
 							</div>
 							<div className="py-4">
@@ -44,7 +45,7 @@ function BusinessCard() {
 								<p className="font-poppins text-xl font-bold text-black">
 									4.3 / 5
 								</p>
-								<p className="text-sm font-muktaVaani font-normal text-gray-600">
+								<p className="font-muktaVaani text-sm font-normal text-gray-600">
 									Rating
 								</p>
 							</div>
@@ -53,11 +54,9 @@ function BusinessCard() {
 					<div className="mx-6 mt-6 border-t border-indigo-500 pt-6 text-center">
 						<div className="flex flex-wrap justify-center">
 							<div className="w-full px-2">
-								<p className="mb-4 font-muktaVaani text-md leading-relaxed text-black">
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
-									turpis orci, maximus sed purus a, cursus scelerisque purus.
-									Morbi molestie, odio at sagittis rhoncus, felis massa iaculis
-									mi, quis molestie erat ipsum vel risus.
+								<p className="text-md mb-4 font-muktaVaani leading-relaxed text-black">
+									welcome to {business.name}. We sepecialize in all sorts of{" "}
+									{business.workField} solution
 								</p>
 							</div>
 							<div className="py-4">
@@ -73,5 +72,13 @@ function BusinessCard() {
 		</div>
 	);
 }
+
+BusinessCard.propTypes = {
+	business: PropTypes.shape({
+		name: PropTypes.string,
+		type: PropTypes.string,
+		workField: PropTypes.string,
+	}).isRequired,
+};
 
 export default BusinessCard;

@@ -18,7 +18,7 @@ function Home() {
 						<h2 className="px-8 text-center font-bebas text-6xl font-medium sm:px-32 sm:text-right">
 							Exclusive Agency For
 						</h2>
-						<h1 className="lg:text-5r xl:text-5r text-center font-bebas text-6xl font-semibold text-indigo-500 sm:text-6xl md:text-8xl">
+						<h1 className="py-4 text-center font-bebas text-6xl font-semibold text-indigo-500 sm:text-6xl md:text-8xl lg:text-[12rem] xl:text-[12rem]">
 							Appointment Scheduling
 						</h1>
 						<h2 className="px-8 text-center font-bebas text-6xl font-medium sm:px-32 sm:text-right">
@@ -26,7 +26,7 @@ function Home() {
 						</h2>
 					</div>
 					<div className="items-center justify-center pt-12 sm:space-y-6 md:flex-col lg:flex">
-						<div className="py-4 xs:px-16 md:px-32 xl:px-64">
+						<div className="xs:px-16 md:px-32 xl:px-64">
 							<Button
 								buttonName="GET STARTED"
 								buttonLink="/schedulizer/services"
@@ -45,7 +45,7 @@ function Home() {
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 1440 320"
-						className="mx-0 -mt-12 pattern-texture-indigo-500/40 pattern-texture-scale-[0.8]">
+						className="mx-0 -mt-12">
 						<path
 							fill="#FAF8ED"
 							fillOpacity="1"
@@ -59,12 +59,12 @@ function Home() {
 						<img
 							src="./images/services-page.png"
 							alt="services"
-							className="rounded-xl shadow-2xl duration-300 hover:scale-105 hover:cursor-pointer"
+							className="rounded-xl shadow-2xl transition-all duration-300 hover:scale-105 hover:cursor-pointer"
 						/>
 						<img
 							src="./images/businessinfo-page.png"
 							alt="services"
-							className="mt-28 rounded-xl shadow-2xl duration-300 hover:scale-105 hover:cursor-pointer"
+							className="mt-28 rounded-xl shadow-2xl transition-all duration-300 hover:scale-105 hover:cursor-pointer"
 						/>
 					</div>
 					<div className="px-4 py-12 sm:px-8 md:px-16 lg:px-24 xl:px-32">
@@ -86,35 +86,34 @@ function Home() {
 
 				<div className="mx-auto max-w-screen-xl px-8 py-20">
 					<h1 className="md:text-10xl lg:text-11xl xl:text-12xl mb-12 text-center font-bebas text-8xl font-semibold sm:text-9xl">
-						Tempor sit labore nostrud
+						About Our Web App
 					</h1>
-					<div className="font-muktaVaani text-xl">
+					<div className="text-md px-32 font-muktaVaani">
 						<p>
-							Exercitation non Lorem exercitation tempor amet ad esse velit.
-							Anim deserunt id nulla quis ex magna culpa exercitation. Mollit
-							consequat enim eiusmod cupidatat commodo eiusmod nulla. Id quis
-							amet incididunt cillum dolore consectetur nulla incididunt laborum
-							excepteur consectetur consectetur sunt tempor. Minim fugiat sint
-							sunt ad elit laboris est sit est laboris labore do velit. Cillum
-							aliquip pariatur deserunt eiusmod. Consequat irure nulla
-							adipisicing deserunt culpa. Veniam enim deserunt sint consequat
-							labore. Enim ullamco ea aute duis et nostrud voluptate fugiat
-							consectetur et velit cillum anim dolore. In exercitation proident
-							proident nostrud voluptate. Fugiat elit esse labore pariatur ex.
-							Ex labore esse voluptate nisi in. Ad anim deserunt reprehenderit
-							est. <br />
-							<br /> Aliquip pariatur nulla dolor amet quis aliqua sit nisi
-							officia enim velit. Ad enim eu dolor quis ipsum. Nulla amet
-							consectetur adipisicing ullamco qui tempor dolor excepteur dolore
-							anim pariatur quis laboris consequat. Consectetur ullamco
-							consectetur minim eiusmod quis veniam esse consectetur anim
-							nostrud est pariatur laborum. Mollit tempor minim amet esse. Lorem
-							officia consequat eiusmod sunt. Proident occaecat velit et
-							consequat irure est cupidatat tempor ullamco. Aliquip est pariatur
-							ea ut qui ad sit dolor laboris adipisicing officia eiusmod sit.
-							Proident Lorem ex cillum sint cupidatat amet nulla veniam laborum
-							velit pariatur. Fugiat excepteur culpa sunt est anim sunt. Ea
-							voluptate non do proident sunt ad cillum enim esse.
+							Our project revolves around the creation of a cutting-edge
+							scheduling web application tailored to the needs of local clinics,
+							salons, and small businesses. Leveraging state-of-the-art
+							technologies such as React, Tailwind CSS, Node.js, and Laravel, we
+							aim to deliver an all-encompassing scheduling platform that
+							transcends the capabilities of existing solutions. This endeavor
+							is fueled by the desire to streamline and elevate the scheduling
+							experiences of our target audience, empowering them to efficiently
+							manage appointments, meetings, and events with ease and precision.
+							<br />
+							<br />
+							By focusing on core features like user registration and
+							authentication, customizable booking pages, and automated email
+							notifications, we are dedicated to simplifying the scheduling
+							process. Additionally, we are pioneering innovative
+							functionalities such as group scheduling, meeting customization,
+							payment integration, analytics, and AI-powered scheduling
+							assistance. These features are carefully designed to address the
+							specific challenges faced by local businesses, offering seamless
+							solutions for their diverse scheduling needs. Our ultimate goal is
+							to provide a comprehensive and user- friendly scheduling tool that
+							enhances the operational efficiency of clinics, salons, and small
+							businesses, enabling them to thrive in an increasingly digital
+							world.
 						</p>
 					</div>
 				</div>

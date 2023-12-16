@@ -21,11 +21,7 @@ export default {
 			poppins: ["Poppins", "sans-serif"],
 			ptSansCaption: ["PT Sans Caption", "sans-serif"],
 		},
-		extend: {
-			text: {
-				"5r": "5rem",
-			},
-		},
+		extend: {},
 	},
 	plugins: [twElementsPlugin, tailwindcssAnimated, tailwindcssPatterns],
 	darkMode: "class",

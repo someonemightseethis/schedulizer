@@ -6,9 +6,8 @@ export async function addAppointments(req, res) {
 	const appointmentData = {
 		business_id: req.body.business_id,
 		name: req.body.appointmentTitle,
-		durration: req.body.appointmentDuration,
-		startTime: req.body.appointmentStartTime,
-		endTime: req.body.appointmentEndTime,
+		duration: req.body.appointmentDuration,
+		timing: req.body.timing,
 		days: req.body.selectedDays,
 		price: req.body.appointmentPrice,
 		description: req.body.appointmentDescription,

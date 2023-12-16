@@ -4,8 +4,29 @@ import Ratings from "./Ratings";
 import InputField from "./Form/InputField";
 import Layout from "./Layout";
 import Button from "./Button";
+import { useEffect, useState } from "react";
 
 function BusinessInfo() {
+	const [businesses, setBusinesses] = useState([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await fetch("/business/all");
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+				const data = await response.json();
+				setBusinesses(data);
+				console.log(data);
+			} catch (error) {
+				console.error("Fetch error: ", error);
+			}
+		};
+
+		fetchData();
+	}, []);
+
 	return (
 		<Layout className="min-h-screen">
 			<div className="flex h-auto flex-col justify-center bg-[#FAF8ED] p-12 pattern-texture-indigo-600/30 pattern-texture-scale-[1.5]">
@@ -97,12 +118,9 @@ function BusinessInfo() {
 					</div>
 					<div className="py-16 lg:col-span-2">
 						<div className="grid gap-8 lg:grid-cols-1 xl:grid-cols-2">
-							<AppointmentCard />
-							<AppointmentCard />
-							<AppointmentCard />
-							<AppointmentCard />
-							<AppointmentCard />
-							<AppointmentCard />
+							{businesses.map((business, index) => (
+								<AppointmentCard key={index} business={business} />
+							))}
 						</div>
 					</div>
 				</div>

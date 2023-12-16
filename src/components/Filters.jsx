@@ -21,39 +21,39 @@ function Filters() {
 				<a
 					href="#"
 					className="hover:font-medium hover:underline hover:underline-offset-4">
-					Filter 1
+					IT
 				</a>
 				<a
 					href="#"
 					className="hover:font-medium hover:underline hover:underline-offset-4">
-					Filter 2
+					Health Care
 				</a>
 				<a
 					href="#"
 					className="hover:font-medium hover:underline hover:underline-offset-4">
-					Filter 3
+					Self Care
 				</a>
 				<a
 					href="#"
 					className="hover:font-medium hover:underline hover:underline-offset-4">
-					Filter 4
+					Fitness
 				</a>
 				<a
 					href="#"
 					className="hidden hover:font-medium hover:underline hover:underline-offset-4 sm:inline">
-					Filter 5
+					Education
 				</a>
 				<a
 					href="#"
 					className="hidden hover:font-medium hover:underline hover:underline-offset-4 sm:inline">
-					Filter 6
+					Therapist
 				</a>
 				<a
 					href="#"
 					className="hidden hover:font-medium hover:underline hover:underline-offset-4 sm:inline">
-					Filter 7
+					Consultancy
 				</a>
-				<a
+				{/* <a
 					href="#"
 					className="hidden hover:font-medium hover:underline hover:underline-offset-4 md:inline">
 					Filter 8
@@ -67,7 +67,7 @@ function Filters() {
 					href="#"
 					className="hidden hover:font-medium hover:underline hover:underline-offset-4 md:inline">
 					Filter 10
-				</a>
+				</a> */}
 			</div>
 		)
 	);

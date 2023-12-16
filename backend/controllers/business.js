@@ -36,10 +36,16 @@ export const registeredBusiness = async (req, res) => {
 		const existingUser = await Business.findOne({ email: data.email });
 
 		if (existingUser) {
-			return res.send("Email already exists. Please choose a different Email.");
+			return res.status(400).send({
+				error: "Email already exists. Please choose a different Email.",
+			});
 		} else {
 			const businessdata = await Business.create(data);
-			sendMail(req.body.email, req.body.name, req.body.contactNumber);
+			if (!req.body.businessEmail || !req.body.businessName) {
+				return res.status(400).send("Email and name are required.");
+			}
+
+			sendMail(req.body.businessEmail, req.body.businessName, "hello");
 			console.log(businessdata);
 			return res.send({
 				message: "Business Registered Successfully",
@@ -160,17 +166,44 @@ export const uploadPic = async (req, res) => {
 	}
 };
 
-export const sendMail = async (res, to, subject, text) => {
+// export const sendMail = async (to, subject, text) => {
+// 	const transporter = nodemailer.createTransport({
+// 		port: 465,
+// 		service: "gmail",
+// 		auth: {
+// 			user: "fisakhan0347@gmail.com",
+// 			pass: "mnqi jalg hxqf wkix",
+// 		},
+// 		secure: true,
+// 	});
+
+// 	const mailData = {
+// 		from: "fisakhan0347@gmail.com",
+// 		to: to,
+// 		subject: subject,
+// 		text: text,
+// 		html: "<b>Hey there! </b><br> This is our first message sent with Nodemailer<br/>",
+// 	};
+
+// 	try {
+// 		const info = await transporter.sendMail(mailData);
+// 		res.status(200).send({ message: "Mail sent", message_id: info.messageId });
+// 	} catch (error) {
+// 		console.log(error);
+// 		res.status(500).send("Internal Server Error");
+// 	}
+// };
+
+export const sendMail = async (to, subject, text) => {
 	const transporter = nodemailer.createTransport({
 		port: 465,
 		service: "gmail",
 		auth: {
 			user: "fisakhan0347@gmail.com",
-			pass: "Khan2064&15",
+			pass: "mnqi jalg hxqf wkix",
 		},
-		secure: true,
+		secure: true, // upgrades later with STARTTLS -- change this based on the PORT
 	});
-
 	const mailData = {
 		from: "fisakhan0347@gmail.com",
 		to: to,
@@ -178,12 +211,11 @@ export const sendMail = async (res, to, subject, text) => {
 		text: text,
 		html: "<b>Hey there! </b><br> This is our first message sent with Nodemailer<br/>",
 	};
-
-	try {
-		const info = await transporter.sendMail(mailData);
-		res.status(200).send({ message: "Mail sent", message_id: info.messageId });
-	} catch (error) {
-		console.log(error);
-		res.status(500).send("Internal Server Error");
-	}
+	console.log(mailData);
+	return await transporter.sendMail(mailData, (error, info) => {
+		if (error) {
+			return console.log(error);
+		}
+		status(200).send({ message: "Mail send", message_id: info.messageId });
+	});
 };
