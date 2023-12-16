@@ -21,7 +21,7 @@ function NavbarLinks() {
 						Home
 					</Link>
 				</li>
-				<li>
+				<li className="pt-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="#6366F1"
@@ -47,7 +47,7 @@ function NavbarLinks() {
 						Services
 					</Link>
 				</li>
-				<li className="">
+				<li className="pt-1">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="#6366F1"

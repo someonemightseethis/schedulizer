@@ -10,6 +10,8 @@ import Dashboard from "./components/Dashboard/Dashboard.jsx";
 import BusinessInfo from "./components/BusinessInfo.jsx";
 import Services from "./components/Services.jsx";
 import Home from "./components/Home.jsx";
+import ProfilePicBio from "./components/ProfilePicBio.jsx";
+import Tests from "./components/Tests.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
@@ -20,6 +22,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 				<Route path="/schedulizer/services" element={<Services />} />
 				<Route path="/schedulizer/signin" element={<SignIn />} />
 				<Route path="/schedulizer/signup" element={<SignUp />} />
+				<Route path="/schedulizer/profilepicbio" element={<ProfilePicBio />} />
+				<Route path="/schedulizer/tests" element={<Tests />} />
 				<Route
 					path="/schedulizer/businessregistration"
 					element={<BusinessRegistrationForm />}

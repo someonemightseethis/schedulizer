@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 function BusinessCard({ business }) {
 	return (
 		<div className="flex items-center justify-center">
-			<div className="group relative mb-6 mt-6 w-full break-words rounded-xl bg-[#FAF8ED] shadow-sm shadow-indigo-800 md:max-w-sm">
-				<div className="pb-6">
+			<div className="group relative w-full break-words rounded-xl border-2 border-indigo-500 bg-[#FAF8ED] shadow-sm shadow-indigo-500 md:max-w-sm">
+				<div className="py-4">
 					<div className="flex flex-wrap justify-center">
 						<div className="flex w-full justify-center">
 							<div className="relative">
@@ -51,7 +51,7 @@ function BusinessCard({ business }) {
 							</div>
 						</div>
 					</div>
-					<div className="mx-6 mt-6 border-t border-indigo-500 pt-6 text-center">
+					<div className="mx-6 py-6 text-center">
 						<div className="flex flex-wrap justify-center">
 							<div className="w-full px-2">
 								<p className="text-md mb-4 font-muktaVaani leading-relaxed text-black">
@@ -59,7 +59,7 @@ function BusinessCard({ business }) {
 									{business.workField} solution
 								</p>
 							</div>
-							<div className="py-4">
+							<div className="pt-2">
 								<Button
 									buttonName="KNOW MORE / BOOK AN APPOINTMENT"
 									buttonLink="/schedulizer/businessinfo"
