@@ -19,7 +19,7 @@ function Navbar() {
 	}
 
 	return (
-		<div className="fixed left-0 top-0 z-10 w-full bg-[#FAF8ED] px-6 drop-shadow-md">
+		<div className="fixed top-0 z-10 w-full bg-[#FAF8ED] px-2 drop-shadow-md">
 			<nav className="flex items-center justify-between space-x-2 px-4 py-1 lg:space-x-4">
 				<div className="flex flex-shrink-0 items-center">
 					<img src="./images/logo.png" alt="logo" className="mr-4 h-12 w-12" />

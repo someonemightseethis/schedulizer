@@ -2,16 +2,10 @@ import BackToTopButton from "./BacktoTopButton";
 import Button from "./Button";
 import Layout from "./Layout";
 import Team from "./Team";
-// import { useSpring, animated } from "@react-spring/web";
 import { animate, scroll } from "motion";
 import { useEffect } from "react";
 
 function Home() {
-	// const opacityAnimation = useSpring({
-	// 	from: { opacity: 0, scale: 0.4 },
-	// 	to: { opacity: 1, scale: 1 },
-	// });
-
 	useEffect(() => {
 		animate(
 			".appointment",
@@ -19,14 +13,14 @@ function Home() {
 			{ duration: 2.5 }
 		);
 		animate(".exclusive", { x: [-1000, 1] }, { duration: 2.5 });
-		scroll(animate(".appointment", { scale: [1, 2.5] }, { duration: 2.5 }));
 		animate(".solution", { x: [500, 1] }, { duration: 2.5 });
 		scroll(animate(".about", { x: [-5000, 1] }, { duration: 1.5 }));
-		// animate(".heroText", { delay: stagger(5.5) });
+		scroll(animate(".heroText", { scale: [1, 1.5] }, { duration: 1.5 }));
 	});
+
 	return (
 		<Layout>
-			<div className="mb-24 flex flex-col pb-28 pt-52">
+			<div className="flex flex-col overflow-hidden rounded-b-3xl bg-[#FAF8ED] pb-28 pt-52 pattern-texture-indigo-600/30 pattern-texture-scale-[1.5]">
 				<div className="heroText">
 					<h2 className="exclusive px-8 text-center font-bebas text-8xl font-medium sm:px-32 sm:text-start">
 						Exclusive Agency For
@@ -52,9 +46,7 @@ function Home() {
 				</div>
 			</div>
 
-			<div
-				className="mx-auto items-center justify-center bg-cover bg-fixed bg-center py-52"
-				style={{ backgroundImage: "url('./images/parallax5.webp')" }}>
+			<div className="mx-auto items-center justify-center py-36">
 				{/* <svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 1440 320"
@@ -97,11 +89,11 @@ function Home() {
 					</svg> */}
 			</div>
 
-			<div className="mx-auto max-w-screen-xl px-8 py-20">
+			<div className="overflow-hidden rounded-t-3xl bg-[#FAF8ED] px-8 py-20 pattern-texture-indigo-600/30 pattern-texture-scale-[1.5]">
 				<h1 className="md:text-10xl lg:text-11xl xl:text-12xl about mb-12 text-center font-bebas text-8xl font-semibold sm:text-9xl">
 					About Our Web App
 				</h1>
-				<div className="text-md px-32 font-muktaVaani">
+				<div className="text-md px-72 font-muktaVaani">
 					<p>
 						Our project revolves around the creation of a cutting-edge
 						scheduling web application tailored to the needs of local clinics,

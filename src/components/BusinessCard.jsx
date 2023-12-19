@@ -1,11 +1,36 @@
 import Button from "./Button";
 import PropTypes from "prop-types";
+import { animate } from "motion";
+import { useEffect } from "react";
 
 function BusinessCard({ business }) {
+	useEffect(() => {
+		animate(
+			".businessDescription",
+			{ scale: [0.5, 1], opacity: [0, 1] },
+			{ duration: 1.5 }
+		);
+		animate(
+			".businessNameType",
+			{ x: [-500, 1], opacity: [0, 1] },
+			{ duration: 1.5 }
+		);
+		animate(
+			".businessRating",
+			{ x: [500, 1], opacity: [0, 1] },
+			{ duration: 1.5 }
+		);
+		animate(
+			".appointmentButton",
+			{ scale: [1.2, 1], opacity: [0, 1] },
+			{ duration: 1.5 }
+		);
+	});
+
 	return (
 		<div className="flex items-center justify-center">
 			<div className="group relative w-full break-words rounded-xl border-2 border-indigo-500 bg-[#FAF8ED] shadow-sm shadow-indigo-500 md:max-w-sm">
-				<div className="py-4">
+				<div className="py-2">
 					<div className="flex flex-wrap justify-center">
 						<div className="flex w-full justify-center">
 							<div className="relative">
@@ -16,9 +41,9 @@ function BusinessCard({ business }) {
 							</div>
 						</div>
 					</div>
-					<div className="pt-16 text-center">
+					<div className="overflow-hidden pt-16 text-center">
 						<div className="flex justify-center space-x-6">
-							<div>
+							<div className="businessNameType">
 								<h4 className="font-poppins text-lg font-bold text-black">
 									{business.name}
 								</h4>
@@ -41,7 +66,7 @@ function BusinessCard({ business }) {
 									/>
 								</svg>
 							</div>
-							<div className="flex flex-col items-center justify-center">
+							<div className="businessRating flex flex-col items-center justify-center">
 								<p className="font-poppins text-xl font-bold text-black">
 									4.3 / 5
 								</p>
@@ -53,13 +78,13 @@ function BusinessCard({ business }) {
 					</div>
 					<div className="mx-6 py-6 text-center">
 						<div className="flex flex-wrap justify-center">
-							<div className="w-full px-2">
+							<div className="businessDescription w-full px-2">
 								<p className="text-md mb-4 font-muktaVaani leading-relaxed text-black">
 									welcome to {business.name}. We sepecialize in all sorts of{" "}
 									{business.workField} solution
 								</p>
 							</div>
-							<div className="pt-2">
+							<div className="appointmentButton pt-2">
 								<Button
 									buttonName="KNOW MORE / BOOK AN APPOINTMENT"
 									buttonLink="/schedulizer/businessinfo"

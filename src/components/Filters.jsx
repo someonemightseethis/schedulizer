@@ -17,7 +17,7 @@ function Filters() {
 
 	return (
 		showFilters && (
-			<div className="fixed left-0 z-10 flex w-full justify-between space-x-4 border-y-2 border-black bg-[#FAF8ED] px-20 py-2 font-ptSansCaption text-sm font-normal sm:space-x-2 md:my-1 md:space-x-1 xl:my-16">
+			<div className="filters fixed left-0 z-10 flex w-full justify-between space-x-4 border-y-2 border-black bg-[#FAF8ED] px-20 py-2 font-ptSansCaption text-sm font-normal sm:space-x-2 md:my-1 md:space-x-1 xl:my-16">
 				<a
 					href="#"
 					className="hover:font-medium hover:underline hover:underline-offset-4">
@@ -53,7 +53,7 @@ function Filters() {
 					className="hidden hover:font-medium hover:underline hover:underline-offset-4 sm:inline">
 					Consultancy
 				</a>
-				{/* <a
+				<a
 					href="#"
 					className="hidden hover:font-medium hover:underline hover:underline-offset-4 md:inline">
 					Filter 8
@@ -67,7 +67,7 @@ function Filters() {
 					href="#"
 					className="hidden hover:font-medium hover:underline hover:underline-offset-4 md:inline">
 					Filter 10
-				</a> */}
+				</a>
 			</div>
 		)
 	);
