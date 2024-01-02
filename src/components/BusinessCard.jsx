@@ -7,36 +7,36 @@ function BusinessCard({ business }) {
 	useEffect(() => {
 		animate(
 			".businessDescription",
-			{ scale: [0.5, 1], opacity: [0, 1] },
+			{ scale: [0.8, 1], opacity: [0, 1] },
 			{ duration: 1.5 }
 		);
 		animate(
 			".businessNameType",
-			{ x: [-500, 1], opacity: [0, 1] },
+			{ x: [-10, 1], opacity: [0, 1] },
 			{ duration: 1.5 }
 		);
 		animate(
 			".businessRating",
-			{ x: [500, 1], opacity: [0, 1] },
+			{ x: [10, 1], opacity: [0, 1] },
 			{ duration: 1.5 }
 		);
 		animate(
 			".appointmentButton",
-			{ scale: [1.2, 1], opacity: [0, 1] },
+			{ scale: [1.1, 1], opacity: [0, 1] },
 			{ duration: 1.5 }
 		);
 	});
 
 	return (
 		<div className="flex items-center justify-center">
-			<div className="group relative w-full break-words rounded-xl border-2 border-indigo-500 bg-[#FAF8ED] shadow-sm shadow-indigo-500 md:max-w-sm">
+			<div className="group relative w-full break-words rounded-xl bg-[#FAF8ED] shadow-xl md:max-w-sm">
 				<div className="py-2">
 					<div className="flex flex-wrap justify-center">
 						<div className="flex w-full justify-center">
 							<div className="relative">
 								<img
 									src="./images/logo.png"
-									className="absolute -bottom-12 -left-10 flex max-w-[80px] items-center justify-center rounded-full border-2 border-black bg-[#FAF8ED]"
+									className="absolute -bottom-10 -left-10 flex max-w-[80px] items-center justify-center rounded-full border-2 border-black bg-[#FAF8ED] shadow-md"
 								/>
 							</div>
 						</div>
@@ -44,7 +44,7 @@ function BusinessCard({ business }) {
 					<div className="overflow-hidden pt-16 text-center">
 						<div className="flex justify-center space-x-6">
 							<div className="businessNameType">
-								<h4 className="font-poppins text-lg font-bold text-black">
+								<h4 className="font-poppins text-lg font-bold text-[#18191E]">
 									{business.name}
 								</h4>
 								<p className="font-muktaVaani text-xs font-normal text-gray-600">
@@ -67,7 +67,7 @@ function BusinessCard({ business }) {
 								</svg>
 							</div>
 							<div className="businessRating flex flex-col items-center justify-center">
-								<p className="font-poppins text-xl font-bold text-black">
+								<p className="font-poppins text-xl font-bold text-[#18191E]">
 									4.3 / 5
 								</p>
 								<p className="font-muktaVaani text-sm font-normal text-gray-600">
@@ -79,14 +79,14 @@ function BusinessCard({ business }) {
 					<div className="mx-6 py-6 text-center">
 						<div className="flex flex-wrap justify-center">
 							<div className="businessDescription w-full px-2">
-								<p className="text-md mb-4 font-muktaVaani leading-relaxed text-black">
+								<p className="text-md mb-4 font-muktaVaani leading-relaxed text-[#18191E]">
 									welcome to {business.name}. We sepecialize in all sorts of{" "}
 									{business.workField} solution
 								</p>
 							</div>
 							<div className="appointmentButton pt-2">
 								<Button
-									buttonName="KNOW MORE / BOOK AN APPOINTMENT"
+									buttonName="VISIT PROFILE"
 									buttonLink="/schedulizer/businessinfo"
 								/>
 							</div>

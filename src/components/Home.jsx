@@ -9,18 +9,18 @@ function Home() {
 	useEffect(() => {
 		animate(
 			".appointment",
-			{ scale: [2.5, 1], opacity: [0, 1] },
-			{ duration: 2.5 }
+			{ scale: [0.5, 1], opacity: [0, 1] },
+			{ duration: 1.5 }
 		);
-		animate(".exclusive", { x: [-1000, 1] }, { duration: 2.5 });
-		animate(".solution", { x: [500, 1] }, { duration: 2.5 });
-		scroll(animate(".about", { x: [-5000, 1] }, { duration: 1.5 }));
-		scroll(animate(".heroText", { scale: [1, 1.5] }, { duration: 1.5 }));
+		animate(".exclusive", { x: [-1000, 1] }, { duration: 2 });
+		animate(".solution", { x: [500, 1] }, { duration: 2 });
+		scroll(animate(".about", { x: [-5000, 1] }));
+		scroll(animate(".heroText", { scale: [1, 1.5] }));
 	});
 
 	return (
 		<Layout>
-			<div className="flex flex-col overflow-hidden rounded-b-3xl bg-[#FAF8ED] pb-28 pt-52 pattern-texture-indigo-600/30 pattern-texture-scale-[1.5]">
+			<div className="flex flex-col overflow-hidden rounded-b-3xl pb-28 pt-52">
 				<div className="heroText">
 					<h2 className="exclusive px-8 text-center font-bebas text-8xl font-medium sm:px-32 sm:text-start">
 						Exclusive Agency For
@@ -46,7 +46,7 @@ function Home() {
 				</div>
 			</div>
 
-			<div className="mx-auto items-center justify-center py-36">
+			<div className="mx-auto items-center justify-center py-12">
 				{/* <svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 1440 320"
@@ -57,9 +57,6 @@ function Home() {
 						fillOpacity="1"
 						d="M0,224L48,213.3C96,203,192,181,288,154.7C384,128,480,96,576,90.7C672,85,768,107,864,128C960,149,1056,171,1152,181.3C1248,192,1344,192,1392,192L1440,192L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z"></path>
 				</svg> */}
-				{/* <h1 className="pb-28 text-center font-bebas text-9xl font-semibold text-white">
-						This is Parallax Effect
-					</h1> */}
 				<div className="grid px-4 sm:gap-y-1 sm:px-8 md:grid-cols-1 md:gap-y-1 md:px-16 lg:grid-cols-2 lg:px-24 xl:gap-16 xl:px-32">
 					<img
 						src="./images/services-page.png"
@@ -73,7 +70,7 @@ function Home() {
 					/>
 				</div>
 				<div className="px-4 pt-32 sm:px-8 md:px-16 lg:px-24 xl:px-32">
-					<h1 className="md:text-10xl lg:text-11xl xl:text-12xl mb-12 text-center font-bebas text-8xl font-semibold text-[#FAF8ED] sm:text-9xl">
+					<h1 className="md:text-10xl lg:text-11xl xl:text-12xl mb-12 text-center font-bebas text-8xl font-semibold sm:text-9xl">
 						Meet the team
 					</h1>
 					<Team />
@@ -89,7 +86,7 @@ function Home() {
 					</svg> */}
 			</div>
 
-			<div className="overflow-hidden rounded-t-3xl bg-[#FAF8ED] px-8 py-20 pattern-texture-indigo-600/30 pattern-texture-scale-[1.5]">
+			<div className="overflow-hidden rounded-t-3xl px-8 py-20">
 				<h1 className="md:text-10xl lg:text-11xl xl:text-12xl about mb-12 text-center font-bebas text-8xl font-semibold sm:text-9xl">
 					About Our Web App
 				</h1>

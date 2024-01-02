@@ -43,7 +43,6 @@ function DayPicker({ onDaysChange }) {
 						id={`appointmentDay${day}`}
 						value={day.toLowerCase()}
 						onChange={() => handleCheckboxChange(day.toLowerCase())}
-						required
 					/>
 					<label
 						className="inline-block pl-[0.15rem] font-poppins font-medium hover:cursor-pointer"

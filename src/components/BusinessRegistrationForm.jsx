@@ -48,7 +48,7 @@ function BusinessRegistrationForm() {
 			// Check if the form submission was successful
 			if (response.data.success) {
 				setIsLoading(false);
-				navigate("/schedulizer/businessprofilebio");
+				navigate("/schedulizer/profilepicbio");
 			} else {
 				setIsLoading(false);
 			}
@@ -71,7 +71,7 @@ function BusinessRegistrationForm() {
 
 	return (
 		<Layout>
-			<div className="flex min-h-screen flex-col justify-center bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+			<div className="flex min-h-screen flex-col justify-center">
 				<div className="flex justify-center py-12">
 					<div className="pt-12">
 						<h3 className="text-dark-grey-900 px-4 pb-6 font-bebas text-6xl font-medium">

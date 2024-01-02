@@ -47,21 +47,21 @@ function ProfilePicBio() {
 
 	return (
 		<Layout>
-			<div className="flex min-h-screen flex-col justify-center bg-[#FAF8ED] pattern-texture-indigo-500/30 pattern-texture-scale-[1.5]">
+			<div className="flex min-h-screen flex-col justify-center bg-[#FAF8ED] pattern-texture-indigo-600/10 pattern-texture-scale-[1.5]">
 				<div className="flex justify-center py-32">
 					<div className="pt-12">
 						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
 							Give your business
 							<br /> a face and a voice
 						</h3>
-						<div className="w-full items-center justify-center px-32">
+						<div className="w-full items-center justify-center px-12">
 							<form onSubmit="">
 								<div className="mt-8">
 									<div className="flex w-full items-center justify-center pb-6">
 										<label
 											htmlFor="dropzone-file"
 											className="dark:hover:bg-bray-800 flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-black hover:border-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-											<div className="flex flex-col items-center justify-center pb-6 pt-5">
+											<div className="flex flex-col items-center justify-center space-y-2 pb-6 pt-5">
 												<svg
 													className="mb-2 h-8 w-8"
 													aria-hidden="true"
@@ -124,7 +124,7 @@ function ProfilePicBio() {
 								<div className="grid grid-cols-2 items-center justify-center gap-x-12 py-4 xs:px-16 md:px-32 xl:px-36">
 									<button
 										type="button"
-										className="flex w-full items-center justify-center rounded-md bg-indigo-400 px-6 font-jaldi text-sm text-white transition-colors duration-200 hover:bg-indigo-600 xs:py-2 sm:py-2 md:px-4"
+										className="flex w-full items-center justify-center rounded-md border-2 border-indigo-500 px-6 font-jaldi text-sm text-indigo-500 transition-colors duration-200 hover:bg-indigo-500 hover:text-[#FAF8ED] xs:py-2 sm:py-2 md:px-4"
 										onClick={handleSkip}>
 										SKIP
 									</button>

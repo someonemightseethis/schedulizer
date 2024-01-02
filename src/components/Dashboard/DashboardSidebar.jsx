@@ -1,6 +1,6 @@
 function DashboardSidebar() {
 	return (
-		<div className="fixed h-full w-max flex-col overflow-x-hidden overflow-y-scroll bg-[#FAF8ED] px-2 shadow-sm shadow-indigo-800 xs:hidden sm:hidden md:flex lg:flex xl:flex">
+		<div className="fixed h-full w-max flex-col overflow-x-hidden overflow-y-scroll bg-[#FAF8ED] px-2 shadow-lg xs:hidden sm:hidden md:flex lg:flex xl:flex">
 			<ul className="flex h-full flex-col justify-between py-2">
 				<div className="top-0">
 					<div className="my-2 flex items-center justify-start border-b-2 border-black py-2 sm:justify-center sm:px-0 xl:justify-start xl:px-3">

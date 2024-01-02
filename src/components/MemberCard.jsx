@@ -2,7 +2,7 @@ import PropTypes from "prop-types"; // Import PropTypes
 
 function MemberCard({ member }) {
 	return (
-		<div className="rounded-xl bg-[#FAF8ED] p-6 transition-all duration-500 hover:scale-105 hover:cursor-pointer lg:mb-0">
+		<div className="rounded-xl bg-[#FAF8ED] p-6 shadow-xl transition-all duration-500 hover:scale-105 hover:cursor-pointer lg:mb-0">
 			<img
 				className="mx-auto mb-6 w-[100px] border-[#2B3467]"
 				src={member.profileImageSrc}

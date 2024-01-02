@@ -132,7 +132,7 @@ function SignUp() {
 
 	return (
 		<Layout>
-			<div className="flex min-h-screen flex-col justify-center bg-[#FAF8ED] pattern-texture-indigo-600/30 pattern-texture-scale-[1.5]">
+			<div className="flex min-h-screen flex-col justify-center">
 				<div className="flex justify-center py-12">
 					<div className="pt-12 md:w-full lg:w-[600px] xl:w-[700px]">
 						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">

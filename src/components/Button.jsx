@@ -25,7 +25,7 @@ function Button(props) {
 			<button
 				type={buttonType}
 				disabled={props.disabled}
-				className={`flex w-full items-center justify-center rounded-md bg-indigo-500 px-6 font-jaldi text-sm text-white transition-colors duration-200 hover:bg-indigo-600 xs:py-2 sm:py-2 md:px-4 ${
+				className={`flex w-full items-center justify-center rounded-md bg-indigo-500 px-6 font-jaldi text-sm text-[#FAF8ED] transition-colors duration-200 hover:bg-indigo-600 xs:py-2 sm:py-2 md:px-4 ${
 					props.disabled ? "opacity-50 cursor-not-allowed" : ""
 				}`}
 				onClick={handleClick}>

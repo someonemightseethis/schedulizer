@@ -33,7 +33,7 @@ function BusinessInfo() {
 				<div className="grid h-auto grid-cols-2 px-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:gap-x-0">
 					<div className="py-32">
 						<div className="fixed flex h-auto flex-col items-center justify-center space-y-6">
-							<div className="w-full rounded-xl bg-[#FAF8ED] py-4 shadow-sm shadow-indigo-800">
+							<div className="w-full rounded-xl bg-[#FAF8ED] py-4 shadow-xl">
 								<div className="flex w-full justify-center">
 									<div className="relative">
 										<img
@@ -78,7 +78,7 @@ function BusinessInfo() {
 									</div>
 								</div>
 							</div>
-							<div className="w-full max-w-md rounded-xl bg-[#FAF8ED] p-8 shadow-sm shadow-indigo-800">
+							<div className="w-full max-w-md rounded-xl bg-[#FAF8ED] p-8 shadow-xl">
 								<p className="text-md text-center font-muktaVaani">
 									We gotta burn the rain forest, dump toxic waste, pollute the
 									air, and rip up the OZONE! Cause maybe if we screw up this

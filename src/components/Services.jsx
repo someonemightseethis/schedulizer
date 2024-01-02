@@ -28,7 +28,7 @@ function Services() {
 	return (
 		<Layout>
 			<Filters />
-			<div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-12 px-20 pb-12 pt-48">
+			<div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-16 px-20 pb-12 pt-48">
 				{businesses.map((business, index) => (
 					<BusinessCard key={index} business={business} />
 				))}
