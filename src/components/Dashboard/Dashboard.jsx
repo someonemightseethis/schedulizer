@@ -1,5 +1,5 @@
-import DashboardSidebar from "./DashboardSidebar";
-import Navbar from "../Navbar/Navbar";
+import ConnectedDashboardSidebar from "./DashboardSidebar";
+import Navbar from "../navbar/Navbar";
 import DashboardMain from "./DashboardMain";
 
 function Dashboard() {
@@ -7,7 +7,7 @@ function Dashboard() {
 		<div className="flex h-screen flex-col bg-[#FAF8ED]">
 			<Navbar />
 			<div className="w-full md:sm:my-[58px] xl:lg:my-[66px]">
-				<DashboardSidebar />
+				<ConnectedDashboardSidebar />
 				<DashboardMain />
 			</div>
 		</div>

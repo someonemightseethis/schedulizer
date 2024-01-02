@@ -68,14 +68,16 @@ async function SignIn(req, res) {
 		}
 
 		const token = jwt.sign(
-			{ id: existingUser.id, firstName: existingUser.firstName },
+			{
+				id: existingUser.id,
+				firstName: existingUser.firstName,
+				email: existingUser.email,
+			},
 			process.env.JWT_SECRET,
 			{
 				expiresIn: "10s",
 			}
 		);
-
-		res.token = token;
 
 		res
 			.status(200)

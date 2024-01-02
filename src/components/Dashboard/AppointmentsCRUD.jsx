@@ -1,11 +1,11 @@
-import InputField from "../Form/InputField";
+import InputField from "../form/InputField";
 import Button from "../Button";
-import DayPicker from "../Form/DayPicker";
+import DayPicker from "../form/DayPicker";
 import { useState, useEffect, useRef, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Dialog, Transition } from "@headlessui/react";
-import DropdownButton from "../Form/DropdownButton";
+import DropdownButton from "../form/DropdownButton";
 
 function AppointmentsCRUD() {
 	const [appointmentTitle, setAppointmentTitle] = useState("");

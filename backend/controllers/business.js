@@ -9,40 +9,45 @@ export const registeredBusiness = async (req, res) => {
 	const data = {
 		name: req.body.businessName,
 		contactNumber: req.body.businessContactNumber,
-		email: req.body.businessEmail,
+		businessEmail: req.body.businessEmail,
 		city: req.body.businessCity,
 		type: req.body.businessType,
 		employees: req.body.numberOfEmployees,
 		workField: req.body.businessCategory,
 		address: req.body.businessAddress,
 		addressLink: req.body.businessAddressLink,
+		userEmail: req.body.userEmail,
 	};
 
 	if (
 		!data.name ||
 		!data.contactNumber ||
-		!data.email ||
+		!data.businessEmail ||
 		!data.city ||
 		!data.type ||
 		!data.employees ||
 		!data.workField ||
 		!data.address ||
-		!data.addressLink
+		!data.addressLink ||
+		!data.userEmail
 	) {
 		return res.status(400).send("All Fields are required.");
 	}
 
 	try {
-		const existingUser = await Business.findOne({ email: data.email });
+		const existingUser = await Business.findOne({
+			businessEmail: data.businessEmail,
+		});
 
 		if (existingUser) {
 			return res.status(400).send({
-				error: "Email already exists. Please choose a different Email.",
+				error:
+					"businessEmail already exists. Please choose a different businessEmail.",
 			});
 		} else {
 			const businessdata = await Business.create(data);
 			if (!req.body.businessEmail || !req.body.businessName) {
-				return res.status(400).send("Email and name are required.");
+				return res.status(400).send("businessEmail and name are required.");
 			}
 
 			sendMail(req.body.businessEmail, req.body.businessName, "hello");
@@ -98,7 +103,8 @@ export const updateById = async (req, res) => {
 		existingBusiness.name = req.body.name || existingBusiness.name;
 		existingBusiness.contactNumber =
 			req.body.contactNumber || existingBusiness.contactNumber;
-		existingBusiness.email = req.body.email || existingBusiness.email;
+		existingBusiness.businessEmail =
+			req.body.businessEmail || existingBusiness.businessEmail;
 		existingBusiness.city = req.body.city || existingBusiness.city;
 		existingBusiness.type = req.body.type || existingBusiness.type;
 		existingBusiness.employees =

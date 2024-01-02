@@ -10,7 +10,11 @@ const BusinessSchema = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-	email: {
+	businessEmail: {
+		type: String,
+		required: true,
+	},
+	userEmail: {
 		type: String,
 		required: true,
 	},

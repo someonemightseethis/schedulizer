@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import Navbar from "./Navbar/Navbar";
+import Navbar from "./navbar/Navbar";
 
 function Layout({ children }) {
 	return (

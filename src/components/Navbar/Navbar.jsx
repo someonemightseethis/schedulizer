@@ -1,21 +1,53 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Button from "../Button";
 import NavbarLinks from "./NavbarLinks";
 import Searchbar from "./Searchbar";
-// import { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 
 function Navbar() {
+	// Get the user's first name from localStorage
 	let firstName = localStorage.getItem("firstName");
-	const token = localStorage.getItem("token"); // get the token from localStorage
+
+	// Get the token from localStorage
+	const token = localStorage.getItem("token");
+
+	// Use the useNavigate hook for programmatic navigation
+	const navigate = useNavigate();
+
+	// Function to handle logout
+	const handleLogout = () => {
+		// Remove user information from localStorage
+		localStorage.removeItem("firstName");
+		localStorage.removeItem("token");
+
+		// Navigate to the desired location (e.g., home page)
+		navigate("/schedulizer/");
+	};
+
+	// Check if the token exists
+	console.log("Token:", token);
 
 	if (token) {
+		// Decode the token
 		const decodedToken = jwtDecode(token);
+
+		// Log the decoded token
+		console.log("Decoded Token:", decodedToken);
+
+		// Check if the token is expired
 		if (decodedToken.exp * 1000 < Date.now()) {
 			// Token has expired
+			console.log("Token has expired");
 			localStorage.removeItem("firstName");
+			localStorage.removeItem("token");
 			firstName = null;
+		} else {
+			// Token is still valid
+			console.log("Token is still valid");
 		}
+	} else {
+		// No token found
+		console.log("No token found");
 	}
 
 	return (
@@ -66,9 +98,7 @@ function Navbar() {
 							</span>
 						</a>
 					</div>
-					<Link
-						to="/schedulizer/signin"
-						className="group items-center xs:hidden sm:hidden md:flex lg:flex xl:flex">
+					<div className="group items-center xs:hidden sm:hidden md:flex lg:flex xl:flex">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							height="1.25em"
@@ -76,11 +106,31 @@ function Navbar() {
 							viewBox="0 0 512 512">
 							<path d="M406.5 399.6C387.4 352.9 341.5 320 288 320H224c-53.5 0-99.4 32.9-118.5 79.6C69.9 362.2 48 311.7 48 256C48 141.1 141.1 48 256 48s208 93.1 208 208c0 55.7-21.9 106.2-57.5 143.6zm-40.1 32.7C334.4 452.4 296.6 464 256 464s-78.4-11.6-110.5-31.7c7.3-36.7 39.7-64.3 78.5-64.3h64c38.8 0 71.2 27.6 78.5 64.3zM256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zm0-272a40 40 0 1 1 0-80 40 40 0 1 1 0 80zm-88-40a88 88 0 1 0 176 0 88 88 0 1 0 -176 0z" />
 						</svg>
-						<p className="px-4 font-ptSansCaption text-sm group-hover:underline group-hover:underline-offset-4">
-							{firstName || "SignUp / SignIn"}
-							{/* SignUp / SignIn */}
-						</p>
-					</Link>
+						<Link to="/schedulizer/signin">
+							<p className="flex items-center justify-center px-4 font-ptSansCaption text-sm">
+								{firstName ? (
+									// Display user's first name if available
+									<>
+										{firstName}
+										<span
+											className="cursor-pointer px-4"
+											onClick={handleLogout}>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												height="1.5em"
+												fill="#6366F1"
+												viewBox="0 0 448 512">
+												<path d="M384 32c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96C0 60.7 28.7 32 64 32H384zM160 144c-13.3 0-24 10.7-24 24s10.7 24 24 24h94.1L119 327c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l135-135V328c0 13.3 10.7 24 24 24s24-10.7 24-24V168c0-13.3-10.7-24-24-24H160z" />
+											</svg>
+										</span>
+									</>
+								) : (
+									// If not logged in, display SignUp / SignIn
+									"SignUp / SignIn"
+								)}
+							</p>
+						</Link>
+					</div>
 				</div>
 			</nav>
 		</div>

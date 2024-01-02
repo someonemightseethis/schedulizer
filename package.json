@@ -22,6 +22,7 @@
     "@headlessui/react": "^1.7.17",
     "@radix-ui/react-dialog": "^1.0.5",
     "@react-spring/web": "^9.7.3",
+    "@reduxjs/toolkit": "^2.0.1",
     "@stitches/react": "^1.2.8",
     "@wojtekmaj/react-timerange-picker": "^5.4.4",
     "axios": "^1.6.2",

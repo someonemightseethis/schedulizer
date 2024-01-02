@@ -2,11 +2,21 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "./Button";
-import DropdownButton from "./Form/DropdownButton";
-import InputField from "./Form/InputField";
+import DropdownButton from "./form/DropdownButton";
+import InputField from "./form/InputField";
 import Layout from "./Layout";
+import { useSelector, useDispatch } from "react-redux";
+import { selectUserEmail } from "../redux/slices/userSlice";
+import {
+	signInRequest,
+	signInSuccess,
+	signInFailure,
+} from "../redux/actions/authActions";
 
 function BusinessRegistrationForm() {
+	const dispatch = useDispatch();
+	const userEmail = useSelector(selectUserEmail);
+
 	const navigate = useNavigate();
 	const [businessName, setBusinessName] = useState("");
 	const [businessContactNumber, setBusinessContactNumber] = useState("");
@@ -29,6 +39,7 @@ function BusinessRegistrationForm() {
 			businessName,
 			businessContactNumber,
 			businessEmail,
+			userEmail,
 			businessCity,
 			businessType,
 			numberOfEmployees,
@@ -37,19 +48,31 @@ function BusinessRegistrationForm() {
 			businessAddressLink,
 		};
 
+		console.log(businessData);
+
 		try {
+			// Dispatch the sign-in request action
+			dispatch(signInRequest(businessData));
+
 			const response = await axios.post("/business/registered", businessData, {
 				headers: {
 					"Content-Type": "application/json",
 				},
 			});
+
 			console.log(response.data);
 
 			// Check if the form submission was successful
 			if (response.data.success) {
+				// Dispatch the sign-in success action
+				dispatch(signInSuccess(response.data));
+
 				setIsLoading(false);
 				navigate("/schedulizer/profilepicbio");
 			} else {
+				// Dispatch the sign-in failure action with an appropriate error message
+				dispatch(signInFailure({ error: "Business registration failed" }));
+
 				setIsLoading(false);
 			}
 		} catch (error) {

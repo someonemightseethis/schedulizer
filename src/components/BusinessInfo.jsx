@@ -1,7 +1,7 @@
 import AppointmentCard from "./AppointmentCard";
 import BackToTopButton from "./BacktoTopButton";
 import Ratings from "./Ratings";
-import InputField from "./Form/InputField";
+import InputField from "./form/InputField";
 import Layout from "./Layout";
 import Button from "./Button";
 import { useEffect, useState } from "react";
@@ -32,7 +32,7 @@ function BusinessInfo() {
 			<div className="flex h-auto flex-col justify-center p-12">
 				<div className="grid h-auto grid-cols-2 px-4 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:gap-x-0">
 					<div className="py-32">
-						<div className="fixed flex h-auto flex-col items-center justify-center space-y-6">
+						<div className="fixed flex h-auto w-1/4 flex-col items-center justify-center space-y-6">
 							<div className="w-full rounded-xl bg-[#FAF8ED] py-4 shadow-xl">
 								<div className="flex w-full justify-center">
 									<div className="relative">

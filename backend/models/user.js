@@ -13,7 +13,7 @@ const SignInSchema = new mongoose.Schema({
 		type: Number,
 		required: true,
 	},
-	email: {
+	userEmail: {
 		type: String,
 		required: true,
 	},

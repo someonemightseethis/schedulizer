@@ -1,4 +1,17 @@
-function DashboardSidebar() {
+import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { logoutAction } from "../../redux/actions/authActions";
+
+function DashboardSidebar({ logout }) {
+	const navigate = useNavigate();
+
+	const handleLogout = () => {
+		// Additional logic if needed before logout, or dispatch additional actions
+		logout();
+		navigate("/schedulizer/");
+	};
+
 	return (
 		<div className="fixed h-full w-max flex-col overflow-x-hidden overflow-y-scroll bg-[#FAF8ED] px-2 shadow-lg xs:hidden sm:hidden md:flex lg:flex xl:flex">
 			<ul className="flex h-full flex-col justify-between py-2">
@@ -126,6 +139,7 @@ function DashboardSidebar() {
 					<li>
 						<a
 							href="#"
+							onClick={handleLogout} // Call handleLogout when the logout button is clicked
 							className="relative flex h-11 flex-row items-center border-l-4 border-transparent pr-6 font-ptSansCaption text-gray-600 hover:border-indigo-500 hover:bg-gray-50 hover:font-medium hover:text-gray-800 focus:outline-none">
 							<span className="ml-2 inline-flex items-center justify-center">
 								<svg
@@ -152,4 +166,22 @@ function DashboardSidebar() {
 	);
 }
 
-export default DashboardSidebar;
+DashboardSidebar.propTypes = {
+	isAuthenticated: PropTypes.bool.isRequired,
+	logout: PropTypes.func.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.auth.user !== null, // Update this line
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	logout: () => dispatch(logoutAction()),
+});
+
+const ConnectedDashboardSidebar = connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(DashboardSidebar);
+
+export default ConnectedDashboardSidebar;

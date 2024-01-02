@@ -1,11 +1,21 @@
 import { Link, useNavigate } from "react-router-dom";
 import Button from "./Button";
-import InputField from "./Form/InputField";
+import InputField from "./form/InputField";
 import Layout from "./Layout";
 import axios from "axios";
 import { useState } from "react";
+import { connect, useDispatch } from "react-redux";
+import { signInRequest, signInSuccess } from "../redux/actions/authActions";
+import PropTypes from "prop-types";
+import {
+	setUserEmail,
+	setUserFirstName,
+	setUserId,
+} from "../redux/slices/userSlice.js";
+import jwt from "jsonwebtoken";
 
-function SignIn() {
+function SignIn({ signInRequest, signInSuccess }) {
+	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const [userEmail, setUserEmail] = useState("");
 	const [userPassword, setUserPassword] = useState("");
@@ -31,44 +41,51 @@ function SignIn() {
 	};
 
 	const handleSubmit = async (event) => {
-		console.log("submitting");
 		event.preventDefault();
 
 		setEmailError("");
 		setPasswordError("");
 
-		// Here you can call your API to handle sign in
+		setIsLoading(true);
+
+		signInRequest();
+
 		try {
 			const response = await axios.post("/user/signin", {
 				userEmail,
 				userPassword,
 			});
 
-			// Check if the form submission was successful
 			if (response.data.success) {
-				setIsLoading(false);
-				// Use navigate from useNavigate hook to programmatically navigate
-				const base64Url = response.data.token.split(".")[1];
-				const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-				const jsonPayload = decodeURIComponent(
-					atob(base64)
-						.split("")
-						.map(function (c) {
-							return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-						})
-						.join("")
-				);
-
-				const decodedToken = JSON.parse(jsonPayload);
+				const decodedToken = jwt.decode(response.data.token);
 				console.log("Decoded Token:", decodedToken);
 
-				// Updated code to set localStorage and navigate
-				const setLocalStorageAndNavigate = async () => {
-					localStorage.setItem("firstName", decodedToken.firstName);
-					await navigate("/schedulizer/services");
-				};
+				localStorage.setItem("firstName", decodedToken.firstName);
 
-				setLocalStorageAndNavigate();
+				console.log("Dispatching setUserEmail with:", decodedToken.email);
+				dispatch(setUserEmail(decodedToken.email));
+				console.log(
+					"Dispatching setUserFirstName with:",
+					decodedToken.firstName
+				);
+				dispatch(setUserFirstName(decodedToken.firstName));
+				console.log("Dispatching setUserId with:", decodedToken.id);
+				dispatch(setUserId(decodedToken.id));
+
+				console.log("Dispatching signInSuccess with:", {
+					firstName: decodedToken.firstName,
+					email: decodedToken.email,
+					id: decodedToken.id,
+				});
+				dispatch(
+					signInSuccess({
+						firstName: decodedToken.firstName,
+						email: decodedToken.email,
+						id: decodedToken.id,
+					})
+				);
+
+				await navigate("/schedulizer/services");
 			}
 		} catch (error) {
 			if (
@@ -88,8 +105,12 @@ function SignIn() {
 			} else {
 				console.log("error", error);
 			}
+		} finally {
+			setIsLoading(false);
 		}
 	};
+
+	console.log(signInSuccess);
 
 	return (
 		<Layout>
@@ -113,7 +134,7 @@ function SignIn() {
 								value={userEmail}
 								onChange={(e) => {
 									setUserEmail(e.target.value);
-									setEmailError(""); // clear the error when the input field is being edited
+									setEmailError("");
 								}}
 								validateOnBlur={true}
 								validate={(value) =>
@@ -138,7 +159,7 @@ function SignIn() {
 								value={userPassword}
 								onChange={(e) => {
 									setUserPassword(e.target.value);
-									setPasswordError(""); // clear the error when the input field is being edited
+									setPasswordError("");
 								}}
 								validateOnBlur={true}
 								inputFieldError={passwordError}
@@ -191,4 +212,29 @@ function SignIn() {
 	);
 }
 
-export default SignIn;
+SignIn.propTypes = {
+	signInRequest: PropTypes.func.isRequired,
+	signInSuccess: PropTypes.func.isRequired,
+	auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+	auth: state.auth,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+	signInRequest: () => {
+		console.log("Inside mapDispatchToProps, dispatching signInRequest");
+		dispatch(signInRequest());
+	},
+	signInSuccess: (user) => {
+		console.log(
+			"Inside mapDispatchToProps, dispatching signInSuccess with:",
+			user
+		);
+		dispatch(signInSuccess(user));
+	},
+});
+
+const ConnectedSignIn = connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default ConnectedSignIn;
