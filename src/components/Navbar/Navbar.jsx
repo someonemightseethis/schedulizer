@@ -3,51 +3,29 @@ import Button from "../Button";
 import NavbarLinks from "./NavbarLinks";
 import Searchbar from "./Searchbar";
 import { jwtDecode } from "jwt-decode";
+import useLocalStorage from "../../hooks/useLocalStorage";
 
 function Navbar() {
-	// Get the user's first name from localStorage
-	let firstName = localStorage.getItem("firstName");
-
-	// Get the token from localStorage
-	const token = localStorage.getItem("token");
-
-	// Use the useNavigate hook for programmatic navigation
 	const navigate = useNavigate();
+	const [firstName, setFirstName] = useLocalStorage("firstName", "");
+	const [token, setToken] = useLocalStorage("token", "");
 
-	// Function to handle logout
 	const handleLogout = () => {
-		// Remove user information from localStorage
-		localStorage.removeItem("firstName");
-		localStorage.removeItem("token");
-
-		// Navigate to the desired location (e.g., home page)
+		setFirstName("");
+		setToken("");
 		navigate("/schedulizer/");
 	};
 
-	// Check if the token exists
-	console.log("Token:", token);
-
 	if (token) {
-		// Decode the token
 		const decodedToken = jwtDecode(token);
-
-		// Log the decoded token
 		console.log("Decoded Token:", decodedToken);
 
-		// Check if the token is expired
 		if (decodedToken.exp * 1000 < Date.now()) {
-			// Token has expired
 			console.log("Token has expired");
-			localStorage.removeItem("firstName");
-			localStorage.removeItem("token");
-			firstName = null;
+			handleLogout();
 		} else {
-			// Token is still valid
 			console.log("Token is still valid");
 		}
-	} else {
-		// No token found
-		console.log("No token found");
 	}
 
 	return (

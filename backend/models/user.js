@@ -9,7 +9,7 @@ const SignInSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	phoneNumber: {
+	userPhoneNumber: {
 		type: Number,
 		required: true,
 	},

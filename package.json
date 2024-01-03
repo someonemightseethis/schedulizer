@@ -49,6 +49,7 @@
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.18.0",
     "react-use": "^17.4.0",
+    "redux-thunk": "^3.1.0",
     "slick-carousel": "^1.8.1",
     "tailwindcss-patterns": "^0.1.2",
     "taos": "^1.0.5",

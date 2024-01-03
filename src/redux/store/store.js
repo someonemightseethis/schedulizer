@@ -12,7 +12,12 @@ const store = configureStore({
 	},
 });
 
-export const dispatchSignInSuccess = (user) => () => handleSignInSuccess(user);
-export const dispatchLogout = () => () => handleLogout;
+export const dispatchSignInSuccess = (user) => (dispatch) => {
+	dispatch(handleSignInSuccess(user));
+};
+
+export const dispatchLogout = () => (dispatch) => {
+	dispatch(handleLogout());
+};
 
 export default store;

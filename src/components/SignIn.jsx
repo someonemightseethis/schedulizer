@@ -7,12 +7,8 @@ import { useState } from "react";
 import { connect, useDispatch } from "react-redux";
 import { signInRequest, signInSuccess } from "../redux/actions/authActions";
 import PropTypes from "prop-types";
-import {
-	setUserEmail,
-	setUserFirstName,
-	setUserId,
-} from "../redux/slices/userSlice.js";
-import jwt from "jsonwebtoken";
+import { setUser } from "../redux/slices/userSlice.js";
+import { jwtDecode } from "jwt-decode";
 
 function SignIn({ signInRequest, signInSuccess }) {
 	const dispatch = useDispatch();
@@ -57,26 +53,22 @@ function SignIn({ signInRequest, signInSuccess }) {
 			});
 
 			if (response.data.success) {
-				const decodedToken = jwt.decode(response.data.token);
+				const decodedToken = jwtDecode(response.data.token);
 				console.log("Decoded Token:", decodedToken);
 
+				// Set user information in localStorage
 				localStorage.setItem("firstName", decodedToken.firstName);
+				localStorage.setItem("email", decodedToken.email);
+				localStorage.setItem("id", decodedToken.id);
 
-				console.log("Dispatching setUserEmail with:", decodedToken.email);
-				dispatch(setUserEmail(decodedToken.email));
-				console.log(
-					"Dispatching setUserFirstName with:",
-					decodedToken.firstName
+				// Dispatch setUserEmail, setUserFirstName, setUserId, signInSuccess
+				dispatch(
+					setUser({
+						email: decodedToken.email,
+						firstName: decodedToken.firstName,
+						id: decodedToken.id,
+					})
 				);
-				dispatch(setUserFirstName(decodedToken.firstName));
-				console.log("Dispatching setUserId with:", decodedToken.id);
-				dispatch(setUserId(decodedToken.id));
-
-				console.log("Dispatching signInSuccess with:", {
-					firstName: decodedToken.firstName,
-					email: decodedToken.email,
-					id: decodedToken.id,
-				});
 				dispatch(
 					signInSuccess({
 						firstName: decodedToken.firstName,
@@ -84,27 +76,10 @@ function SignIn({ signInRequest, signInSuccess }) {
 						id: decodedToken.id,
 					})
 				);
-
 				await navigate("/schedulizer/services");
 			}
 		} catch (error) {
-			if (
-				error.response &&
-				error.response.data.error === "No user found with the given email"
-			) {
-				setEmailError("No such email exists. Try a different email.");
-			} else if (
-				error.response &&
-				error.response.data.error === "Wrong Password"
-			) {
-				setPasswordError("Incorrect password. Try again.");
-			}
-
-			if (error.response) {
-				console.log("error data", error.response.data);
-			} else {
-				console.log("error", error);
-			}
+			console.error("Failed to sign in:", error);
 		} finally {
 			setIsLoading(false);
 		}

@@ -10,26 +10,26 @@ async function SignUp(req, res) {
 	const data = {
 		firstName: req.body.userFirstName,
 		lastName: req.body.userLastName,
-		phoneNumber: req.body.userPhoneNumber,
-		email: req.body.userEmail,
+		userPhoneNumber: req.body.userPhoneNumber,
+		userEmail: req.body.userEmail,
 		password: req.body.userPassword,
 	};
 
 	if (
 		!data.firstName ||
 		!data.lastName ||
-		!data.phoneNumber ||
-		!data.email ||
+		!data.userPhoneNumber ||
+		!data.userEmail ||
 		!data.password
 	) {
 		return res.status(400).json({ error: "All Fields are required." });
 	}
 
 	try {
-		const existingUser = await User.findOne({ email: data.email });
+		const existingUser = await User.findOne({ userEmail: data.userEmail });
 		if (existingUser) {
 			return res.status(400).json({
-				error: "User already exists. Please choose a different Email.",
+				error: "User already exists. Please choose a different userEmail.",
 			});
 		}
 
@@ -51,11 +51,11 @@ async function SignUp(req, res) {
 // SignIn user
 async function SignIn(req, res) {
 	try {
-		const existingUser = await User.findOne({ email: req.body.userEmail });
+		const existingUser = await User.findOne({ userEmail: req.body.userEmail });
 		if (!existingUser) {
 			return res
 				.status(400)
-				.json({ error: "No user found with the given email" });
+				.json({ error: "No user found with the given userEmail" });
 		}
 
 		// Compare the hashed password from the database with the plaintext password
@@ -67,17 +67,21 @@ async function SignIn(req, res) {
 			return res.status(400).json({ error: "Wrong Password" });
 		}
 
+		console.log("Existing User:", existingUser);
+
 		const token = jwt.sign(
 			{
 				id: existingUser.id,
 				firstName: existingUser.firstName,
-				email: existingUser.email,
+				userEmail: existingUser.userEmail,
 			},
 			process.env.JWT_SECRET,
 			{
-				expiresIn: "10s",
+				expiresIn: "10h",
 			}
 		);
+
+		console.log("Generated Token:", token);
 
 		res
 			.status(200)
@@ -103,7 +107,7 @@ const auth = async (req, res) => {
 				success: true,
 				data: {
 					name: user.name,
-					email: user.email,
+					userEmail: user.userEmail,
 				},
 			});
 		}

@@ -5,8 +5,7 @@ import {
 	LOGOUT,
 	signInSuccess,
 } from "../actions/authActions";
-import { clearUser, setUserEmail } from "../slices/userSlice";
-
+import { setUser, clearUser } from "../slices/userSlice";
 const initialState = {
 	loading: false,
 	error: null,
@@ -46,7 +45,7 @@ const authReducer = (state = initialState, action) => {
 };
 
 export const handleSignInSuccess = (user) => (dispatch) => {
-	dispatch(setUserEmail(user.email));
+	dispatch(setUser(user));
 	dispatch(signInSuccess(user));
 };
 

@@ -8,10 +8,10 @@ import Layout from "./Layout";
 import { useSelector, useDispatch } from "react-redux";
 import { selectUserEmail } from "../redux/slices/userSlice";
 import {
-	signInRequest,
-	signInSuccess,
-	signInFailure,
-} from "../redux/actions/authActions";
+	registerBusinessRequest,
+	registerBusinessSuccess,
+	registerBusinessFailure,
+} from "../redux/slices/businessRegistrationSlice";
 
 function BusinessRegistrationForm() {
 	const dispatch = useDispatch();
@@ -51,8 +51,8 @@ function BusinessRegistrationForm() {
 		console.log(businessData);
 
 		try {
-			// Dispatch the sign-in request action
-			dispatch(signInRequest(businessData));
+			// Dispatch the register business request action
+			dispatch(registerBusinessRequest(businessData));
 
 			const response = await axios.post("/business/registered", businessData, {
 				headers: {
@@ -64,14 +64,16 @@ function BusinessRegistrationForm() {
 
 			// Check if the form submission was successful
 			if (response.data.success) {
-				// Dispatch the sign-in success action
-				dispatch(signInSuccess(response.data));
+				// Dispatch the register business success action
+				dispatch(registerBusinessSuccess(response.data));
 
 				setIsLoading(false);
 				navigate("/schedulizer/profilepicbio");
 			} else {
-				// Dispatch the sign-in failure action with an appropriate error message
-				dispatch(signInFailure({ error: "Business registration failed" }));
+				// Dispatch the register business failure action with an appropriate error message
+				dispatch(
+					registerBusinessFailure({ error: "Business registration failed" })
+				);
 
 				setIsLoading(false);
 			}
