@@ -58,13 +58,13 @@ function SignIn({ signInRequest, signInSuccess }) {
 
 				// Set user information in localStorage
 				localStorage.setItem("firstName", decodedToken.firstName);
-				localStorage.setItem("email", decodedToken.email);
+				localStorage.setItem("email", decodedToken.userEmail);
 				localStorage.setItem("id", decodedToken.id);
 
 				// Dispatch setUserEmail, setUserFirstName, setUserId, signInSuccess
 				dispatch(
 					setUser({
-						email: decodedToken.email,
+						email: decodedToken.userEmail,
 						firstName: decodedToken.firstName,
 						id: decodedToken.id,
 					})
@@ -72,7 +72,7 @@ function SignIn({ signInRequest, signInSuccess }) {
 				dispatch(
 					signInSuccess({
 						firstName: decodedToken.firstName,
-						email: decodedToken.email,
+						email: decodedToken.userEmail,
 						id: decodedToken.id,
 					})
 				);

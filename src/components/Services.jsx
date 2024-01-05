@@ -16,7 +16,7 @@ function Services() {
 				}
 				const data = await response.json();
 				setBusinesses(data);
-				console.log(data);
+				// console.log(data);
 			} catch (error) {
 				console.error("Fetch error: ", error);
 			}

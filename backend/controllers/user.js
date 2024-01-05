@@ -10,7 +10,7 @@ async function SignUp(req, res) {
 	const data = {
 		firstName: req.body.userFirstName,
 		lastName: req.body.userLastName,
-		userPhoneNumber: req.body.userPhoneNumber,
+		userContactNumber: req.body.userContactNumber,
 		userEmail: req.body.userEmail,
 		password: req.body.userPassword,
 	};
@@ -18,7 +18,7 @@ async function SignUp(req, res) {
 	if (
 		!data.firstName ||
 		!data.lastName ||
-		!data.userPhoneNumber ||
+		!data.userContactNumber ||
 		!data.userEmail ||
 		!data.password
 	) {

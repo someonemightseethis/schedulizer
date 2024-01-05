@@ -20,7 +20,9 @@ function DropdownButton(props) {
 		);
 	}, [selectedValue, props.dropdownlabelname]);
 
-	const handleOptionSelect = (optionId) => {
+	const handleOptionSelect = (optionId, event) => {
+		event.preventDefault(); // Prevent the default behavior
+
 		setSelectedOption(optionId);
 		setDropdowListOpen(false);
 
@@ -66,7 +68,7 @@ function DropdownButton(props) {
 		<div className="relative" data-te-dropdown-ref ref={dropdownRef}>
 			<label
 				htmlFor={props.dropdownlabelhtmlfor}
-				className="mb-4 px-1 text-md font-poppins text-start font-medium text-grey-900">
+				className="text-md text-grey-900 mb-4 px-1 text-start font-poppins font-medium">
 				{props.dropdownlabelname}
 			</label>
 			<button

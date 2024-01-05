@@ -7,28 +7,28 @@ export const registeredBusiness = async (req, res) => {
 	console.log(req.body); // This will log the request body
 
 	const data = {
-		name: req.body.businessName,
-		contactNumber: req.body.businessContactNumber,
+		businessName: req.body.businessName,
+		businessContactNumber: req.body.businessContactNumber,
 		businessEmail: req.body.businessEmail,
-		city: req.body.businessCity,
-		type: req.body.businessType,
-		employees: req.body.numberOfEmployees,
-		workField: req.body.businessCategory,
-		address: req.body.businessAddress,
-		addressLink: req.body.businessAddressLink,
+		businessCity: req.body.businessCity,
+		businessType: req.body.businessType,
+		businessEmployees: req.body.numberOfEmployees,
+		businessWorkField: req.body.businessCategory,
+		businessAddress: req.body.businessAddress,
+		businessAddressLink: req.body.businessAddressLink,
 		userEmail: req.body.userEmail,
 	};
 
 	if (
-		!data.name ||
-		!data.contactNumber ||
+		!data.businessName ||
+		!data.businessContactNumber ||
 		!data.businessEmail ||
-		!data.city ||
-		!data.type ||
-		!data.employees ||
-		!data.workField ||
-		!data.address ||
-		!data.addressLink ||
+		!data.businessCity ||
+		!data.businessType ||
+		!data.businessEmployees ||
+		!data.businessWorkField ||
+		!data.businessAddress ||
+		!data.businessAddressLink ||
 		!data.userEmail
 	) {
 		return res.status(400).send("All Fields are required.");
@@ -47,7 +47,9 @@ export const registeredBusiness = async (req, res) => {
 		} else {
 			const businessdata = await Business.create(data);
 			if (!req.body.businessEmail || !req.body.businessName) {
-				return res.status(400).send("businessEmail and name are required.");
+				return res
+					.status(400)
+					.send("businessEmail and businessName are required.");
 			}
 
 			sendMail(req.body.businessEmail, req.body.businessName, "hello");
@@ -100,19 +102,22 @@ export const updateById = async (req, res) => {
 			return res.status(404).send("Business not found");
 		}
 
-		existingBusiness.name = req.body.name || existingBusiness.name;
-		existingBusiness.contactNumber =
-			req.body.contactNumber || existingBusiness.contactNumber;
+		existingBusiness.businessName =
+			req.body.businessName || existingBusiness.businessName;
+		existingBusiness.businessContactNumber =
+			req.body.businessContactNumber || existingBusiness.businessContactNumber;
 		existingBusiness.businessEmail =
 			req.body.businessEmail || existingBusiness.businessEmail;
-		existingBusiness.city = req.body.city || existingBusiness.city;
-		existingBusiness.type = req.body.type || existingBusiness.type;
-		existingBusiness.employees =
-			req.body.employees || existingBusiness.employees;
-		existingBusiness.workField =
-			req.body.workField || existingBusiness.workField;
-		existingBusiness.addressLink =
-			req.body.addressLink || existingBusiness.addressLink;
+		existingBusiness.businessCity =
+			req.body.businessCity || existingBusiness.businessCity;
+		existingBusiness.businessType =
+			req.body.businessType || existingBusiness.businessType;
+		existingBusiness.businessEmployees =
+			req.body.businessEmployees || existingBusiness.businessEmployees;
+		existingBusiness.businessWorkField =
+			req.body.businessWorkField || existingBusiness.businessWorkField;
+		existingBusiness.businessAddressLink =
+			req.body.businessAddressLink || existingBusiness.businessAddressLink;
 		existingBusiness.googleMapLink =
 			req.body.googleMapLink || existingBusiness.googleMapLink;
 

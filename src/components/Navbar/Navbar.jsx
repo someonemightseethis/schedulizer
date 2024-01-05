@@ -91,7 +91,7 @@ function Navbar() {
 									<>
 										{firstName}
 										<span
-											className="cursor-pointer px-4"
+											className="logout cursor-pointer px-4"
 											onClick={handleLogout}>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"

@@ -9,13 +9,12 @@ import { Dialog, Transition } from "@headlessui/react";
 function SignUp() {
 	const [userFirstName, setUserFirstName] = useState("");
 	const [userLastName, setUserLastName] = useState("");
-	const [userPhoneNumber, setUserPhoneNumber] = useState("");
+	const [userContactNumber, setUserContactNumber] = useState("");
 	const [userEmail, setUserEmail] = useState("");
 	const [userPassword, setUserPassword] = useState("");
 	const [userConfirmPassword, setUserConfirmPassword] = useState("");
-	const [errors, setErrors] = useState({});
+	const [error, setError] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState("");
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [emailError, setEmailError] = useState("");
 
@@ -34,29 +33,114 @@ function SignUp() {
 		}
 	}, [userPassword, userConfirmPassword]);
 
-	const validateField = (value, validateFunc, errorMessage, fieldName) => {
-		if (!validateFunc(value)) {
-			setErrors((prevErrors) => ({
+	const validateEmail = (value) => {
+		if (!value.trim()) {
+			setEmailError("Email cannot be empty. Please fill this out.");
+			return false;
+		}
+
+		const error = {
+			atSymbolError: "Email should have exactly one '@' symbol.",
+			domainError: "Email domain should end with '.com'.",
+			numberInDomainError: "Numbers are not allowed in the domain name.",
+		};
+
+		const emailParts = value.split("@");
+		if (emailParts.length !== 2) {
+			setEmailError(error.atSymbolError);
+			return false; // Email should have only one '@'
+		}
+
+		const [username, domain] = emailParts;
+		const isUsernameValid = username.trim() !== "" && !/\d/.test(username);
+		const isDomainValid = domain.endsWith(".com");
+
+		if (!isUsernameValid) {
+			setEmailError(error.numberInDomainError);
+			return false; // Username cannot be empty and should not contain numbers
+		}
+
+		if (!isDomainValid) {
+			setEmailError(error.domainError);
+			return false; // Domain should end with '.com'
+		}
+
+		// Clear the error if email is valid
+		setEmailError("");
+
+		return true;
+	};
+
+	const validatePassword = (value) => {
+		if (!value.trim()) {
+			setError((prevErrors) => ({
+				...prevErrors,
+				userPassword: "Password cannot be empty. Please fill this out.",
+			}));
+			return false;
+		}
+
+		const error = {
+			lengthError: "Password should be 8 to 16 characters.",
+			uppercaseError: "Password should include at least one capital letter.",
+			numberError: "Password should include at least one number.",
+		};
+
+		const isValidLength = value.length >= 8 && value.length <= 16;
+		const hasUppercase = /[A-Z]/.test(value);
+		const hasNumber = /\d/.test(value);
+
+		const isValidPassword = isValidLength && hasUppercase && hasNumber;
+
+		if (!isValidPassword) {
+			let errorMessage = "Invalid password. ";
+
+			if (!isValidLength) errorMessage += error.lengthError;
+			if (!hasUppercase) errorMessage += " " + error.uppercaseError;
+			if (!hasNumber) errorMessage += " " + error.numberError;
+
+			setError((prevErrors) => ({
+				...prevErrors,
+				userPassword: errorMessage,
+			}));
+		} else {
+			setError((prevErrors) => {
+				//eslint-disable-next-line no-unused-vars
+				const { userPassword: _, ...rest } = prevErrors;
+				return rest;
+			});
+		}
+
+		return isValidPassword;
+	};
+
+	const isAlphabetic = (value) => /^[A-Za-z]+$/.test(value);
+	const isNumericAndLimited = (value) => /^\d{1,11}$/.test(value);
+
+	const validateField = (
+		value,
+		validateFunc,
+		errorMessage,
+		fieldName,
+		labelName
+	) => {
+		if (!value.trim()) {
+			setError((prevErrors) => ({
+				...prevErrors,
+				[fieldName]: `${labelName} cannot be empty. Please fill this out.`,
+			}));
+		} else if (!validateFunc(value)) {
+			setError((prevErrors) => ({
 				...prevErrors,
 				[fieldName]: errorMessage,
 			}));
 		} else {
-			setErrors((prevErrors) => {
+			setError((prevErrors) => {
 				//eslint-disable-next-line no-unused-vars
 				const { [fieldName]: _, ...rest } = prevErrors;
 				return rest;
 			});
 		}
-	};
-
-	const validatePhoneNumber = (value) => {
-		const isValidPhoneNumber = /^\d+$/.test(value);
-		validateField(
-			value,
-			() => isValidPhoneNumber,
-			"Phone number should be a number",
-			"userPhoneNumber"
-		);
 	};
 
 	const handleSubmit = async (event) => {
@@ -66,7 +150,7 @@ function SignUp() {
 		// Validate password confirmation
 		const passwordMatch = userConfirmPassword === userPassword;
 		if (!passwordMatch) {
-			setErrors((prevErrors) => ({
+			setError((prevErrors) => ({
 				...prevErrors,
 				userConfirmPassword: "Passwords do not match",
 			}));
@@ -76,7 +160,7 @@ function SignUp() {
 		}
 
 		// Clear the error if passwords match
-		setErrors((prevErrors) => {
+		setError((prevErrors) => {
 			//eslint-disable-next-line no-unused-vars
 			const { userConfirmPassword: _, ...rest } = prevErrors;
 			return rest;
@@ -85,7 +169,7 @@ function SignUp() {
 		const userData = {
 			userFirstName,
 			userLastName,
-			userPhoneNumber,
+			userContactNumber,
 			userEmail,
 			userPassword,
 		};
@@ -155,11 +239,13 @@ function SignUp() {
 										validate={(value) =>
 											validateField(
 												value,
-												(value) => value.trim() !== "",
-												"First name is required",
-												"userFirstName"
+												isAlphabetic,
+												"First name should only contain alphabets",
+												"userFirstName",
+												"First Name" // pass the label name here
 											)
 										}
+										inputFieldError={error.userFirstName}
 									/>
 								</div>
 
@@ -178,31 +264,40 @@ function SignUp() {
 										validate={(value) =>
 											validateField(
 												value,
-												(value) => value.trim() !== "",
-												"Last name is required",
-												"userLastName"
+												isAlphabetic,
+												"Last name should only contain alphabets",
+												"userLastName",
+												"Last Name" // pass the label name here
 											)
 										}
+										inputFieldError={error.userLastName}
 									/>
 								</div>
 
 								<div>
 									<InputField
-										inputFieldId="userPhoneNumber"
+										inputFieldId="userContactNumber"
 										inputFieldType="text"
 										inputFieldPlaceholder="XXXX-XXXXXXX"
-										inputFieldHtmlFor="userPhoneNumber"
-										inputFieldLabelName="Phone Number"
+										inputFieldHtmlFor="userContactNumber"
+										inputFieldLabelName="Contact Number (mobile only)"
 										isRequired={true}
 										fieldType="input"
-										value={userPhoneNumber}
-										onChange={(e) => {
-											setUserPhoneNumber(e.target.value);
-											validatePhoneNumber(e.target.value); // validate phone number
-										}}
-										inputFieldName="userPhoneNumber"
+										value={userContactNumber}
+										onChange={(e) => setUserContactNumber(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												isNumericAndLimited,
+												"Contact number should only contain numbers and be 11 digits.",
+												"userContactNumber",
+												"Contact Number" // pass the label name here
+											)
+										}
+										inputFieldName="userContactNumber"
 										inputFieldAutoComplete={false}
-										inputFieldError={errors.userPhoneNumber} // display error for phone number
+										inputFieldError={error.userContactNumber}
 									/>
 								</div>
 
@@ -218,15 +313,16 @@ function SignUp() {
 										value={userEmail}
 										onChange={(e) => {
 											setUserEmail(e.target.value);
-											setError(""); // clear the error
+											setEmailError(""); // clear the error
 										}}
 										validateOnBlur={true}
 										validate={(value) =>
 											validateField(
 												value,
-												(value) => value.includes("@"),
-												"Invalid email address",
-												"userEmail"
+												validateEmail,
+												"Invalid email address. Please enter a valid email with the format: example@example.com",
+												"userEmail",
+												"Email address"
 											)
 										}
 										inputFieldError={displayError(emailError, error)}
@@ -247,18 +343,8 @@ function SignUp() {
 											setUserPassword(formatPassword(e.target.value))
 										}
 										validateOnBlur={true}
-										validate={(value) =>
-											validateField(
-												value,
-												(value) =>
-													/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$/.test(
-														value
-													),
-												"Password should be at least 8 characters, include one capital letter and one number.",
-												"userPassword"
-											)
-										}
-										inputFieldError={errors.userPassword}
+										validate={(value) => validatePassword(value)}
+										inputFieldError={error.userPassword}
 									/>
 								</div>
 
@@ -273,7 +359,7 @@ function SignUp() {
 										fieldType="input"
 										value={userConfirmPassword}
 										onChange={(e) => setUserConfirmPassword(e.target.value)}
-										inputFieldError={errors.userConfirmPassword}
+										inputFieldError={error.userConfirmPassword}
 									/>
 								</div>
 							</div>
@@ -284,7 +370,7 @@ function SignUp() {
 								<Button
 									buttonName="Sign Up"
 									buttonType="submit"
-									disabled={isLoading || Object.keys(errors).length > 0}
+									disabled={isLoading || Object.keys(error).length > 0}
 								/>
 							</div>
 						</form>

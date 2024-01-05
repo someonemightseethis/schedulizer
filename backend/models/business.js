@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 // import Appointment from "./appointment";
 
 const BusinessSchema = new mongoose.Schema({
-	name: {
+	businessName: {
 		type: String,
 		required: true,
 	},
-	contactNumber: {
+	businessContactNumber: {
 		type: Number,
 		required: true,
 	},
@@ -18,34 +18,34 @@ const BusinessSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	city: {
+	businessCity: {
 		type: String,
 		required: true,
 	},
-	type: {
+	businessType: {
 		type: String,
 		required: true,
 	},
-	employees: {
+	businessEmployees: {
 		type: String,
 		required: true,
 	},
-	workField: {
+	businessWorkField: {
 		type: String,
 		required: true,
 	},
-	address: {
+	businessAddress: {
 		type: String,
 		required: true,
 	},
-	addressLink: {
+	businessAddressLink: {
 		type: String,
 		required: true,
 	},
-	profile: {
+	businessProfile: {
 		type: String,
 	},
-	appointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+	businessAppointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
 });
 
 // Collection part

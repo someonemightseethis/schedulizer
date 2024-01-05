@@ -29,6 +29,74 @@ function BusinessRegistrationForm() {
 	const [businessAddressLink, setBusinessAddressLink] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [emailError, setEmailError] = useState("");
+	const [error, setError] = useState({});
+
+	const validateEmail = (value) => {
+		if (!value.trim()) {
+			setEmailError("Email cannot be empty. Please fill this out.");
+			return false;
+		}
+
+		const error = {
+			atSymbolError: "Email should have exactly one '@' symbol.",
+			domainError: "Email domain should end with '.com'.",
+			numberInDomainError: "Numbers are not allowed in the domain name.",
+		};
+
+		const emailParts = value.split("@");
+		if (emailParts.length !== 2) {
+			setEmailError(error.atSymbolError);
+			return false; // Email should have only one '@'
+		}
+
+		const [username, domain] = emailParts;
+		const isUsernameValid = username.trim() !== "" && !/\d/.test(username);
+		const isDomainValid = domain.endsWith(".com");
+
+		if (!isUsernameValid) {
+			setEmailError(error.numberInDomainError);
+			return false; // Username cannot be empty and should not contain numbers
+		}
+
+		if (!isDomainValid) {
+			setEmailError(error.domainError);
+			return false; // Domain should end with '.com'
+		}
+
+		// Clear the error if email is valid
+		setEmailError("");
+
+		return true;
+	};
+
+	const isAlphabetic = (value) => /^[A-Za-z]+$/.test(value);
+	const isNumericAndLimited = (value) => /^\d{1,11}$/.test(value);
+
+	const validateField = (
+		value,
+		validateFunc,
+		errorMessage,
+		fieldName,
+		labelName
+	) => {
+		if (!value.trim()) {
+			setError((prevErrors) => ({
+				...prevErrors,
+				[fieldName]: `${labelName} cannot be empty. Please fill this out.`,
+			}));
+		} else if (!validateFunc(value)) {
+			setError((prevErrors) => ({
+				...prevErrors,
+				[fieldName]: errorMessage,
+			}));
+		} else {
+			setError((prevErrors) => {
+				//eslint-disable-next-line no-unused-vars
+				const { [fieldName]: _, ...rest } = prevErrors;
+				return rest;
+			});
+		}
+	};
 
 	const handleSubmit = async (event) => {
 		setIsLoading(true);
@@ -93,6 +161,8 @@ function BusinessRegistrationForm() {
 	};
 
 	console.log(emailError);
+	const displayError = (emailError, error) =>
+		emailError ? emailError : error.userEmail;
 
 	return (
 		<Layout>
@@ -119,6 +189,17 @@ function BusinessRegistrationForm() {
 											fieldType="input"
 											value={businessName}
 											onChange={(e) => setBusinessName(e.target.value)}
+											validateOnBlur={true}
+											validate={(value) =>
+												validateField(
+													value,
+													isAlphabetic,
+													"Business name should only contain alphabets",
+													"businessName",
+													"Business Name" // pass the label name here
+												)
+											}
+											inputFieldError={error.businessName}
 										/>
 									</div>
 
@@ -126,13 +207,26 @@ function BusinessRegistrationForm() {
 										<InputField
 											inputFieldId="businessContactNumber"
 											inputFieldType="text"
-											inputFieldPlaceholder="XXXX-XXXXXXX"
+											inputFieldPlaceholder="03310000000 (or) 0510000000"
 											inputFieldHtmlFor="businessContactNumber"
 											inputFieldLabelName="Contact Number"
 											isRequired={true}
 											fieldType="input"
 											value={businessContactNumber}
 											onChange={(e) => setBusinessContactNumber(e.target.value)}
+											validateOnBlur={true}
+											validate={(value) =>
+												validateField(
+													value,
+													isNumericAndLimited,
+													"Contact number should only contain numbers",
+													"businessContactNumber",
+													"Contact Number" // pass the label name here
+												)
+											}
+											inputFieldName="businessContactNumber"
+											inputFieldAutoComplete={false}
+											inputFieldError={error.userContactNumber}
 										/>
 									</div>
 
@@ -150,7 +244,17 @@ function BusinessRegistrationForm() {
 												setBusinessEmail(e.target.value);
 												setEmailError(""); // Clear the error message when the input value changes
 											}}
-											inputFieldError={emailError}
+											validateOnBlur={true}
+											validate={(value) =>
+												validateField(
+													value,
+													validateEmail,
+													"Invalid email address. Please enter a valid email with the format: example@example.com",
+													"userEmail",
+													"Email address"
+												)
+											}
+											inputFieldError={displayError(emailError, error)}
 										/>
 									</div>
 
@@ -165,6 +269,17 @@ function BusinessRegistrationForm() {
 											fieldType="input"
 											value={businessCity}
 											onChange={(e) => setBusinessCity(e.target.value)}
+											validateOnBlur={true}
+											validate={(value) =>
+												validateField(
+													value,
+													isAlphabetic,
+													"City name should only contain alphabets",
+													"businessCity",
+													"City" // pass the label name here
+												)
+											}
+											inputFieldError={error.businessCity}
 										/>
 									</div>
 
@@ -194,6 +309,7 @@ function BusinessRegistrationForm() {
 											/>
 										</div>
 									</div>
+
 									<div>
 										<InputField
 											inputFieldId="businessCategory"
@@ -205,6 +321,17 @@ function BusinessRegistrationForm() {
 											fieldType="input"
 											value={businessCategory}
 											onChange={(e) => setBusinessCategory(e.target.value)}
+											validate={(value) =>
+												validateField(
+													value,
+													isAlphabetic,
+													"Field name should only contain alphabets",
+													"businessCategory",
+													"Field of Work" // pass the label name here
+												)
+											}
+											inputFieldError={error.businessCategory}
+											validateOnBlur={true}
 										/>
 									</div>
 
@@ -219,6 +346,8 @@ function BusinessRegistrationForm() {
 											fieldType="input"
 											value={businessAddress}
 											onChange={(e) => setBusinessAddress(e.target.value)}
+											inputFieldError={error.businessAddress}
+											validateOnBlur={true}
 										/>
 									</div>
 
@@ -233,6 +362,8 @@ function BusinessRegistrationForm() {
 											fieldType="input"
 											value={businessAddressLink}
 											onChange={(e) => setBusinessAddressLink(e.target.value)}
+											validateOnBlur={true}
+											inputFieldError={error.businessAddressLink}
 										/>
 									</div>
 								</div>
