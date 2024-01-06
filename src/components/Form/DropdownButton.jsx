@@ -14,10 +14,10 @@ function DropdownButton(props) {
 	}, [props.dropdownlistLength]);
 
 	useEffect(() => {
-		console.log(
-			"Selected Value(" + props.dropdownlabelname + "):",
-			selectedValue
-		);
+		// console.log(
+		// 	"Selected Value(" + props.dropdownlabelname + "):",
+		// 	selectedValue
+		// );
 	}, [selectedValue, props.dropdownlabelname]);
 
 	const handleOptionSelect = (optionId, event) => {

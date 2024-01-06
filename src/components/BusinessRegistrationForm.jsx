@@ -50,17 +50,19 @@ function BusinessRegistrationForm() {
 		}
 
 		const [username, domain] = emailParts;
-		const isUsernameValid = username.trim() !== "" && !/\d/.test(username);
-		const isDomainValid = domain.endsWith(".com");
+		const isUsernameValid = username.trim() !== "";
+		const isDomainValid = domain.endsWith(".com") && !/\d/.test(domain);
 
 		if (!isUsernameValid) {
-			setEmailError(error.numberInDomainError);
-			return false; // Username cannot be empty and should not contain numbers
+			setEmailError("Username cannot be empty.");
+			return false; // Username cannot be empty
 		}
 
 		if (!isDomainValid) {
-			setEmailError(error.domainError);
-			return false; // Domain should end with '.com'
+			setEmailError(
+				domain.endsWith(".com") ? error.numberInDomainError : error.domainError
+			);
+			return false; // Domain should end with '.com' and should not contain numbers
 		}
 
 		// Clear the error if email is valid
@@ -71,6 +73,20 @@ function BusinessRegistrationForm() {
 
 	const isAlphabetic = (value) => /^[A-Za-z]+$/.test(value);
 	const isNumericAndLimited = (value) => /^\d{1,11}$/.test(value);
+	const isText = (value) => /^.*$/.test(value);
+	const isTextOrUrl = (value) => {
+		const urlPattern = new RegExp(
+			"^(https?:\\/\\/)?" + // protocol
+				"((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" + // domain name and extension
+				"((\\d{1,3}\\.){3}\\d{1,3}))" + // OR ip (v4) address
+				"(\\:\\d+)?" + // port
+				"(\\/[-a-z\\d%_.~+]*)*" + // path
+				"(\\?[;&a-z\\d%_.~+=-]*)?" + // query string
+				"(\\#[-a-z\\d_]*)?$",
+			"i"
+		); // fragment locator
+		return isText(value) || urlPattern.test(value);
+	};
 
 	const validateField = (
 		value,
@@ -160,9 +176,8 @@ function BusinessRegistrationForm() {
 		}
 	};
 
-	console.log(emailError);
 	const displayError = (emailError, error) =>
-		emailError ? emailError : error.userEmail;
+		emailError ? emailError : error.businessEmail;
 
 	return (
 		<Layout>
@@ -175,7 +190,7 @@ function BusinessRegistrationForm() {
 								know more about your business.
 							</p>
 						</h3>
-						<div className="w-full items-center justify-center px-72">
+						<div className="mx-auto flex w-full items-center justify-center xl:w-[900px]">
 							<form onSubmit={handleSubmit}>
 								<div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2">
 									<div>
@@ -226,7 +241,7 @@ function BusinessRegistrationForm() {
 											}
 											inputFieldName="businessContactNumber"
 											inputFieldAutoComplete={false}
-											inputFieldError={error.userContactNumber}
+											inputFieldError={error.businessContactNumber}
 										/>
 									</div>
 
@@ -250,7 +265,7 @@ function BusinessRegistrationForm() {
 													value,
 													validateEmail,
 													"Invalid email address. Please enter a valid email with the format: example@example.com",
-													"userEmail",
+													"businessEmail",
 													"Email address"
 												)
 											}
@@ -321,6 +336,7 @@ function BusinessRegistrationForm() {
 											fieldType="input"
 											value={businessCategory}
 											onChange={(e) => setBusinessCategory(e.target.value)}
+											validateOnBlur={true}
 											validate={(value) =>
 												validateField(
 													value,
@@ -331,7 +347,6 @@ function BusinessRegistrationForm() {
 												)
 											}
 											inputFieldError={error.businessCategory}
-											validateOnBlur={true}
 										/>
 									</div>
 
@@ -346,8 +361,17 @@ function BusinessRegistrationForm() {
 											fieldType="input"
 											value={businessAddress}
 											onChange={(e) => setBusinessAddress(e.target.value)}
-											inputFieldError={error.businessAddress}
 											validateOnBlur={true}
+											validate={(value) =>
+												validateField(
+													value,
+													isText,
+													"Business address cannot be empty",
+													"businessAddress",
+													"Business Address"
+												)
+											}
+											inputFieldError={error.businessAddress}
 										/>
 									</div>
 
@@ -357,12 +381,21 @@ function BusinessRegistrationForm() {
 											inputFieldType="text"
 											inputFieldPlaceholder="e.g. https://maps.google.com/?q=1234+Main+St"
 											inputFieldHtmlFor="businessAddressLink"
-											inputFieldLabelName="Google Maps Link to Business Address"
+											inputFieldLabelName="Google Maps Link"
 											isRequired={true}
 											fieldType="input"
 											value={businessAddressLink}
 											onChange={(e) => setBusinessAddressLink(e.target.value)}
 											validateOnBlur={true}
+											validate={(value) =>
+												validateField(
+													value,
+													isTextOrUrl,
+													"Enter a valid url.",
+													"businessAddressLink",
+													"Google Maps Link"
+												)
+											}
 											inputFieldError={error.businessAddressLink}
 										/>
 									</div>
