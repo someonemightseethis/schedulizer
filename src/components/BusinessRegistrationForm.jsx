@@ -183,244 +183,240 @@ function BusinessRegistrationForm() {
 		<Layout>
 			<div className="flex min-h-screen flex-col justify-center">
 				<div className="flex justify-center py-12">
-					<div className="pt-12">
-						<h3 className="text-dark-grey-900 px-4 pb-6 font-bebas text-6xl font-medium">
-							Let us <br />
-							<p className="text-9xl font-extrabold">
-								know more about your business.
-							</p>
+					<div className="pt-16 md:w-full lg:w-[600px] xl:w-[900px]">
+						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
+							<span className="font-normal">Let us</span> &nbsp; know more about
+							your business.
 						</h3>
-						<div className="mx-auto flex w-full items-center justify-center xl:w-[900px]">
-							<form onSubmit={handleSubmit}>
-								<div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2">
-									<div>
-										<InputField
-											inputFieldId="businessName"
-											inputFieldType="text"
-											inputFieldPlaceholder="John & Sons"
-											inputFieldHtmlFor="businessName"
-											inputFieldLabelName="Registered Business Name"
-											isRequired={true}
-											fieldType="input"
-											value={businessName}
-											onChange={(e) => setBusinessName(e.target.value)}
-											validateOnBlur={true}
-											validate={(value) =>
-												validateField(
-													value,
-													isAlphabetic,
-													"Business name should only contain alphabets",
-													"businessName",
-													"Business Name" // pass the label name here
-												)
-											}
-											inputFieldError={error.businessName}
-										/>
-									</div>
-
-									<div>
-										<InputField
-											inputFieldId="businessContactNumber"
-											inputFieldType="text"
-											inputFieldPlaceholder="03310000000 (or) 0510000000"
-											inputFieldHtmlFor="businessContactNumber"
-											inputFieldLabelName="Contact Number"
-											isRequired={true}
-											fieldType="input"
-											value={businessContactNumber}
-											onChange={(e) => setBusinessContactNumber(e.target.value)}
-											validateOnBlur={true}
-											validate={(value) =>
-												validateField(
-													value,
-													isNumericAndLimited,
-													"Contact number should only contain numbers",
-													"businessContactNumber",
-													"Contact Number" // pass the label name here
-												)
-											}
-											inputFieldName="businessContactNumber"
-											inputFieldAutoComplete={false}
-											inputFieldError={error.businessContactNumber}
-										/>
-									</div>
-
-									<div>
-										<InputField
-											inputFieldId="businessEmail"
-											inputFieldType="email"
-											inputFieldPlaceholder="johnsnow@example.com"
-											inputFieldHtmlFor="businessEmail"
-											inputFieldLabelName="Work Email"
-											isRequired={true}
-											fieldType="input"
-											value={businessEmail}
-											onChange={(e) => {
-												setBusinessEmail(e.target.value);
-												setEmailError(""); // Clear the error message when the input value changes
-											}}
-											validateOnBlur={true}
-											validate={(value) =>
-												validateField(
-													value,
-													validateEmail,
-													"Invalid email address. Please enter a valid email with the format: example@example.com",
-													"businessEmail",
-													"Email address"
-												)
-											}
-											inputFieldError={displayError(emailError, error)}
-										/>
-									</div>
-
-									<div>
-										<InputField
-											inputFieldId="businessCity"
-											inputFieldType="text"
-											inputFieldPlaceholder="Islamabad"
-											inputFieldHtmlFor="businessCity"
-											inputFieldLabelName="City"
-											isRequired={true}
-											fieldType="input"
-											value={businessCity}
-											onChange={(e) => setBusinessCity(e.target.value)}
-											validateOnBlur={true}
-											validate={(value) =>
-												validateField(
-													value,
-													isAlphabetic,
-													"City name should only contain alphabets",
-													"businessCity",
-													"City" // pass the label name here
-												)
-											}
-											inputFieldError={error.businessCity}
-										/>
-									</div>
-
-									<div className="grid grid-cols-2 gap-x-6">
-										<div className="flex-grow">
-											<DropdownButton
-												dropdownbuttonname="public, private"
-												dropdownlabelname="Business Type"
-												dropdownlistLength={2}
-												dropdownlabelhtmlfor="businesstype"
-												dropdownliname1="Public Business"
-												dropdownliname2="Private Business"
-												onOptionSelect={setBusinessType}
-											/>
-										</div>
-										<div className="flex-shrink">
-											<DropdownButton
-												dropdownbuttonname="select range"
-												dropdownlabelname="No. of Employees"
-												dropdownlistLength={4}
-												dropdownlabelhtmlfor="employeesno"
-												dropdownliname1="1 - 5"
-												dropdownliname2="5 - 10"
-												dropdownliname3="10 - 15"
-												dropdownliname4="15 - 20"
-												onOptionSelect={setNumberOfEmployees}
-											/>
-										</div>
-									</div>
-
-									<div>
-										<InputField
-											inputFieldId="businessCategory"
-											inputFieldType="text"
-											inputFieldPlaceholder="e.g. IT, Marketing, etc."
-											inputFieldHtmlFor="businessCategory"
-											inputFieldLabelName="Field of Work"
-											isRequired={true}
-											fieldType="input"
-											value={businessCategory}
-											onChange={(e) => setBusinessCategory(e.target.value)}
-											validateOnBlur={true}
-											validate={(value) =>
-												validateField(
-													value,
-													isAlphabetic,
-													"Field name should only contain alphabets",
-													"businessCategory",
-													"Field of Work" // pass the label name here
-												)
-											}
-											inputFieldError={error.businessCategory}
-										/>
-									</div>
-
-									<div>
-										<InputField
-											inputFieldId="businessAddress"
-											inputFieldType="text"
-											inputFieldPlaceholder="e.g. 1234 Main St"
-											inputFieldHtmlFor="businessAddress"
-											inputFieldLabelName="Business Address"
-											isRequired={true}
-											fieldType="input"
-											value={businessAddress}
-											onChange={(e) => setBusinessAddress(e.target.value)}
-											validateOnBlur={true}
-											validate={(value) =>
-												validateField(
-													value,
-													isText,
-													"Business address cannot be empty",
-													"businessAddress",
-													"Business Address"
-												)
-											}
-											inputFieldError={error.businessAddress}
-										/>
-									</div>
-
-									<div>
-										<InputField
-											inputFieldId="businessAddressLink"
-											inputFieldType="text"
-											inputFieldPlaceholder="e.g. https://maps.google.com/?q=1234+Main+St"
-											inputFieldHtmlFor="businessAddressLink"
-											inputFieldLabelName="Google Maps Link"
-											isRequired={true}
-											fieldType="input"
-											value={businessAddressLink}
-											onChange={(e) => setBusinessAddressLink(e.target.value)}
-											validateOnBlur={true}
-											validate={(value) =>
-												validateField(
-													value,
-													isTextOrUrl,
-													"Enter a valid url.",
-													"businessAddressLink",
-													"Google Maps Link"
-												)
-											}
-											inputFieldError={error.businessAddressLink}
-										/>
-									</div>
-								</div>
-
-								<div className="py-4 xs:px-16 md:px-32 xl:px-36">
-									<Button
-										buttonName="SUBMIT"
-										buttonType="submit"
-										disabled={
-											isLoading ||
-											!businessName ||
-											!businessContactNumber ||
-											!businessEmail ||
-											!businessCity ||
-											!businessType ||
-											!numberOfEmployees ||
-											!businessCategory ||
-											!businessAddress ||
-											!businessAddressLink
+						<form onSubmit={handleSubmit}>
+							<div className="mt-4 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2">
+								<div>
+									<InputField
+										inputFieldId="businessName"
+										inputFieldType="text"
+										inputFieldPlaceholder="John & Sons"
+										inputFieldHtmlFor="businessName"
+										inputFieldLabelName="Registered Business Name"
+										isRequired={true}
+										fieldType="input"
+										value={businessName}
+										onChange={(e) => setBusinessName(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												isAlphabetic,
+												"Business name should only contain alphabets",
+												"businessName",
+												"Business Name" // pass the label name here
+											)
 										}
+										inputFieldError={error.businessName}
 									/>
 								</div>
-							</form>
-						</div>
+
+								<div>
+									<InputField
+										inputFieldId="businessContactNumber"
+										inputFieldType="text"
+										inputFieldPlaceholder="03310000000 (or) 0510000000"
+										inputFieldHtmlFor="businessContactNumber"
+										inputFieldLabelName="Contact Number"
+										isRequired={true}
+										fieldType="input"
+										value={businessContactNumber}
+										onChange={(e) => setBusinessContactNumber(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												isNumericAndLimited,
+												"Contact number should only contain numbers",
+												"businessContactNumber",
+												"Contact Number" // pass the label name here
+											)
+										}
+										inputFieldName="businessContactNumber"
+										inputFieldAutoComplete={false}
+										inputFieldError={error.businessContactNumber}
+									/>
+								</div>
+
+								<div>
+									<InputField
+										inputFieldId="businessEmail"
+										inputFieldType="email"
+										inputFieldPlaceholder="johnsnow@example.com"
+										inputFieldHtmlFor="businessEmail"
+										inputFieldLabelName="Work Email"
+										isRequired={true}
+										fieldType="input"
+										value={businessEmail}
+										onChange={(e) => {
+											setBusinessEmail(e.target.value);
+											setEmailError(""); // Clear the error message when the input value changes
+										}}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												validateEmail,
+												"Invalid email address. Please enter a valid email with the format: example@example.com",
+												"businessEmail",
+												"Email address"
+											)
+										}
+										inputFieldError={displayError(emailError, error)}
+									/>
+								</div>
+
+								<div>
+									<InputField
+										inputFieldId="businessCity"
+										inputFieldType="text"
+										inputFieldPlaceholder="Islamabad"
+										inputFieldHtmlFor="businessCity"
+										inputFieldLabelName="City"
+										isRequired={true}
+										fieldType="input"
+										value={businessCity}
+										onChange={(e) => setBusinessCity(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												isAlphabetic,
+												"City name should only contain alphabets",
+												"businessCity",
+												"City" // pass the label name here
+											)
+										}
+										inputFieldError={error.businessCity}
+									/>
+								</div>
+
+								<div className="grid grid-cols-2 gap-x-6">
+									<div className="flex-grow">
+										<DropdownButton
+											dropdownbuttonname="public, private"
+											dropdownlabelname="Business Type"
+											dropdownlistLength={2}
+											dropdownlabelhtmlfor="businesstype"
+											dropdownliname1="Public Business"
+											dropdownliname2="Private Business"
+											onOptionSelect={setBusinessType}
+										/>
+									</div>
+									<div className="flex-shrink">
+										<DropdownButton
+											dropdownbuttonname="select range"
+											dropdownlabelname="No. of Employees"
+											dropdownlistLength={4}
+											dropdownlabelhtmlfor="employeesno"
+											dropdownliname1="1 - 5"
+											dropdownliname2="5 - 10"
+											dropdownliname3="10 - 15"
+											dropdownliname4="15 - 20"
+											onOptionSelect={setNumberOfEmployees}
+										/>
+									</div>
+								</div>
+
+								<div>
+									<InputField
+										inputFieldId="businessCategory"
+										inputFieldType="text"
+										inputFieldPlaceholder="e.g. IT, Marketing, etc."
+										inputFieldHtmlFor="businessCategory"
+										inputFieldLabelName="Field of Work"
+										isRequired={true}
+										fieldType="input"
+										value={businessCategory}
+										onChange={(e) => setBusinessCategory(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												isAlphabetic,
+												"Field name should only contain alphabets",
+												"businessCategory",
+												"Field of Work" // pass the label name here
+											)
+										}
+										inputFieldError={error.businessCategory}
+									/>
+								</div>
+
+								<div>
+									<InputField
+										inputFieldId="businessAddress"
+										inputFieldType="text"
+										inputFieldPlaceholder="e.g. 1234 Main St"
+										inputFieldHtmlFor="businessAddress"
+										inputFieldLabelName="Business Address"
+										isRequired={true}
+										fieldType="input"
+										value={businessAddress}
+										onChange={(e) => setBusinessAddress(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												isText,
+												"Business address cannot be empty",
+												"businessAddress",
+												"Business Address"
+											)
+										}
+										inputFieldError={error.businessAddress}
+									/>
+								</div>
+
+								<div>
+									<InputField
+										inputFieldId="businessAddressLink"
+										inputFieldType="text"
+										inputFieldPlaceholder="e.g. https://maps.google.com/?q=1234+Main+St"
+										inputFieldHtmlFor="businessAddressLink"
+										inputFieldLabelName="Google Maps Link"
+										isRequired={true}
+										fieldType="input"
+										value={businessAddressLink}
+										onChange={(e) => setBusinessAddressLink(e.target.value)}
+										validateOnBlur={true}
+										validate={(value) =>
+											validateField(
+												value,
+												isTextOrUrl,
+												"Enter a valid url.",
+												"businessAddressLink",
+												"Google Maps Link"
+											)
+										}
+										inputFieldError={error.businessAddressLink}
+									/>
+								</div>
+							</div>
+
+							<div className="py-4 xs:px-16 md:px-32 xl:px-36">
+								<Button
+									buttonName="SUBMIT"
+									buttonType="submit"
+									disabled={
+										isLoading ||
+										!businessName ||
+										!businessContactNumber ||
+										!businessEmail ||
+										!businessCity ||
+										!businessType ||
+										!numberOfEmployees ||
+										!businessCategory ||
+										!businessAddress ||
+										!businessAddressLink
+									}
+								/>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
