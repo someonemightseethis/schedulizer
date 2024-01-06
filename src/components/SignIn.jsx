@@ -13,34 +13,67 @@ import { jwtDecode } from "jwt-decode";
 function SignIn({ signInRequest, signInSuccess }) {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+
 	const [userEmail, setUserEmail] = useState("");
 	const [userPassword, setUserPassword] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const [emailError, setEmailError] = useState("");
+	const [errorMessage, setErrorMessage] = useState("");
 	const [passwordError, setPasswordError] = useState("");
 
-	const validateField = (value, check, errorMessage, fieldName, matchValue) => {
-		if (!check(value, matchValue)) {
-			if (fieldName === "userEmail") {
-				setEmailError(errorMessage);
-			} else if (fieldName === "userPassword") {
-				setPasswordError(errorMessage);
-			}
+	const validateEmail = (value) => {
+		if (!value.trim()) {
+			setEmailError("Email cannot be empty. Please fill this out.");
 			return false;
 		}
-		if (fieldName === "userEmail") {
-			setEmailError("");
-		} else if (fieldName === "userPassword") {
-			setPasswordError("");
+
+		const error = {
+			atSymbolError: "Email should have exactly one '@' symbol.",
+			domainError: "Email domain should end with '.com'.",
+			numberInDomainError: "Numbers are not allowed in the domain name.",
+		};
+
+		const emailParts = value.split("@");
+		if (emailParts.length !== 2) {
+			setEmailError(error.atSymbolError);
+			return false; // Email should have only one '@'
 		}
+
+		const [username, domain] = emailParts;
+		const isUsernameValid = username.trim() !== "" && !/\d/.test(username);
+		const isDomainValid = domain.endsWith(".com");
+
+		if (!isUsernameValid) {
+			setEmailError(error.numberInDomainError);
+			return false; // Username cannot be empty and should not contain numbers
+		}
+
+		if (!isDomainValid) {
+			setEmailError(error.domainError);
+			return false; // Domain should end with '.com'
+		}
+
+		// Clear the error if email is valid
+		setEmailError("");
+
 		return true;
+	};
+
+	const validatePassword = (value) => {
+		let error = "";
+		if (!value.trim()) {
+			error = "Password cannot be empty. Please fill this out.";
+		} else if (value.length < 8 || value.length > 16) {
+			error = "Invalid password. It should be between 8 and 16 characters.";
+		}
+		setPasswordError(error);
+		return error;
 	};
 
 	const handleSubmit = async (event) => {
 		event.preventDefault();
 
 		setEmailError("");
-		setPasswordError("");
 
 		setIsLoading(true);
 
@@ -80,6 +113,12 @@ function SignIn({ signInRequest, signInSuccess }) {
 			}
 		} catch (error) {
 			console.error("Failed to sign in:", error);
+			if (error.response) {
+				console.error("Response data:", error.response.data);
+				console.error("Response status:", error.response.status);
+				console.error("Response headers:", error.response.headers);
+				setErrorMessage(error.response.data.error);
+			}
 		} finally {
 			setIsLoading(false);
 		}
@@ -93,7 +132,7 @@ function SignIn({ signInRequest, signInSuccess }) {
 				<div className="flex justify-center py-12">
 					<div className="pt-12">
 						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
-							Sign In
+							Sign In.
 						</h3>
 						<form
 							className="grid w-[400px] grid-cols-1 rounded-3xl"
@@ -101,7 +140,7 @@ function SignIn({ signInRequest, signInSuccess }) {
 							<InputField
 								inputFieldId="userEmail"
 								inputFieldType="email"
-								inputFieldPlaceholder="mail@example.com"
+								inputFieldPlaceholder="example@example.com"
 								inputFieldHtmlFor="userEmail"
 								inputFieldLabelName="Email"
 								isRequired={true}
@@ -112,14 +151,7 @@ function SignIn({ signInRequest, signInSuccess }) {
 									setEmailError("");
 								}}
 								validateOnBlur={true}
-								validate={(value) =>
-									validateField(
-										value,
-										(value) => value.includes("@"),
-										"Invalid email address",
-										"userEmail"
-									)
-								}
+								validate={(value) => validateEmail(value)}
 								inputFieldError={emailError}
 							/>
 
@@ -134,12 +166,19 @@ function SignIn({ signInRequest, signInSuccess }) {
 								value={userPassword}
 								onChange={(e) => {
 									setUserPassword(e.target.value);
-									setPasswordError("");
+									setPasswordError(""); // Clear the password error when the user types
 								}}
 								validateOnBlur={true}
+								validate={(value) => validatePassword(value)}
 								inputFieldError={passwordError}
 							/>
+
 							<div className="px-16 py-4 xl:px-12">
+								{errorMessage && (
+									<p className="mb-2 text-center font-poppins text-xs text-red-500">
+										{errorMessage}
+									</p>
+								)}
 								<Button
 									buttonName="Sign In"
 									buttonType="submit"

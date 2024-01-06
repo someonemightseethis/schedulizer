@@ -53,9 +53,10 @@ async function SignIn(req, res) {
 	try {
 		const existingUser = await User.findOne({ userEmail: req.body.userEmail });
 		if (!existingUser) {
-			return res
-				.status(400)
-				.json({ error: "No user found with the given userEmail" });
+			return res.status(400).json({
+				error:
+					"No user found with the given email. Please make sure you have entered the correct email.",
+			});
 		}
 
 		// Compare the hashed password from the database with the plaintext password
@@ -64,7 +65,12 @@ async function SignIn(req, res) {
 			existingUser.password
 		);
 		if (!isPasswordMatch) {
-			return res.status(400).json({ error: "Wrong Password" });
+			return res
+				.status(400)
+				.json({
+					error:
+						"Please make sure you have entered the correct password for the provided email.",
+				});
 		}
 
 		console.log("Existing User:", existingUser);

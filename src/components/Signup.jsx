@@ -316,15 +316,7 @@ function SignUp() {
 											setEmailError(""); // clear the error
 										}}
 										validateOnBlur={true}
-										validate={(value) =>
-											validateField(
-												value,
-												validateEmail,
-												"Invalid email address. Please enter a valid email with the format: example@example.com",
-												"userEmail",
-												"Email address"
-											)
-										}
+										validate={(value) => validateEmail(value)}
 										inputFieldError={displayError(emailError, error)}
 									/>
 								</div>
