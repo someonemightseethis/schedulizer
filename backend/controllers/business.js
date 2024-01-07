@@ -1,6 +1,7 @@
 import Business from "../models/business.js";
 import multer from "multer";
 import nodemailer from "nodemailer";
+import mongoose from "mongoose";
 
 // Register Business
 export const registeredBusiness = async (req, res) => {
@@ -77,6 +78,10 @@ export const getAll = async (req, res) => {
 
 export const getById = async (req, res) => {
 	const Id = req.params.id;
+
+	if (!mongoose.Types.ObjectId.isValid(Id)) {
+		return res.status(400).send("Invalid ID");
+	}
 
 	try {
 		const business = await Business.findById(Id);

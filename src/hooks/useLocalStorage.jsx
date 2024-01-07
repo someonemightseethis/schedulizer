@@ -1,39 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function useLocalStorage(key, initialValue) {
-	const readValue = () => {
-		if (typeof window === "undefined") {
-			return initialValue;
-		}
+	const [isLoading, setIsLoading] = useState(true);
+	const [storedValue, setStoredValue] = useState(initialValue);
 
+	useEffect(() => {
+		setIsLoading(true);
 		try {
 			const item = window.localStorage.getItem(key);
-			if (!item) {
-				return initialValue;
+			if (item) {
+				// Check if the item is a string
+				if (item[0] !== "{" && item[0] !== "[") {
+					setStoredValue(item);
+				} else {
+					// If not a string, parse it as JSON
+					setStoredValue(JSON.parse(item));
+				}
 			}
-
-			// Check if the item is a string
-			if (item[0] !== "{" && item[0] !== "[") {
-				return item;
-			}
-
-			// If not a string, parse it as JSON
-			return JSON.parse(item);
 		} catch (error) {
 			console.warn(`Error reading localStorage key “${key}”:`, error);
-			return initialValue;
 		}
-	};
-
-	const [storedValue, setStoredValue] = useState(readValue);
+		setIsLoading(false);
+	}, [key]);
 
 	const setValue = (value) => {
-		if (typeof window === "undefined") {
-			console.warn(
-				`Tried setting localStorage key “${key}” even though environment is not a client`
-			);
-		}
-
+		setIsLoading(true);
 		try {
 			const newValue = value instanceof Function ? value(storedValue) : value;
 			setStoredValue(newValue);
@@ -48,9 +39,10 @@ function useLocalStorage(key, initialValue) {
 		} catch (error) {
 			console.warn(`Error setting localStorage key “${key}”:`, error);
 		}
+		setIsLoading(false);
 	};
 
-	return [storedValue, setValue];
+	return [storedValue, setValue, isLoading];
 }
 
 export default useLocalStorage;

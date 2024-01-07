@@ -93,6 +93,7 @@ function SignIn({ signInRequest, signInSuccess }) {
 				localStorage.setItem("firstName", decodedToken.firstName);
 				localStorage.setItem("email", decodedToken.userEmail);
 				localStorage.setItem("id", decodedToken.id);
+				localStorage.setItem("token", response.data.token);
 
 				// Dispatch setUserEmail, setUserFirstName, setUserId, signInSuccess
 				dispatch(
@@ -102,14 +103,13 @@ function SignIn({ signInRequest, signInSuccess }) {
 						id: decodedToken.id,
 					})
 				);
-				dispatch(
-					signInSuccess({
-						firstName: decodedToken.firstName,
-						email: decodedToken.userEmail,
-						id: decodedToken.id,
-					})
-				);
-				await navigate("/schedulizer/services");
+				signInSuccess({
+					// use the signInSuccess prop here
+					firstName: decodedToken.firstName,
+					email: decodedToken.userEmail,
+					id: decodedToken.id,
+				});
+				await navigate("/schedulizer/");
 			}
 		} catch (error) {
 			console.error("Failed to sign in:", error);
@@ -210,7 +210,7 @@ function SignIn({ signInRequest, signInSuccess }) {
 							<hr className="border-grey-500 h-0 grow border-b border-solid" />
 						</div>
 						<div className="px-16 xl:px-12">
-							<a className="text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-grey-300 mb-6 flex w-full cursor-pointer items-center justify-center rounded-lg border-2 border-black py-2 font-ptSansCaption text-sm font-medium transition duration-300 focus:ring-4">
+							<a className="text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-grey-300 mb-6 flex w-full cursor-pointer items-center justify-center rounded-lg border-2 border-black bg-[#FAF8ED] py-2 font-ptSansCaption text-sm font-medium transition duration-300 hover:border-indigo-500 focus:ring-4">
 								<img
 									className="mr-6 h-5"
 									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"

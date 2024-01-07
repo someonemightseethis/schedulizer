@@ -1,49 +1,42 @@
-import {
-	SIGN_IN_REQUEST,
-	SIGN_IN_SUCCESS,
-	SIGN_IN_FAILURE,
-	LOGOUT,
-	signInSuccess,
-} from "../actions/authActions";
+import { createSlice } from "@reduxjs/toolkit";
 import { setUser, clearUser } from "../slices/userSlice";
+
 const initialState = {
 	loading: false,
+	email: "",
 	error: null,
 };
 
-const authReducer = (state = initialState, action) => {
-	switch (action.type) {
-		case SIGN_IN_REQUEST:
-			return {
-				...state,
-				loading: true,
-				error: null,
-			};
+const authSlice = createSlice({
+	name: "auth",
+	initialState,
+	reducers: {
+		signInRequest: (state) => {
+			state.loading = true;
+			state.error = null;
+		},
+		signInSuccess: (state, action) => {
+			state.loading = false;
+			state.email = action.payload.email;
+			// Add other user properties if needed
+		},
+		signInFailure: (state, action) => {
+			state.loading = false;
+			state.error = action.payload;
+		},
+		logout: (state) => {
+			state.loading = false;
+			state.email = "";
+			// Add other properties if needed
+		},
+	},
+});
 
-		case SIGN_IN_SUCCESS:
-			return {
-				...state,
-				loading: false,
-				email: action.payload.email,
-			};
+export const { signInRequest, signInSuccess, signInFailure, logout } =
+	authSlice.actions;
+export const { reducer } = authSlice;
 
-		case SIGN_IN_FAILURE:
-			return {
-				...state,
-				loading: false,
-				error: action.payload,
-			};
-
-		case LOGOUT:
-			return {
-				...initialState,
-			};
-
-		default:
-			return state;
-	}
-};
-
+// Thunks
 export const handleSignInSuccess = (user) => (dispatch) => {
 	dispatch(setUser(user));
 	dispatch(signInSuccess(user));
@@ -51,7 +44,7 @@ export const handleSignInSuccess = (user) => (dispatch) => {
 
 export const handleLogout = () => (dispatch) => {
 	dispatch(clearUser());
-	dispatch({ type: LOGOUT });
+	dispatch(logout());
 };
 
-export default authReducer;
+export default reducer;
