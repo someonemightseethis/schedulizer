@@ -6,7 +6,7 @@ import {
 	updateById,
 	deleteById,
 	uploadPic,
-} from "../controllers/business.js";
+} from "../controllers/businesses.js";
 
 const businessRouter = express.Router();
 

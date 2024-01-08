@@ -14,7 +14,7 @@ export default defineConfig({
 		proxy: {
 			"/user": "http://localhost:8000",
 			"/business": "http://localhost:8000",
-			"/appointment": "http://localhost:8000",
+			"/services": "http://localhost:8000",
 		},
 	},
 });

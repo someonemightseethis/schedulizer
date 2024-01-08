@@ -1,4 +1,4 @@
-import Business from "../models/business.js";
+import Business from "../models/businesses.js";
 import multer from "multer";
 import nodemailer from "nodemailer";
 import mongoose from "mongoose";
@@ -18,6 +18,7 @@ export const registeredBusiness = async (req, res) => {
 		businessAddress: req.body.businessAddress,
 		businessAddressLink: req.body.businessAddressLink,
 		userEmail: req.body.userEmail,
+		businessBio: req.body.businessBio,
 	};
 
 	if (
@@ -125,6 +126,8 @@ export const updateById = async (req, res) => {
 			req.body.businessAddressLink || existingBusiness.businessAddressLink;
 		existingBusiness.googleMapLink =
 			req.body.googleMapLink || existingBusiness.googleMapLink;
+		existingBusiness.businessBio =
+			req.body.businessBio || existingBusiness.businessBio;
 
 		const updatedBusiness = await existingBusiness.save();
 
@@ -156,11 +159,10 @@ export const deleteById = async (req, res) => {
 
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
-		cb(null, "../public/profile");
+		cb(null, "./public/profile");
 	},
 	filename: (req, file, cb) => {
-		const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-		cb(null, file.fieldname + "-" + uniqueSuffix);
+		cb(null, new Date().toISOString() + file.originalname);
 	},
 });
 
@@ -170,19 +172,19 @@ export const uploadPic = async (req, res) => {
 	const Id = req.params.id;
 
 	try {
+		const file = req.file;
+		const imgUrl = file.path;
+
 		await Business.findByIdAndUpdate(Id, {
-			$push: { profile: upload.single(req.body.profile) },
+			businessProfile: imgUrl,
 		});
 
-		console.log(req.body.profile);
 		res.send("Profile Uploaded");
 	} catch (error) {
 		console.error(error);
 		res.status(500).send("Internal Server Error");
 	}
 };
-
-// export const sendMail = async (to, subject, text) => {
 // 	const transporter = nodemailer.createTransport({
 // 		port: 465,
 // 		service: "gmail",

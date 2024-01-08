@@ -2,9 +2,10 @@ import CustomerSatisfaction from "./CustomerSatisfaction";
 import DashboardAppointmentsToday from "./DashboardAppointmentsToday";
 import DashboardAppointmentTracker from "./DashboardAppointmentTracker";
 import BacktoTopButton from "../BacktoTopButton";
-import AppointmentsCRUD from "./AppointmentsCRUD";
+import ServicesCRUD from "./ServicesCRUD";
 import { jwtDecode } from "jwt-decode";
 import Layout from "../Layout";
+import ServiceAddForm from "./ServiceAddForm";
 
 function DashboardMain() {
 	let firstName = localStorage.getItem("firstName");
@@ -64,7 +65,8 @@ function DashboardMain() {
 						</div>
 					</div>
 				</div>
-				<AppointmentsCRUD />
+				<ServiceAddForm />
+				<ServicesCRUD />
 				<BacktoTopButton />
 			</div>
 		</Layout>

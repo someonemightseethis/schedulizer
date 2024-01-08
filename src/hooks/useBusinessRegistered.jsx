@@ -5,8 +5,10 @@ import { jwtDecode } from "jwt-decode";
 
 function useBusinessRegistered() {
 	const [isBusinessRegistered, setIsBusinessRegistered] = useState(false);
+	const [userBusinesses, setUserBusinesses] = useState([]);
 	const [token, , isTokenLoading] = useLocalStorage("token", "");
 	const [isLoading, setIsLoading] = useState(true);
+	const [selectedBusiness, setSelectedBusiness] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -15,23 +17,26 @@ function useBusinessRegistered() {
 					const response = await axios.get("/business/all");
 
 					if (response.data) {
-						console.log("Token:", token);
 						const decodedToken = jwtDecode(token);
-						console.log("Decoded Token:", decodedToken);
 						const userEmail = decodedToken.userEmail;
 
 						console.log("Decoded Token:", decodedToken);
-						console.log("User Email:", userEmail);
+						console.log("API Response:", response.data);
 
-						// Filter the businesses that match the user's email
-						const matchingBusinesses = response.data.filter((business) => {
-							console.log("Business User Email:", business.userEmail);
-							return business.userEmail === userEmail;
-						});
+						// Filter businesses based on the user's email
+						const matchingBusinesses = response.data.filter(
+							(business) => business.userEmail === userEmail
+						);
 
 						console.log("Matching Businesses:", matchingBusinesses);
 
-						setIsBusinessRegistered(matchingBusinesses.length > 0);
+						// Select the first matching business (if any)
+						const selected =
+							matchingBusinesses.length > 0 ? matchingBusinesses[0] : null;
+
+						setIsBusinessRegistered(!!selected);
+						setUserBusinesses(matchingBusinesses);
+						setSelectedBusiness(selected);
 					}
 				}
 			} catch (error) {
@@ -42,9 +47,9 @@ function useBusinessRegistered() {
 		};
 
 		fetchData();
-	}, [token, isTokenLoading]);
+	}, [isTokenLoading, token]);
 
-	return { isBusinessRegistered, isLoading };
+	return { isBusinessRegistered, isLoading, userBusinesses, selectedBusiness };
 }
 
 export default useBusinessRegistered;

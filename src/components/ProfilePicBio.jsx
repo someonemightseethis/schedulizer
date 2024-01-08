@@ -45,6 +45,39 @@ function ProfilePicBio() {
 		navigate("/schedulizer/dashboard");
 	};
 
+	const [file, setFile] = useState(null);
+	const [bio, setBio] = useState("");
+
+	const handleFileChange = (e) => {
+		setFile(e.target.files[0]);
+	};
+
+	const handleBioChange = (e) => {
+		setBio(e.target.value);
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const formData = new FormData();
+		formData.append("file", file);
+		formData.append("bio", bio);
+
+		// Send formData to the server
+		// You'll need to replace this URL with the URL of your server
+		const response = await fetch("/api/business", {
+			method: "POST",
+			body: formData,
+		});
+
+		if (response.ok) {
+			// Handle successful submission
+			// This could be navigating to another page, showing a success message, etc.
+		} else {
+			// Handle error
+		}
+	};
+
 	return (
 		<Layout>
 			<div className="flex min-h-screen flex-col justify-center bg-[#FAF8ED] pattern-texture-indigo-600/10 pattern-texture-scale-[1.5]">
@@ -55,7 +88,7 @@ function ProfilePicBio() {
 							<br /> a face and a voice
 						</h3>
 						<div className="w-full items-center justify-center px-12">
-							<form onSubmit="">
+							<form onSubmit={handleSubmit}>
 								<div className="mt-8">
 									<div className="flex w-full items-center justify-center pb-6">
 										<label
@@ -87,6 +120,7 @@ function ProfilePicBio() {
 												id="dropzone-file"
 												type="file"
 												className="hidden"
+												onChange={handleFileChange}
 											/>
 										</label>
 									</div>
@@ -109,8 +143,8 @@ function ProfilePicBio() {
 										cols={10}
 										rows={5}
 										maxLength={500}
-										// value={appointmentDescription}
-										// onChange={(e) => setAppointmentDescription(e.target.value)}
+										value={bio}
+										onChange={handleBioChange}
 										validateOnBlur={false}
 									/>
 									<div

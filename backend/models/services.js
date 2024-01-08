@@ -1,35 +1,39 @@
 import mongoose from "mongoose";
 
 // Create Schema
-const Appointmentschema = new mongoose.Schema({
+const ServiceSchema = new mongoose.Schema({
 	business_id: [{ type: mongoose.Types.ObjectId, ref: "Business" }],
-	name: {
+	serviceName: {
 		type: String,
 		required: true,
 	},
-	duration: {
+	serviceDuration: {
 		type: String,
 		required: true,
 	},
-	timing: {
+	serviceTiming: {
 		type: String,
 		required: true,
 	},
-	days: {
+	serviceDays: {
 		type: String,
 		required: true,
 	},
-	price: {
+	servicePrice: {
 		type: Number,
 		required: true,
 	},
-	description: {
+	serviceDescription: {
+		type: String,
+		required: true,
+	},
+	businessEmail: {
 		type: String,
 		required: true,
 	},
 });
 
 // collection part
-const Appointment = mongoose.model("appointments", Appointmentschema);
+const Service = mongoose.model("services", ServiceSchema);
 
-export default Appointment;
+export default Service;

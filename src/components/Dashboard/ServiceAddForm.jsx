@@ -1,37 +1,38 @@
 import InputField from "../form/InputField";
 import Button from "../Button";
 import DayPicker from "../form/DayPicker";
-import { useState, useEffect, useRef, Fragment } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { Dialog, Transition } from "@headlessui/react";
 import DropdownButton from "../form/DropdownButton";
+import useBusinessRegistered from "../../hooks/useBusinessRegistered";
 
-function AppointmentsCRUD() {
-	const [appointmentTitle, setAppointmentTitle] = useState("");
-	const [appointmentDuration, setAppointmentDuration] = useState("");
-	const [appointmentPrice, setAppointmentPrice] = useState("");
-	const [appointmentStartTime, setAppointmentStartTime] = useState("");
-	const [appointmentEndTime, setAppointmentEndTime] = useState("");
-	const [appointmentDescription, setAppointmentDescription] = useState("");
+function ServicesCRUD() {
+	const [serviceTitle, setServiceTitle] = useState("");
+	const [serviceDuration, setServiceDuration] = useState("");
+	const [servicePrice, setServicePrice] = useState("");
+	const [serviceStartTime, setServiceStartTime] = useState("");
+	const [serviceEndTime, setServiceEndTime] = useState("");
+	const [serviceDescription, setServiceDescription] = useState("");
 	const [durationUnit, setDurationUnit] = useState("mins");
 	const [selectedDays, setSelectedDays] = useState("");
+	const { selectedBusiness } = useBusinessRegistered();
+	const businessEmail = selectedBusiness?.businessEmail;
+	const businessId = selectedBusiness?._id;
 
-	const timing = appointmentStartTime + " " + appointmentEndTime;
+	console.log("selectedBusiness", businessEmail);
+
+	const timing = serviceStartTime + " " + serviceEndTime;
 
 	const [errors, setErrors] = useState({});
 	const [error, setError] = useState("");
 
-	const navigate = useNavigate();
-
 	const [isLoading, setIsLoading] = useState(false);
-	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const [typedCharacters, setTypedCharacters] = useState(0);
 	const typedCharactersElementRef = useRef(null);
 
 	useEffect(() => {
-		const textAreaElement = document.querySelector("#appointmentDescription");
+		const textAreaElement = document.querySelector("#serviceDescription");
 		typedCharactersElementRef.current =
 			document.querySelector("#typed-characters");
 
@@ -75,49 +76,41 @@ function AppointmentsCRUD() {
 		setIsLoading(true);
 		event.preventDefault();
 
-		const appointmentData = {
-			businessId: "60f9b4b3c9b0c4b4b8f3b0b5",
-			appointmentTitle,
-			appointmentDuration: `${appointmentDuration} ${durationUnit}`,
-			appointmentPrice,
+		const serviceData = {
+			businessId,
+			serviceTitle,
+			serviceDuration: `${serviceDuration} ${durationUnit}`,
+			servicePrice,
 			timing,
-			appointmentDescription,
-			selectedDays, // Use the selected days here
+			serviceDescription,
+			selectedDays,
+			businessEmail,
 		};
 
 		try {
-			const response = await axios.post("/appointment/add", appointmentData);
+			const response = await axios.post("/services/add", serviceData);
 			console.log(response.data);
 
 			// Check if the form submission was successful
 			if (response.data.success) {
 				setIsLoading(false);
-				setIsModalOpen(true);
-				// Delay navigation by 4 seconds
-				setTimeout(() => {
-					navigate("/schedulizer/signin");
-				}, 4000);
 			} else {
 				setIsLoading(false);
 			}
 		} catch (error) {
 			console.log("error data", error.response?.data);
-			console.log("Form data", appointmentData);
+			console.log("Form data", serviceData);
 			setIsLoading(false);
 			setError(error.response.data.error);
+			console.log("error", error);
 		}
-	};
-
-	const closeModalAndNavigate = () => {
-		setIsModalOpen(false);
-		navigate("/schedulizer/signin");
 	};
 
 	return (
 		<div className="flex items-center justify-center py-4">
 			<div className="py-28">
 				<h2 className="mb-12 flex items-center justify-center font-bebas text-9xl font-semibold md:px-24 xl:lg:px-52">
-					Add an Appointment
+					Add a Service.
 				</h2>
 				<form onSubmit={handleSubmit} className="">
 					<div className="px-56">
@@ -125,44 +118,44 @@ function AppointmentsCRUD() {
 							<div className="grid w-full grid-cols-6 space-x-4">
 								<div className="col-span-3">
 									<InputField
-										inputFieldId="appointmentTitle"
+										inputFieldId="serviceTitle"
 										inputFieldType="text"
-										inputFieldPlaceholder="appointment title"
-										inputFieldHtmlFor="appointmentTitle"
-										inputFieldLabelName="Appointment Title"
+										inputFieldPlaceholder="service title"
+										inputFieldHtmlFor="serviceTitle"
+										inputFieldLabelName="Service Title"
 										isRequired={true}
 										fieldType="input"
-										value={appointmentTitle}
-										onChange={(e) => setAppointmentTitle(e.target.value)}
+										value={serviceTitle}
+										onChange={(e) => setServiceTitle(e.target.value)}
 										validateOnBlur={true}
 										validate={(value) =>
 											validateField(
 												value,
 												(value) => value.trim() !== "",
-												"Appointment title is required",
-												"appointmentTitle"
+												"Service title is required",
+												"serviceTitle"
 											)
 										}
 									/>
 								</div>
 								<div className="col-span-2">
 									<InputField
-										inputFieldId="appointmentDuration"
+										inputFieldId="serviceDuration"
 										inputFieldType="text"
-										inputFieldPlaceholder="appointment duration"
-										inputFieldHtmlFor="appointmentDuration"
-										inputFieldLabelName="Appointment Duration"
+										inputFieldPlaceholder="service duration"
+										inputFieldHtmlFor="serviceDuration"
+										inputFieldLabelName="Service Duration"
 										isRequired={true}
 										fieldType="input"
-										value={appointmentDuration}
-										onChange={(e) => setAppointmentDuration(e.target.value)}
+										value={serviceDuration}
+										onChange={(e) => setServiceDuration(e.target.value)}
 										validateOnBlur={true}
 										validate={(value) =>
 											validateField(
 												value,
 												(value) => !isNaN(value) && parseInt(value) > 0,
-												"Appointment duration must be a positive number",
-												"appointmentDuration"
+												"Service duration must be a positive number",
+												"serviceDuration"
 											)
 										}
 									/>
@@ -182,18 +175,18 @@ function AppointmentsCRUD() {
 
 							<div className="grid w-full grid-cols-3 gap-4">
 								<InputField
-									inputFieldId="appointmentPrice"
+									inputFieldId="servicePrice"
 									inputFieldType="text"
-									inputFieldPlaceholder="appointment price"
-									inputFieldHtmlFor="appointmentPrice"
-									inputFieldLabelName="Appointment Price"
+									inputFieldPlaceholder="service price"
+									inputFieldHtmlFor="servicePrice"
+									inputFieldLabelName="Service Price"
 									isRequired={true}
 									fieldType="input"
-									value={appointmentPrice}
+									value={servicePrice}
 									onChange={(e) => {
 										const value = parseFloat(e.target.value);
 										if (!isNaN(value) && value >= 0) {
-											setAppointmentPrice(e.target.value);
+											setServicePrice(e.target.value);
 										}
 									}}
 									validateOnBlur={true}
@@ -201,50 +194,50 @@ function AppointmentsCRUD() {
 										validateField(
 											value,
 											(value) => !isNaN(value) && parseFloat(value) >= 0,
-											"Appointment price must be a non-negative number",
-											"appointmentPrice"
+											"Service price must be a non-negative number",
+											"servicePrice"
 										)
 									}
 								/>
 
 								<InputField
-									inputFieldId="appointmentStartTime"
+									inputFieldId="serviceStartTime"
 									inputFieldType="time"
 									inputFieldPlaceholder="xx am/pm"
-									inputFieldHtmlFor="appointmentStartTime"
-									inputFieldLabelName="Appointment Start Time"
+									inputFieldHtmlFor="serviceStartTime"
+									inputFieldLabelName="Service Start Time"
 									isRequired={true}
 									fieldType="input"
-									value={appointmentStartTime}
-									onChange={(e) => setAppointmentStartTime(e.target.value)}
+									value={serviceStartTime}
+									onChange={(e) => setServiceStartTime(e.target.value)}
 									validateOnBlur={true}
 									validate={(value) =>
 										validateField(
 											value,
 											(value) => value.trim() !== "",
-											"Appointment start time is required",
-											"appointmentStartTime"
+											"Service start time is required",
+											"serviceStartTime"
 										)
 									}
 								/>
 
 								<InputField
-									inputFieldId="appointmentEndTime"
+									inputFieldId="serviceEndTime"
 									inputFieldType="time"
 									inputFieldPlaceholder="xx am/pm"
-									inputFieldHtmlFor="appointmentEndTime"
-									inputFieldLabelName="Appointment End Time"
+									inputFieldHtmlFor="serviceEndTime"
+									inputFieldLabelName="Service End Time"
 									isRequired={true}
 									fieldType="input"
-									value={appointmentEndTime}
-									onChange={(e) => setAppointmentEndTime(e.target.value)}
+									value={serviceEndTime}
+									onChange={(e) => setServiceEndTime(e.target.value)}
 									validateOnBlur={true}
 									validate={(value) =>
 										validateField(
 											value,
 											(value) => value.trim() !== "",
-											"Appointment end time is required",
-											"appointmentEndTime"
+											"Service end time is required",
+											"serviceEndTime"
 										)
 									}
 								/>
@@ -253,25 +246,25 @@ function AppointmentsCRUD() {
 							<DayPicker onDaysChange={handleDaysChange} />
 
 							<InputField
-								inputFieldId="appointmentDescription"
+								inputFieldId="serviceDescription"
 								inputFieldType="text"
-								inputFieldPlaceholder="appointment description"
-								inputFieldHtmlFor="appointmentDescription"
-								inputFieldLabelName="Appointment Description"
+								inputFieldPlaceholder="service description"
+								inputFieldHtmlFor="serviceDescription"
+								inputFieldLabelName="Service Description"
 								isRequired={true}
 								fieldType="textarea"
 								cols={10}
 								rows={5}
 								maxLength={500}
-								value={appointmentDescription}
-								onChange={(e) => setAppointmentDescription(e.target.value)}
+								value={serviceDescription}
+								onChange={(e) => setServiceDescription(e.target.value)}
 								validateOnBlur={true}
 								validate={(value) =>
 									validateField(
 										value,
 										(value) => value.trim() !== "",
-										"Appointment description is required",
-										"appointmentDescription"
+										"Service description is required",
+										"serviceDescription"
 									)
 								}
 							/>
@@ -288,7 +281,7 @@ function AppointmentsCRUD() {
 						)}
 						<div className="py-4 xs:px-16 md:px-32 xl:px-64">
 							<Button
-								buttonName="ADD APPOINTMENT"
+								buttonName="ADD SERVICE"
 								buttonType="submit"
 								disabled={isLoading || Object.keys(errors).length > 0}
 							/>
@@ -296,37 +289,8 @@ function AppointmentsCRUD() {
 					</div>
 				</form>
 			</div>
-			<Transition appear show={isModalOpen} as={Fragment}>
-				<Dialog
-					as="div"
-					className="fixed inset-0 z-10 overflow-y-auto bg-indigo-600 pattern-texture-[#FAF8ED]/60 pattern-texture-scale-[1.5]"
-					onClose={closeModalAndNavigate}>
-					<div className="min-h-screen text-center">
-						<Dialog.Overlay className="fixed" />
-						<span
-							className="inline-block h-screen align-middle"
-							aria-hidden="true">
-							&#8203;
-						</span>
-						<Dialog.Description
-							as="div"
-							className="my-8 inline-block w-full max-w-md transform overflow-hidden rounded-2xl bg-[#FAF8ED] p-12 text-center align-middle transition-all">
-							<Dialog.Title
-								as="h1"
-								className="leading-2 font-bebas text-5xl font-semibold text-indigo-500">
-								Sign Up Successful!
-							</Dialog.Title>
-							<div className="mt-2">
-								<p className="font-poppins text-sm text-black">
-									You will be redirected to the Sign In page shortly.
-								</p>
-							</div>
-						</Dialog.Description>
-					</div>
-				</Dialog>
-			</Transition>
 		</div>
 	);
 }
 
-export default AppointmentsCRUD;
+export default ServicesCRUD;

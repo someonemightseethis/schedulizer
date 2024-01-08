@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 // Create Schema
-const SignInSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
 	firstName: {
 		type: String,
 		required: true,
@@ -23,7 +23,7 @@ const SignInSchema = new mongoose.Schema({
 	},
 });
 
-const User = mongoose.model("User", SignInSchema);
+const User = mongoose.model("User", userSchema);
 
 // collection part
 async function create(userData) {

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 // import Appointment from "./appointment";
 
-const BusinessSchema = new mongoose.Schema({
+const businessSchema = new mongoose.Schema({
 	businessName: {
 		type: String,
 		required: true,
@@ -45,10 +45,14 @@ const BusinessSchema = new mongoose.Schema({
 	businessProfile: {
 		type: String,
 	},
+	businessBio: {
+		type: String,
+		required: false,
+	},
 	businessAppointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
 });
 
 // Collection part
-const Business = mongoose.model("businesses", BusinessSchema);
+const Business = mongoose.model("businesses", businessSchema);
 
 export default Business;
