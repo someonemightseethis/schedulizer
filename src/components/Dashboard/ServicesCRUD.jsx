@@ -1,4 +1,4 @@
-import ServicesCard from "../ServicesCRUDCard";
+import ServiceCard from "../ServiceCRUDCard";
 import { useEffect, useState } from "react";
 import useBusinessRegistered from "../../hooks/useBusinessRegistered";
 import axios from "axios";
@@ -46,7 +46,7 @@ function ServicesCRUD() {
 			{services
 				.filter((service) => service.businessEmail === businessEmail)
 				.map((service, index) => (
-					<ServicesCard key={index} service={service} onDelete={handleDelete} />
+					<ServiceCard key={index} service={service} onDelete={handleDelete} />
 				))}
 		</div>
 	);

@@ -1,18 +1,20 @@
 import PropTypes from "prop-types";
 
-function ServiceCard({ service }) {
+function ServiceCard({ service, businessName }) {
 	return (
 		<div className="flex items-center justify-center">
 			<div className="group relative w-full break-words rounded-xl bg-[#FAF8ED] shadow-xl md:max-w-sm">
-				<div className="py-2">
+				<div className="p-6">
 					<div className="overflow-hidden pt-16 text-center">
-						<div className="flex justify-center space-x-6">
-							<div className="businessNameType">
+						<div className="flex flex-col justify-center space-x-6">
+							<div className="">
 								<h4 className="font-poppins text-lg font-bold text-[#18191E]">
-									{service.serviceName}
+									{service.serviceName} <br />
+									<span className="font-muktaVaani text-lg font-light">by</span>
+									<br /> {businessName}
 								</h4>
 								<p className="font-muktaVaani text-xs font-normal text-gray-600">
-									{service.serviceDuration}
+									Service Duration: {service.serviceDuration}
 								</p>
 							</div>
 							<div className="businessRating flex flex-col items-center justify-center">
@@ -53,6 +55,7 @@ ServiceCard.propTypes = {
 		businessEmail: PropTypes.string.isRequired,
 		_id: PropTypes.string.isRequired,
 	}).isRequired,
+	businessName: PropTypes.string.isRequired,
 };
 
 export default ServiceCard;
