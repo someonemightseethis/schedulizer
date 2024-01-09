@@ -22,14 +22,48 @@ function ServicesCRUD() {
 	console.log("selectedBusiness", businessEmail);
 
 	const timing = serviceStartTime + " " + serviceEndTime;
-
-	const [errors, setErrors] = useState({});
-	const [error, setError] = useState("");
-
+	const [error, setError] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
-
 	const [typedCharacters, setTypedCharacters] = useState(0);
 	const typedCharactersElementRef = useRef(null);
+	const [durationUnitError, setDurationUnitError] = useState("");
+
+	const handleOptionSelect = (value) => {
+		setDurationUnit(value === "minutes" ? "mins" : "hrs");
+		setDurationUnitError(""); // Clear the error
+	};
+
+	const isAlphabetic = (value) => /^[A-Za-z\s&]+$/.test(value);
+	const isNumeric = (value) => /^\d{1,2}$/.test(value);
+	const isPrice = (value) => /^[0-9]{1,5}(\.[0-9]{1,2})?$/.test(value);
+	const isNotEmpty = (value) => value.trim() !== "";
+	const isTextDescription = (value) => value.length >= 100;
+
+	const validateField = (
+		value,
+		validateFunc,
+		errorMessage,
+		fieldName,
+		labelName
+	) => {
+		if (!value.trim()) {
+			setError((prevErrors) => ({
+				...prevErrors,
+				[fieldName]: `${labelName} cannot be empty. Please fill this out.`,
+			}));
+		} else if (!validateFunc(value)) {
+			setError((prevErrors) => ({
+				...prevErrors,
+				[fieldName]: errorMessage,
+			}));
+		} else {
+			setError((prevErrors) => {
+				//eslint-disable-next-line no-unused-vars
+				const { [fieldName]: _, ...rest } = prevErrors;
+				return rest;
+			});
+		}
+	};
 
 	useEffect(() => {
 		const textAreaElement = document.querySelector("#serviceDescription");
@@ -55,21 +89,6 @@ function ServicesCRUD() {
 
 	const handleDaysChange = (selectedDays) => {
 		setSelectedDays(selectedDays);
-	};
-
-	const validateField = (value, validateFunc, errorMessage, fieldName) => {
-		if (!validateFunc(value)) {
-			setErrors((prevErrors) => ({
-				...prevErrors,
-				[fieldName]: errorMessage,
-			}));
-		} else {
-			setErrors((prevErrors) => {
-				//eslint-disable-next-line no-unused-vars
-				const { [fieldName]: _, ...rest } = prevErrors;
-				return rest;
-			});
-		}
 	};
 
 	const handleSubmit = async (event) => {
@@ -107,13 +126,13 @@ function ServicesCRUD() {
 	};
 
 	return (
-		<div className="flex items-center justify-center py-4">
-			<div className="py-28">
-				<h2 className="mb-12 flex items-center justify-center font-bebas text-9xl font-semibold md:px-24 xl:lg:px-52">
-					Add a Service.
-				</h2>
-				<form onSubmit={handleSubmit} className="">
-					<div className="px-56">
+		<div className="flex items-center justify-center py-28">
+			<div className="flex flex-col justify-center">
+				<div className="md:w-full lg:w-[600px] xl:w-[800px]">
+					<h2 className="mb-12 flex items-center justify-center font-bebas text-9xl font-semibold md:px-24 xl:lg:px-12">
+						Add a Service.
+					</h2>
+					<form onSubmit={handleSubmit} className="">
 						<div className="space-y-4 py-2">
 							<div className="grid w-full grid-cols-6 space-x-4">
 								<div className="col-span-3">
@@ -131,17 +150,24 @@ function ServicesCRUD() {
 										validate={(value) =>
 											validateField(
 												value,
-												(value) => value.trim() !== "",
-												"Service title is required",
-												"serviceTitle"
+												isAlphabetic,
+												"Business name should only contain alphabets",
+												"serviceTitle",
+												"Service Title" // pass the label name here
 											)
 										}
+										inputFieldError={error.serviceTitle}
 									/>
 								</div>
 								<div className="col-span-2">
 									<InputField
 										inputFieldId="serviceDuration"
 										inputFieldType="text"
+										where
+										do
+										i
+										add
+										the
 										inputFieldPlaceholder="service duration"
 										inputFieldHtmlFor="serviceDuration"
 										inputFieldLabelName="Service Duration"
@@ -153,22 +179,25 @@ function ServicesCRUD() {
 										validate={(value) =>
 											validateField(
 												value,
-												(value) => !isNaN(value) && parseInt(value) > 0,
-												"Service duration must be a positive number",
-												"serviceDuration"
+												isNumeric,
+												"Service duration must be a positive number of not more than 2 digits",
+												"serviceDuration",
+												"Service Duration"
 											)
 										}
+										inputFieldError={error.serviceDuration}
 									/>
 								</div>
 								<div className="col-span-1">
 									<DropdownButton
-										dropdownbuttonname="minutes/hours"
+										dropdownbuttonname="mins/hrs"
 										dropdownlistLength={2}
 										dropdownliname1="minutes"
 										dropdownliname2="hours"
-										onOptionSelect={(value) =>
-											setDurationUnit(value === "minutes" ? "mins" : "hrs")
-										}
+										onOptionSelect={handleOptionSelect}
+										dropdownlabelname=""
+										dropdownlabelhtmlfor="mins/hrs"
+										dropdownError={durationUnitError}
 									/>
 								</div>
 							</div>
@@ -193,11 +222,13 @@ function ServicesCRUD() {
 									validate={(value) =>
 										validateField(
 											value,
-											(value) => !isNaN(value) && parseFloat(value) >= 0,
-											"Service price must be a non-negative number",
-											"servicePrice"
+											isPrice,
+											"Service price must be a non-negative integer of no more than 5 digits",
+											"servicePrice",
+											"Service Price"
 										)
 									}
+									inputFieldError={error.servicePrice}
 								/>
 
 								<InputField
@@ -214,11 +245,13 @@ function ServicesCRUD() {
 									validate={(value) =>
 										validateField(
 											value,
-											(value) => value.trim() !== "",
+											isNotEmpty,
 											"Service start time is required",
-											"serviceStartTime"
+											"serviceStartTime",
+											"Service Start Time"
 										)
 									}
+									inputFieldError={error.serviceStartTime}
 								/>
 
 								<InputField
@@ -235,11 +268,13 @@ function ServicesCRUD() {
 									validate={(value) =>
 										validateField(
 											value,
-											(value) => value.trim() !== "",
+											isNotEmpty,
 											"Service end time is required",
-											"serviceEndTime"
+											"serviceEndTime",
+											"Service End Time"
 										)
 									}
+									inputFieldError={error.serviceEndTime}
 								/>
 							</div>
 
@@ -262,11 +297,13 @@ function ServicesCRUD() {
 								validate={(value) =>
 									validateField(
 										value,
-										(value) => value.trim() !== "",
-										"Service description is required",
-										"serviceDescription"
+										isTextDescription,
+										"Service description should be atleast 100 characters.",
+										"serviceDescription",
+										"Service Description"
 									)
 								}
+								inputFieldError={error.serviceDescription}
 							/>
 							<div
 								id="character-counter"
@@ -276,18 +313,18 @@ function ServicesCRUD() {
 								<span id="maximum-characters">500</span>
 							</div>
 						</div>
-						{error && (
+						{/* {error && (
 							<p className="mt-1 text-center text-sm text-red-500">{error}</p>
-						)}
+						)} */}
 						<div className="py-4 xs:px-16 md:px-32 xl:px-64">
 							<Button
 								buttonName="ADD SERVICE"
 								buttonType="submit"
-								disabled={isLoading || Object.keys(errors).length > 0}
+								disabled={isLoading || Object.keys(error).length > 0}
 							/>
 						</div>
-					</div>
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
 	);

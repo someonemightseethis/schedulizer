@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 					<Route path="/schedulizer/signin" element={<SignIn />} />
 					<Route path="/schedulizer/signup" element={<SignUp />} />
 					<Route
-						path="/schedulizer/profilepicbio"
+						path="/schedulizer/profilepicbio/:businessId"
 						element={<ProfilePicBio />}
 					/>
 					<Route path="/schedulizer/tests" element={<Tests />} />
@@ -35,7 +35,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 						path="/schedulizer/businessregistration"
 						element={<BusinessRegistrationForm />}
 					/>
-					<Route path="/schedulizer/businessinfo" element={<BusinessInfo />} />
+					<Route
+						path="/schedulizer/businessinfo/:businessId"
+						element={<BusinessInfo />}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</Provider>

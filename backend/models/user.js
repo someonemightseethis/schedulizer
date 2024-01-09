@@ -21,6 +21,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	business: [{ type: mongoose.Types.ObjectId, ref: "Business" }],
 });
 
 const User = mongoose.model("User", userSchema);

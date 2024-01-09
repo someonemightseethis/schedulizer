@@ -87,7 +87,7 @@ function BusinessCard({ business }) {
 							<div className="appointmentButton pt-2">
 								<Button
 									buttonName="VISIT PROFILE"
-									buttonLink="/schedulizer/businessinfo"
+									buttonLink={`/schedulizer/businessinfo/${business._id}`}
 								/>
 							</div>
 						</div>
@@ -103,6 +103,7 @@ BusinessCard.propTypes = {
 		name: PropTypes.string,
 		type: PropTypes.string,
 		workField: PropTypes.string,
+		_id: PropTypes.string,
 	}).isRequired,
 };
 

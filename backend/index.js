@@ -4,11 +4,13 @@ import userRouter from "./routes/user.js";
 import businessRouter from "./routes/businesses.js";
 import servicesRouter from "./routes/services.js";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config();
 
 console.log("JWT_SECRET:", process.env.JWT_SECRET);
 const app = express();
+app.use(cors());
 
 DbConnect("mongodb://localhost:27017/Schedulizer");
 

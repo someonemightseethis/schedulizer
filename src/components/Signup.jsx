@@ -42,7 +42,6 @@ function SignUp() {
 		const error = {
 			atSymbolError: "Email should have exactly one '@' symbol.",
 			domainError: "Email domain should end with '.com'.",
-			numberInDomainError: "Numbers are not allowed in the domain name.",
 		};
 
 		const emailParts = value.split("@");
@@ -114,7 +113,7 @@ function SignUp() {
 		return isValidPassword;
 	};
 
-	const isAlphabetic = (value) => /^[A-Za-z]+$/.test(value);
+	const isAlphabetic = (value) => /^[A-Za-z\s&]+$/.test(value);
 	const isNumericAndLimited = (value) => /^\d{1,11}$/.test(value);
 
 	const validateField = (

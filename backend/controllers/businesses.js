@@ -1,5 +1,4 @@
 import Business from "../models/businesses.js";
-import multer from "multer";
 import nodemailer from "nodemailer";
 import mongoose from "mongoose";
 
@@ -157,34 +156,6 @@ export const deleteById = async (req, res) => {
 	}
 };
 
-const storage = multer.diskStorage({
-	destination: (req, file, cb) => {
-		cb(null, "./public/profile");
-	},
-	filename: (req, file, cb) => {
-		cb(null, new Date().toISOString() + file.originalname);
-	},
-});
-
-export const upload = multer({ storage: storage });
-
-export const uploadPic = async (req, res) => {
-	const Id = req.params.id;
-
-	try {
-		const file = req.file;
-		const imgUrl = file.path;
-
-		await Business.findByIdAndUpdate(Id, {
-			businessProfile: imgUrl,
-		});
-
-		res.send("Profile Uploaded");
-	} catch (error) {
-		console.error(error);
-		res.status(500).send("Internal Server Error");
-	}
-};
 // 	const transporter = nodemailer.createTransport({
 // 		port: 465,
 // 		service: "gmail",

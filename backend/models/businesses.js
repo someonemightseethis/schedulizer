@@ -44,12 +44,13 @@ const businessSchema = new mongoose.Schema({
 	},
 	businessProfile: {
 		type: String,
+		default: "./public/images/logo.png",
 	},
 	businessBio: {
 		type: String,
 		required: false,
 	},
-	businessAppointments: [{ type: mongoose.Types.ObjectId, ref: "Appointment" }],
+	services: [{ type: mongoose.Types.ObjectId, ref: "Service" }],
 });
 
 // Collection part

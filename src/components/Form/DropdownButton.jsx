@@ -97,6 +97,11 @@ function DropdownButton(props) {
 					</svg>
 				</span>
 			</button>
+			{props.dropdownError && (
+				<p className="mt-1 font-poppins text-xs text-red-500">
+					{props.dropdownError}
+				</p>
+			)}
 			{dropdownListLength && (
 				<DropdownList
 					dropdowListOpen={dropdowListOpen}
@@ -115,6 +120,7 @@ DropdownButton.propTypes = {
 	dropdownlabelhtmlfor: PropTypes.string.isRequired,
 	dropdownlistLength: PropTypes.number.isRequired,
 	onOptionSelect: PropTypes.func, // New prop
+	dropdownError: PropTypes.string,
 };
 
 Array.from(

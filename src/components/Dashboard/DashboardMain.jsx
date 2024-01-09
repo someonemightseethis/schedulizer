@@ -3,30 +3,21 @@ import DashboardAppointmentsToday from "./DashboardAppointmentsToday";
 import DashboardAppointmentTracker from "./DashboardAppointmentTracker";
 import BacktoTopButton from "../BacktoTopButton";
 import ServicesCRUD from "./ServicesCRUD";
-import { jwtDecode } from "jwt-decode";
+import useBusinessRegistered from "../../hooks/useBusinessRegistered";
 import Layout from "../Layout";
 import ServiceAddForm from "./ServiceAddForm";
 
 function DashboardMain() {
-	let firstName = localStorage.getItem("firstName");
-	const token = localStorage.getItem("token"); // get the token from localStorage
-
-	if (token) {
-		const decodedToken = jwtDecode(token);
-		if (decodedToken.exp * 1000 < Date.now()) {
-			// Token has expired
-			localStorage.removeItem("firstName");
-			firstName = null;
-		}
-	}
+	const { selectedBusiness } = useBusinessRegistered();
+	const businessName = selectedBusiness?.businessName;
 
 	return (
 		<Layout>
-			<div className="py-12 md:ml-[226px] md:px-24 xl:lg:ml-[208px] xl:lg:px-20">
-				<h2 className="mb-12 flex items-baseline justify-center font-bebas text-7xl font-semibold md:px-24 xl:lg:px-52">
+			<div className="py-20 md:px-24 xl:lg:px-20">
+				<h2 className="mb-20 flex items-baseline justify-center font-bebas text-9xl font-semibold md:px-24 xl:lg:px-52">
 					Good day,
-					<p className="font-ptSansCaption text-4xl font-medium">
-						&ensp; {firstName || "username"}
+					<p className="font-ptSansCaption text-7xl font-medium">
+						&ensp; {businessName}
 					</p>
 				</h2>
 				<div className="items-top flex justify-center pb-12 pt-6 xs:flex-col xs:space-y-12 sm:flex-col sm:space-y-12 md:flex-col md:space-x-12 md:space-y-16 xl:lg:flex-row xl:lg:space-x-24 xl:lg:space-y-0">

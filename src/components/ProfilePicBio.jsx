@@ -4,8 +4,10 @@ import Layout from "./Layout";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
+import { useParams } from "react-router-dom";
 
 function ProfilePicBio() {
+	const { businessId } = useParams();
 	const [typedCharacters, setTypedCharacters] = useState(0);
 	const typedCharactersElementRef = useRef(null);
 	const navigate = useNavigate();
@@ -60,20 +62,34 @@ function ProfilePicBio() {
 		e.preventDefault();
 
 		const formData = new FormData();
-		formData.append("file", file);
-		formData.append("bio", bio);
+		formData.append("businessProfile", file);
+		formData.append("businessBio", bio);
 
 		// Send formData to the server
 		// You'll need to replace this URL with the URL of your server
-		const response = await fetch("/api/business", {
-			method: "POST",
-			body: formData,
-		});
+		try {
+			const response = await fetch(
+				`http://localhost:8000/business/profile/${businessId}`,
+				{
+					method: "POST",
+					body: formData,
+				}
+			);
 
-		if (response.ok) {
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+
+			// Open the modal
+			setIsModalOpen(true);
+
+			// Close the modal and navigate after 4 seconds
+			setTimeout(closeModalAndNavigate, 4000);
+
 			// Handle successful submission
 			// This could be navigating to another page, showing a success message, etc.
-		} else {
+		} catch (error) {
+			console.error("Fetch error: ", error);
 			// Handle error
 		}
 	};
@@ -88,41 +104,31 @@ function ProfilePicBio() {
 							<br /> a face and a voice
 						</h3>
 						<div className="w-full items-center justify-center px-12">
-							<form onSubmit={handleSubmit}>
+							<form
+								onSubmit={handleSubmit}
+								action={`http://localhost:8000/business/profile/${businessId}`}
+								method="post"
+								encType="multipart/form-data">
 								<div className="mt-8">
-									<div className="flex w-full items-center justify-center pb-6">
-										<label
-											htmlFor="dropzone-file"
-											className="dark:hover:bg-bray-800 flex h-32 w-full cursor-pointer flex-col items-center justify-center rounded-lg border-2 border-black hover:border-indigo-500 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-											<div className="flex flex-col items-center justify-center space-y-2 pb-6 pt-5">
-												<svg
-													className="mb-2 h-8 w-8"
-													aria-hidden="true"
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 20 16">
-													<path
-														stroke="black"
-														strokeLinecap="round"
-														strokeLinejoin="round"
-														strokeWidth="2"
-														d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-													/>
-												</svg>
-												<p className="text-md mb-2 font-muktaVaani text-black">
-													<span className="font-poppins font-medium">
-														Click to upload
-													</span>{" "}
-													or drag and drop
-												</p>
-											</div>
-											<input
-												id="dropzone-file"
-												type="file"
-												className="hidden"
-												onChange={handleFileChange}
-											/>
-										</label>
+									<div className="relative border border-dashed border-gray-500">
+										<input
+											type="file"
+											className="relative z-50 block h-full w-full cursor-pointer p-20 opacity-0"
+											onChange={handleFileChange}
+										/>
+										<div className="absolute left-0 right-0 top-0 m-auto p-10 text-center">
+											<h4>
+												Drop files anywhere to upload
+												<br />
+												or
+											</h4>
+											<p className="">Select Files</p>
+											<label
+												htmlFor="dropzone-file"
+												className="mt-2 block text-sm text-gray-700">
+												{file ? `File Name: ${file.name}` : "Select a File"}
+											</label>
+										</div>
 									</div>
 
 									{/* <InputField

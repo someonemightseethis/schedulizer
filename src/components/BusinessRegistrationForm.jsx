@@ -71,7 +71,7 @@ function BusinessRegistrationForm() {
 		return true;
 	};
 
-	const isAlphabetic = (value) => /^[A-Za-z]+$/.test(value);
+	const isAlphabetic = (value) => /^[A-Za-z\s&]+$/.test(value);
 	const isNumericAndLimited = (value) => /^\d{1,11}$/.test(value);
 	const isText = (value) => /^.*$/.test(value);
 	const isTextOrUrl = (value) => {
@@ -150,9 +150,9 @@ function BusinessRegistrationForm() {
 			if (response.data.success) {
 				// Dispatch the register business success action
 				dispatch(registerBusinessSuccess(response.data));
-
+				const businessId = response.data._id;
 				setIsLoading(false);
-				navigate("/schedulizer/profilepicbio");
+				await navigate(`/schedulizer/profilepicbio/${businessId}`);
 			} else {
 				// Dispatch the register business failure action with an appropriate error message
 				dispatch(
