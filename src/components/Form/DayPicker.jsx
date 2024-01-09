@@ -14,7 +14,17 @@ function DayPicker({ onDaysChange }) {
 
 	const formatSelectedDays = useCallback(() => {
 		const sortedDays = selectedDays.sort();
-		if (sortedDays.length > 1) {
+		const daysOfWeek = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+		const selectedDaysIndices = sortedDays.map((day) =>
+			daysOfWeek.indexOf(day)
+		);
+		const isContinuous = selectedDaysIndices.every(
+			(day, i, arr) =>
+				i === 0 || day === arr[i - 1] + 1 || (day === 0 && arr[i - 1] === 6)
+		);
+		if (sortedDays.length === 1) {
+			return sortedDays[0];
+		} else if (isContinuous && sortedDays.length > 0) {
 			const firstDay = sortedDays[0].substring(0, 3);
 			const lastDay = sortedDays[sortedDays.length - 1].substring(0, 3);
 			return `${firstDay}-${lastDay}`;

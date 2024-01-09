@@ -13,24 +13,23 @@ function ServicesCRUD() {
 	const [serviceStartTime, setServiceStartTime] = useState("");
 	const [serviceEndTime, setServiceEndTime] = useState("");
 	const [serviceDescription, setServiceDescription] = useState("");
-	const [durationUnit, setDurationUnit] = useState("mins");
+	const [durationUnit, setDurationUnit] = useState("");
 	const [selectedDays, setSelectedDays] = useState("");
 	const { selectedBusiness } = useBusinessRegistered();
 	const businessEmail = selectedBusiness?.businessEmail;
 	const businessId = selectedBusiness?._id;
+	const [apiError, setApiError] = useState("");
 
 	console.log("selectedBusiness", businessEmail);
 
-	const timing = serviceStartTime + " " + serviceEndTime;
+	const timing = serviceStartTime + " to " + serviceEndTime;
 	const [error, setError] = useState({});
 	const [isLoading, setIsLoading] = useState(false);
 	const [typedCharacters, setTypedCharacters] = useState(0);
 	const typedCharactersElementRef = useRef(null);
-	const [durationUnitError, setDurationUnitError] = useState("");
 
 	const handleOptionSelect = (value) => {
 		setDurationUnit(value === "minutes" ? "mins" : "hrs");
-		setDurationUnitError(""); // Clear the error
 	};
 
 	const isAlphabetic = (value) => /^[A-Za-z\s&]+$/.test(value);
@@ -106,6 +105,24 @@ function ServicesCRUD() {
 			businessEmail,
 		};
 
+		if (selectedDays.length === 0) {
+			setError((prevErrors) => ({
+				...prevErrors,
+				selectedDays: "At least one day must be selected",
+			}));
+			setIsLoading(false);
+			return;
+		}
+
+		if (!durationUnit.trim()) {
+			setError((prevErrors) => ({
+				...prevErrors,
+				durationUnit: "Duration unit cannot be empty. Please select a unit.",
+			}));
+			setIsLoading(false);
+			return;
+		}
+
 		try {
 			const response = await axios.post("/services/add", serviceData);
 			console.log(response.data);
@@ -121,6 +138,7 @@ function ServicesCRUD() {
 			console.log("Form data", serviceData);
 			setIsLoading(false);
 			setError(error.response.data.error);
+			setApiError(error.response?.data || "An error occurred");
 			console.log("error", error);
 		}
 	};
@@ -163,11 +181,6 @@ function ServicesCRUD() {
 									<InputField
 										inputFieldId="serviceDuration"
 										inputFieldType="text"
-										where
-										do
-										i
-										add
-										the
 										inputFieldPlaceholder="service duration"
 										inputFieldHtmlFor="serviceDuration"
 										inputFieldLabelName="Service Duration"
@@ -197,7 +210,7 @@ function ServicesCRUD() {
 										onOptionSelect={handleOptionSelect}
 										dropdownlabelname=""
 										dropdownlabelhtmlfor="mins/hrs"
-										dropdownError={durationUnitError}
+										dropdownError={error.durationUnit}
 									/>
 								</div>
 							</div>
@@ -279,6 +292,11 @@ function ServicesCRUD() {
 							</div>
 
 							<DayPicker onDaysChange={handleDaysChange} />
+							{error.selectedDays && (
+								<p className="mt-1 font-poppins text-xs text-red-500">
+									{error.selectedDays}
+								</p>
+							)}
 
 							<InputField
 								inputFieldId="serviceDescription"
@@ -313,14 +331,16 @@ function ServicesCRUD() {
 								<span id="maximum-characters">500</span>
 							</div>
 						</div>
-						{/* {error && (
-							<p className="mt-1 text-center text-sm text-red-500">{error}</p>
-						)} */}
+						{apiError && (
+							<p className="mt-1 font-poppins text-xs text-red-500">
+								{apiError}
+							</p>
+						)}
 						<div className="py-4 xs:px-16 md:px-32 xl:px-64">
 							<Button
 								buttonName="ADD SERVICE"
 								buttonType="submit"
-								disabled={isLoading || Object.keys(error).length > 0}
+								disabled={isLoading}
 							/>
 						</div>
 					</form>
