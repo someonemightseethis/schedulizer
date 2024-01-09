@@ -72,7 +72,7 @@ function BusinessRegistrationForm() {
 	};
 
 	const isAlphabetic = (value) => /^[A-Za-z\s&]+$/.test(value);
-	const isNumericAndLimited = (value) => /^\d{1,11}$/.test(value);
+	const isContactNumber = (value) => /^\d{11}$/.test(value);
 	const isText = (value) => /^.*$/.test(value);
 	const isTextOrUrl = (value) => {
 		const urlPattern = new RegExp(
@@ -230,8 +230,8 @@ function BusinessRegistrationForm() {
 										validate={(value) =>
 											validateField(
 												value,
-												isNumericAndLimited,
-												"Contact number should only contain numbers",
+												isContactNumber,
+												"Contact number should only contain numbers and be 11-15 digits.",
 												"businessContactNumber",
 												"Contact Number" // pass the label name here
 											)

@@ -114,7 +114,7 @@ function SignUp() {
 	};
 
 	const isAlphabetic = (value) => /^[A-Za-z\s&]+$/.test(value);
-	const isNumericAndLimited = (value) => /^\d{1,11}$/.test(value);
+	const isContactNumber = (value) => /^\d{11}$/.test(value);
 
 	const validateField = (
 		value,
@@ -288,7 +288,7 @@ function SignUp() {
 										validate={(value) =>
 											validateField(
 												value,
-												isNumericAndLimited,
+												isContactNumber,
 												"Contact number should only contain numbers and be 11 digits.",
 												"userContactNumber",
 												"Contact Number" // pass the label name here
