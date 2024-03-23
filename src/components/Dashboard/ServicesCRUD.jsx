@@ -43,7 +43,7 @@ function ServicesCRUD() {
 	console.log(services);
 	return (
 		<div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-16 px-20 pb-12">
-			<h2 className="mb-4 font-bebas text-9xl font-semibold md:px-24 xl:lg:px-12">
+			<h2 className="mb-4 font-bebas text-8xl text-indigo-500 font-semibold md:px-24 xl:lg:px-12">
 				manage your services.
 			</h2>
 			{services

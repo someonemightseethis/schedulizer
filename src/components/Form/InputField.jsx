@@ -19,7 +19,7 @@ function InputField(props) {
 			{props.inputFieldLabelName && (
 				<label
 					htmlFor={props.inputFieldHtmlFor}
-					className="text-md text-grey-900 mb-4 px-1 text-start font-poppins font-medium">
+					className="text-grey-900 mb-4 px-1 text-start font-poppins text-sm font-medium">
 					{props.inputFieldLabelName}
 				</label>
 			)}
@@ -31,9 +31,9 @@ function InputField(props) {
 					cols={props.cols}
 					rows={props.rows}
 					maxLength={props.maxLength}
-					className={`placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 ${
-						props.inputFieldError ? "border-red-500" : "border-black"
-					} px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none`}
+					className={`placeholder:text-gray-400 placeholder:text-sm placeholder:font-muktaVaani placeholder:font-light mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 ${
+						props.inputFieldError ? "border-red-500" : "border-indigo-500"
+					} px-3 py-2 font-muktaVaani text-sm text-black focus:outline-none`}
 					{...(isRequired ? { required: true } : {})}
 					onBlur={handleBlur}
 					onChange={handleChange}
@@ -45,9 +45,9 @@ function InputField(props) {
 					placeholder={props.inputFieldPlaceholder}
 					pattern={props.inputFieldPattern}
 					{...(isRequired ? { required: true } : {})}
-					className={`placeholder:text-grey-700 mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 ${
-						props.inputFieldError ? "border-red-500" : "border-black"
-					} px-3 py-2 font-muktaVaani text-sm text-black focus:border-indigo-500 focus:outline-none`}
+					className={`placeholder:text-gray-400 placeholder:text-sm placeholder:font-muktaVaani placeholder:font-light mb-4 mr-2 mt-2 flex w-full items-center rounded-lg border-2 ${
+						props.inputFieldError ? "border-red-500" : "border-indigo-500"
+					} px-3 py-2 font-muktaVaani text-sm text-black focus:outline-none`}
 					{...(isRequired ? { required: true } : {})}
 					onBlur={handleBlur}
 					onChange={handleChange}

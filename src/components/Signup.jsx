@@ -218,8 +218,8 @@ function SignUp() {
 			<div className="flex min-h-screen flex-col justify-center">
 				<div className="flex justify-center py-12">
 					<div className="pt-12 md:w-full lg:w-[600px] xl:w-[700px]">
-						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
-							Sign Up
+						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold text-indigo-600">
+							Sign Up.
 						</h3>
 						<form onSubmit={handleSubmit}>
 							<div className="mt-8 grid grid-cols-1 gap-x-8 gap-y-4 md:grid-cols-2">
@@ -365,11 +365,11 @@ function SignUp() {
 								/>
 							</div>
 						</form>
-						<p className="text-md text-grey-900 text-center font-muktaVaani leading-relaxed">
+						<p className="text-grey-900 text-center font-muktaVaani text-sm font-light leading-relaxed">
 							Already have an account?{" "}
 							<Link
 								to="/schedulizer/signin"
-								className="font-poppins text-sm font-semibold text-indigo-500 hover:text-indigo-600">
+								className="font-muktaVaani text-sm font-semibold text-indigo-500 hover:text-indigo-600">
 								Sign In
 							</Link>
 						</p>
@@ -379,9 +379,9 @@ function SignUp() {
 							<hr className="border-grey-500 h-0 grow border-b border-solid" />
 						</div>
 						<div className="xs:px-16 md:px-32 xl:px-36">
-							<a className="text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-grey-300 mb-6 flex w-full cursor-pointer items-center justify-center rounded-lg border-2 border-black py-2 font-ptSansCaption text-sm font-medium transition duration-300 focus:ring-4 xs:px-4">
+							<a className="text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-grey-300 mb-6 flex w-full cursor-pointer items-center justify-center rounded-lg border-2 border-black bg-[#FAF8ED] py-2 font-ptSansCaption text-xs font-medium transition duration-300 hover:border-indigo-500 focus:ring-4">
 								<img
-									className="mr-6 h-5"
+									className="mr-6 h-[1.2rem]"
 									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
 									alt=""
 								/>

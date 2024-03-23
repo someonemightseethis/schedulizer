@@ -12,4 +12,7 @@ userRouter.post("/signin", UserController.SignIn);
 //getUserdata
 userRouter.post("/user", UserController.auth);
 
+userRouter.get("/auth/google", UserController.loginWithGoogle);
+userRouter.get("/auth/google/callback", UserController.loginWithGoogleCallback);
+
 export default userRouter;

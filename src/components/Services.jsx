@@ -44,30 +44,36 @@ function Services() {
 	return (
 		<Layout>
 			<Filters />
-			<div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-16 px-20 pb-12 pt-48">
-				{services.map((service, index) => {
-					console.log(
-						"service.business_id[0]:",
-						String(service.business_id[0])
-					);
-					console.log("businesses:", businesses);
-					const business =
-						businesses &&
-						businesses.find(
-							(business) => business._id === String(service.business_id[0])
+			<div className="px-20 pb-12 pt-20">
+				<h1 className="flex justify-center py-16 font-bebas text-6xl font-semibold tracking-wide text-indigo-500">
+					SERVICES.
+				</h1>
+				<div className="flex flex-wrap items-center justify-center gap-x-16 gap-y-16">
+					{services.map((service, index) => {
+						console.log(
+							"service.business_id[0]:",
+							String(service.business_id[0])
 						);
-					console.log("business:", business);
-					if (business) {
-						console.log("business name:", business.businessName);
-						return (
-							<ServiceCard
-								key={index}
-								service={service}
-								businessName={business.businessName}
-							/>
-						);
-					}
-				})}
+						console.log("businesses:", businesses);
+						const business =
+							businesses &&
+							businesses.find(
+								(business) => business._id === String(service.business_id[0])
+							);
+						console.log("business:", business);
+						if (business) {
+							console.log("business name:", business.businessName);
+							return (
+								<ServiceCard
+									key={index}
+									service={service}
+									businessName={business.businessName}
+									businessId={business._id}
+								/>
+							);
+						}
+					})}
+				</div>
 			</div>
 			<BackToTopButton />
 		</Layout>

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "./Button";
-import DropdownButton from "./form/DropdownButton";
+import DropdownButton from "./form/Dropdown";
 import InputField from "./form/InputField";
 import Layout from "./Layout";
 import { useSelector, useDispatch } from "react-redux";
@@ -113,6 +113,7 @@ function BusinessRegistrationForm() {
 			});
 		}
 	};
+	const businessId = "659e11699c1cf9160a29af58";
 
 	const handleSubmit = async (event) => {
 		setIsLoading(true);
@@ -150,7 +151,7 @@ function BusinessRegistrationForm() {
 			if (response.data.success) {
 				// Dispatch the register business success action
 				dispatch(registerBusinessSuccess(response.data));
-				const businessId = response.data._id;
+
 				setIsLoading(false);
 				await navigate(`/schedulizer/profilepicbio/${businessId}`);
 			} else {

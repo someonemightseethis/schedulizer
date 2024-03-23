@@ -14,6 +14,7 @@ import Home from "./components/Home.jsx";
 import ProfilePicBio from "./components/ProfilePicBio.jsx";
 import Tests from "./components/Tests.jsx";
 import store from "./redux/store/store.js";
+import AppointmentForm from "./components/AppointmentForm.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
 	<React.StrictMode>
@@ -38,6 +39,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 					<Route
 						path="/schedulizer/businessinfo/:businessId"
 						element={<BusinessInfo />}
+					/>
+					<Route
+						path="/schedulizer/appointmentform/:businessId/:serviceId"
+						element={<AppointmentForm />}
 					/>
 				</Routes>
 			</BrowserRouter>

@@ -2,7 +2,7 @@
 import twElementsPlugin from "tw-elements/dist/plugin.cjs";
 import tailwindcssAnimated from "tailwindcss-animated";
 import tailwindcssPatterns from "tailwindcss-patterns";
-
+import flowbitePlugin from "flowbite/plugin";
 /** @type {import('tailwindcss').Config} */
 
 export default {
@@ -10,6 +10,8 @@ export default {
 		"./index.html",
 		"./src/**/*.{js,ts,jsx,tsx}",
 		"./node_modules/tw-elements/dist/js/**/*.js",
+		"node_modules/flowbite-react/lib/esm/**/*.js",
+		"./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
 	],
 	transform: {},
 	theme: {
@@ -23,7 +25,12 @@ export default {
 		},
 		extend: {},
 	},
-	plugins: [twElementsPlugin, tailwindcssAnimated, tailwindcssPatterns],
+	plugins: [
+		twElementsPlugin,
+		tailwindcssAnimated,
+		tailwindcssPatterns,
+		flowbitePlugin,
+	],
 	darkMode: "class",
 	safelist: [
 		"!duration-[0ms]",

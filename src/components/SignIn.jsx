@@ -30,7 +30,6 @@ function SignIn({ signInRequest, signInSuccess }) {
 		const error = {
 			atSymbolError: "Email should have exactly one '@' symbol.",
 			domainError: "Email domain should end with '.com'.",
-			numberInDomainError: "Numbers are not allowed in the domain name.",
 		};
 
 		const emailParts = value.split("@");
@@ -40,12 +39,12 @@ function SignIn({ signInRequest, signInSuccess }) {
 		}
 
 		const [username, domain] = emailParts;
-		const isUsernameValid = username.trim() !== "" && !/\d/.test(username);
+		const isUsernameValid = username.trim() !== "";
 		const isDomainValid = domain.endsWith(".com");
 
 		if (!isUsernameValid) {
-			setEmailError(error.numberInDomainError);
-			return false; // Username cannot be empty and should not contain numbers
+			setEmailError("Username cannot be empty.");
+			return false; // Username cannot be empty
 		}
 
 		if (!isDomainValid) {
@@ -125,13 +124,16 @@ function SignIn({ signInRequest, signInSuccess }) {
 	};
 
 	console.log(signInSuccess);
+	const loginwithgoogle = () => {
+		window.open("http://localhost:8000/user/auth/google/callback", "_self");
+	};
 
 	return (
 		<Layout>
 			<div className="flex min-h-screen flex-col justify-center">
 				<div className="flex justify-center py-12">
 					<div className="pt-12">
-						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold">
+						<h3 className="text-dark-grey-900 pb-6 text-center font-bebas text-9xl font-extrabold text-indigo-600">
 							Sign In.
 						</h3>
 						<form
@@ -173,7 +175,7 @@ function SignIn({ signInRequest, signInSuccess }) {
 								inputFieldError={passwordError}
 							/>
 
-							<div className="px-16 py-4 xl:px-12">
+							<div className="px-20 py-4 xl:px-16">
 								{errorMessage && (
 									<p className="mb-2 text-center font-poppins text-xs text-red-500">
 										{errorMessage}
@@ -185,34 +187,38 @@ function SignIn({ signInRequest, signInSuccess }) {
 									disabled={isLoading}
 								/>
 							</div>
-							<div className="flex flex-col items-center justify-center py-4">
-								<p className="text-md text-grey-900 font-muktaVaani leading-relaxed">
+							<div className="flex flex-col items-center justify-center">
+								<p className="text-grey-900 font-muktaVaani text-sm font-light leading-relaxed">
 									Not registered yet?{" "}
 									<Link
 										to="/schedulizer/signup"
-										className="font-poppins text-sm font-semibold text-indigo-500 hover:text-indigo-600">
+										className="font-muktaVaani text-sm font-medium text-indigo-500 hover:text-indigo-600">
 										Create an Account
 									</Link>
 								</p>
-								<p className="text-md text-grey-900 font-muktaVaani leading-relaxed">
+								<p className="text-grey-900 font-muktaVaani text-sm font-light leading-relaxed">
 									Forget Password?{" "}
 									<a
 										href=""
-										className="font-poppins text-sm font-semibold text-indigo-500 hover:text-indigo-600">
+										className="font-muktaVaani text-sm font-medium text-indigo-500 hover:text-indigo-600">
 										Reset now
 									</a>
 								</p>
 							</div>
 						</form>
+
 						<div className="mb-3 flex items-center pt-6">
 							<hr className="border-grey-500 h-0 grow border-b border-solid" />
 							<p className="text-grey-600 mx-4">or</p>
 							<hr className="border-grey-500 h-0 grow border-b border-solid" />
 						</div>
-						<div className="px-16 xl:px-12">
-							<a className="text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-grey-300 mb-6 flex w-full cursor-pointer items-center justify-center rounded-lg border-2 border-black bg-[#FAF8ED] py-2 font-ptSansCaption text-sm font-medium transition duration-300 hover:border-indigo-500 focus:ring-4">
+
+						<div className="px-20 xl:px-16">
+							<a
+								className="text-grey-900 bg-grey-300 hover:bg-grey-400 focus:ring-grey-300 mb-6 flex w-full cursor-pointer items-center justify-center rounded-lg border-2 border-black bg-[#FAF8ED] py-2 font-ptSansCaption text-xs font-medium transition duration-300 hover:border-indigo-500 focus:ring-4"
+								onClick={loginwithgoogle}>
 								<img
-									className="mr-6 h-5"
+									className="mr-6 h-[1.2rem]"
 									src="https://raw.githubusercontent.com/Loopple/loopple-public-assets/main/motion-tailwind/img/logos/logo-google.png"
 									alt=""
 								/>

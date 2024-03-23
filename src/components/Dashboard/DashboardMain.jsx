@@ -14,9 +14,9 @@ function DashboardMain() {
 	return (
 		<Layout>
 			<div className="py-20 md:px-24 xl:lg:px-20">
-				<h2 className="mb-20 flex items-baseline justify-center font-bebas text-9xl font-semibold md:px-24 xl:lg:px-52">
+				<h2 className="mb-20 flex items-baseline justify-center text-indigo-500 font-bebas text-8xl font-semibold md:px-24 xl:lg:px-52">
 					Good day,
-					<p className="font-ptSansCaption text-7xl font-medium">
+					<p className="font-ptSansCaption text-6xl font-medium">
 						&ensp; {businessName}
 					</p>
 				</h2>

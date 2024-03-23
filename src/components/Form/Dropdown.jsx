@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import DropdownList from "./DropdownList";
 
-function DropdownButton(props) {
+function Dropdown(props) {
 	const [selectedOption, setSelectedOption] = useState(null);
 	const [dropdowListOpen, setDropdowListOpen] = useState(false);
 	const [dropdownListLength, setDropdownListLength] = useState(null);
@@ -68,11 +68,11 @@ function DropdownButton(props) {
 		<div className="relative" data-te-dropdown-ref ref={dropdownRef}>
 			<label
 				htmlFor={props.dropdownlabelhtmlfor}
-				className="text-md text-grey-900 mb-4 px-1 text-start font-poppins font-medium">
+				className="text-grey-900 mb-4 px-1 text-start font-poppins text-sm font-medium">
 				{props.dropdownlabelname}
 			</label>
 			<button
-				className={`flex font-muktaVaani items-center bg-white justify-between text-end w-full px-3 py-2 mt-2 mb-4 text-sm border-2 border-black rounded-lg ${buttonBorderColorClass} ${buttonColorClass}`}
+				className={`flex font-muktaVaani items-center bg-white justify-between text-end w-full px-3 py-2 mt-2 mb-4 text-sm border-2 border-indigo-500  rounded-lg ${buttonBorderColorClass} ${buttonColorClass}`}
 				type="button"
 				id="dropdownMenuButton1"
 				data-te-dropdown-toggle-ref
@@ -114,7 +114,7 @@ function DropdownButton(props) {
 	);
 }
 
-DropdownButton.propTypes = {
+Dropdown.propTypes = {
 	dropdownbuttonname: PropTypes.string.isRequired,
 	dropdownlabelname: PropTypes.string.isRequired,
 	dropdownlabelhtmlfor: PropTypes.string.isRequired,
@@ -123,12 +123,9 @@ DropdownButton.propTypes = {
 	dropdownError: PropTypes.string,
 };
 
-Array.from(
-	{ length: DropdownButton.propTypes.dropdownlistLength },
-	(_, index) => {
-		DropdownButton.propTypes[`dropdownliname${index + 1}`] =
-			PropTypes.string.isRequired;
-	}
-);
+Array.from({ length: Dropdown.propTypes.dropdownlistLength }, (_, index) => {
+	Dropdown.propTypes[`dropdownliname${index + 1}`] =
+		PropTypes.string.isRequired;
+});
 
-export default DropdownButton;
+export default Dropdown;

@@ -4,10 +4,10 @@ import Layout from "./Layout";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
-import { useParams } from "react-router-dom";
+// import { useParams } from "react-router-dom";
 
 function ProfilePicBio() {
-	const { businessId } = useParams();
+	// const { businessId } = useParams();
 	const [typedCharacters, setTypedCharacters] = useState(0);
 	const typedCharactersElementRef = useRef(null);
 	const navigate = useNavigate();
@@ -57,6 +57,7 @@ function ProfilePicBio() {
 	const handleBioChange = (e) => {
 		setBio(e.target.value);
 	};
+	const businessId = "659e11699c1cf9160a29af58";
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();

@@ -48,7 +48,9 @@ const businessSchema = new mongoose.Schema({
 	},
 	businessBio: {
 		type: String,
-		required: false,
+		required: true,
+		default:
+			"Welcome to our busness. We hope you have a wonderful experience with us. We sstrive to provide the best service possible.",
 	},
 	services: [{ type: mongoose.Types.ObjectId, ref: "Service" }],
 });
