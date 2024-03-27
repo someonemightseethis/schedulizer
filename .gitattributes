@@ -1,3 +1,0 @@
-* filter=lfs diff=lfs merge=lfs -text
-.gitattributes !filter !diff !merge
-.gitignore !filter !diff !merge
