@@ -1,3 +1,26 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cf4ea86c0b28fc86e7c429541ee09f48211195b75c5703863abcc8bcb82066cb
-size 592
+// src/store.js
+import { configureStore } from "@reduxjs/toolkit";
+import authReducer, {
+	handleSignInSuccess,
+	handleLogout,
+} from "../slices/authSlice";
+import userReducer from "../slices/userSlice";
+import businessReducer from "../slices/businessSlice";
+
+const store = configureStore({
+	reducer: {
+		auth: authReducer,
+		user: userReducer,
+		business: businessReducer,
+	},
+});
+
+export const dispatchSignInSuccess = (user) => (dispatch) => {
+	dispatch(handleSignInSuccess(user));
+};
+
+export const dispatchLogout = () => (dispatch) => {
+	dispatch(handleLogout());
+};
+
+export default store;

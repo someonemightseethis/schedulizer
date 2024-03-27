@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3734ccc8ecebc447a83f0574fe4123fe7f545e1fa3696ddcb4de3c9bf4d01eb0
-size 397
+// import ConnectedDashboardSidebar from "./DashboardSidebar";
+import Navbar from "../navbar/Navbar";
+import BusinessDashboard from "./BusinessDashboard";
+
+function Dashboard() {
+	return (
+		<div className="flex h-screen flex-col bg-[#FAF8ED]">
+			<Navbar />
+			<div className="w-full md:sm:my-[58px] xl:lg:my-[66px]">
+				<BusinessDashboard />
+			</div>
+		</div>
+	);
+}
+
+export default Dashboard;
